@@ -92,7 +92,6 @@ a {
   @include center-in-parent;
   @include full-background-image;
 
-  background-image: url(../img/backgrounds/transparent.png);
   background-color: white;
   transition: background-color 0.5s linear;
 
