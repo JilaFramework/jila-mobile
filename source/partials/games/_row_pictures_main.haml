@@ -1,0 +1,6 @@
+.row.pictures-row
+  .columns.small-12.large-5.small-centered
+    %ul.small-block-grid-2.pictures-main
+      %li{ng: {repeat: 'option in options'}} 
+        %a{href: 'javascript:void(0)', ng: {click: 'select(option)', class: '{selected: option == selectedAnswer}'}}
+          .thumbnail{style: 'background-image: url({{option.image}})'}

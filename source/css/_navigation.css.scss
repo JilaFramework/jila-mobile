@@ -1,0 +1,117 @@
+$action_button_width: 45px;
+
+.navigation {
+  a {
+    color: white;
+    text-decoration: none;
+  }
+
+  .action {
+    position: absolute;
+    
+    height: 100%;
+    width: $action_button_width;
+    
+    text-align: center;
+
+    visibility: hidden;
+    &.visible {
+      visibility: visible;
+    }
+
+    $action_margin: 3px;
+    &.back {
+      left: $action_margin;
+      img {
+        width: 70%;
+        height: 90%;
+      }
+    }
+
+    &.search {
+      right: $action_margin;
+      $search_scale: 70%;
+      img {
+        width: $search_scale;
+        height: $search_scale;
+      }
+    }
+  }
+
+  .logo {
+    display: none;
+  }
+
+  .back-action {
+    >.title {
+      display: none;
+    }
+  }
+
+  .top-bar {
+    >.title {
+      @include center-in-parent;
+    }
+  }
+
+  .fa {
+    font-size: 25px;
+  }
+
+  .title {
+    font-family: 'Roboto', 'Helvetica Neue', 'Segoe UI', 'sans-serif';
+    text-transform: uppercase;
+    color: white;
+    font-size: 1.25em;
+    width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .search-panel {
+    padding: 3px 5px;
+    background-color: $light_grey;
+    height: 100%;
+    width: 100%;
+    font-family: 'Roboto', 'Helvetica Neue', 'Segoe UI', 'sans-serif';
+    overflow: auto;
+
+    .entries {
+      padding-bottom: 100px;
+    }
+  }
+}
+
+.android {
+  .navigation {
+    .logo {
+      display: block;
+      position: absolute;
+      left: 0;
+      width: $action_button_width;
+      height: 100%;
+      background-image: url(../img/logo.png);
+      background-position: center;
+      background-size: 70% 70%;
+      background-repeat: no-repeat;
+    }
+
+    .title {
+      position: absolute;
+      left: $action_button_width;
+    }
+
+    .back-action {
+      >.title {
+        display: inline-block;
+      }
+    }
+
+    .top-bar {
+      >.title {
+        display: none;
+      }
+    }
+  }
+}

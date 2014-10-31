@@ -1,0 +1,10 @@
+.page.category-page
+  .row
+    .columns.small-12.large-5.small-centered
+      %h2.text-center{ng: {if: 'entries.length === 0'}}
+        No entries
+
+      %ul.small-block-grid-1.entries
+        %li{bindonce: '', ng: {repeat: 'entry in entries'}}
+          %a{bo: {href: "'#/entries/' + entry.id"}}
+            = partial 'partials/list_entry'

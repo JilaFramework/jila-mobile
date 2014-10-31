@@ -1,0 +1,35 @@
+@mixin responsive-square($percentage: 100%) {
+  width: $percentage;
+  padding-bottom: $percentage;
+  position: relative;
+  margin: auto;
+}
+
+@mixin responsive-circle($percentage: 100%) {
+  @include responsive-square($percentage);
+
+  border-radius: 50%;
+}
+
+@mixin full-background-image {
+  background-size: cover;
+  background-position: center;
+}
+
+@mixin center-in-parent($top:50%, $left:50%) {
+  position: absolute;
+  top: $top;
+  left: $left;
+  transform: translate(-$left, -$top);
+  text-align: center;
+}
+
+@mixin touch-indicator {
+  box-shadow: 0px 3px 3px black;
+}
+
+@mixin as-card {
+  background-color: white;
+  border: 1px solid #DDD;
+  border-bottom: 1px solid grey;
+}

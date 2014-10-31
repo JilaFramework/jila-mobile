@@ -1,0 +1,505 @@
+@import 'colors';
+@import 'fonts';
+@import 'normalize';
+@import 'foundation/settings';
+@import 'foundation';
+@import 'slick';
+@import 'variables';
+@import 'mixins';
+@import 'type';
+@import 'animations';
+@import 'layout';
+@import 'navigation';
+@import 'transitions';
+@import 'splash';
+
+body {
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0); 
+  -webkit-tap-highlight-color: transparent;
+  background-color: $body_background;
+}
+
+a {
+  display: block;
+  &:active {
+    $depressed_size: 0.95;
+    > * {
+      transform: scale3d($depressed_size, $depressed_size, 1);
+    }
+  }
+}
+
+.button {
+  font-size: 20px;
+
+  &.disabled, &[disabled] {
+    background-color: $button_disabled;
+  }
+}
+
+.letters, .entries {
+  li {
+    padding-bottom: 0;
+  }
+}
+
+.list-entry {
+  padding: 8px;
+
+  color: black;
+
+  $thumbnail_padding: 0.1em;
+  .thumbnail-column {
+    padding-left: $thumbnail_padding;
+    padding-right: $thumbnail_padding;
+  }
+
+  .entry-word {
+    padding-top: 5px;
+    text-transform: lowercase;
+    font-size: 1.5em;
+    line-height: 95%;
+  }
+
+  .translation {
+    font-size: 1.2em;
+  }
+}
+
+.entries {
+  .thumbnail {
+    background-color: $background_thumbnail;
+  }
+}
+
+.entry {
+  padding: 5px;
+  background: white;
+  border-bottom: 1px solid black;
+
+  .word-type, .translation {
+    vertical-align: middle;
+    margin-bottom: 0px;
+  }
+
+  .word-type {
+    font-style: italic;
+    margin-right: 5px;
+  }
+}
+
+.modal {
+  @include center-in-parent;
+  @include full-background-image;
+
+  background-image: url(../img/backgrounds/transparent.png);
+  background-color: white;
+  transition: background-color 0.5s linear;
+
+  text-align: center;
+
+  .inner {
+    @include center-in-parent;
+  }
+
+  .title {
+    font-size: 2.75em;
+    font-family: 'Roboto', 'Helvetica Neue', 'Segoe UI', 'sans-serif';
+    padding-bottom: 20px;
+  }
+
+  .message {
+    font-size: 1.7em;
+    padding: 10px;
+  }
+
+  .thumbnail {
+    @include responsive-square(70%);
+  }
+
+  .submit {
+    margin-top: 10px;
+  }
+
+  &.success, &.success-page {
+    color: white;
+    
+    &.loaded {
+      background-color: green;
+    }
+  }
+
+  &.failure, &.failure-page {
+    color: white;
+
+    &.loaded {
+      background-color: red;
+    }
+  }
+}
+
+$page_gutter: 20px;
+.page {
+  background-color: #DDD;
+}
+
+.entry-page {
+  .image {
+    width: 100%;
+    height: 250px;
+    background-position: center;
+    background-size: cover;
+    margin-bottom: 10px;
+  }
+
+  .translation {
+    font-size: 1.9em;
+  }
+
+  .word-type {
+    font-size: 1.1em;
+    text-transform: lowercase;
+  }
+
+  .translation-row {
+    margin-top: 20px;
+  }
+
+  .description-row {
+    padding-top: 10px;
+  }
+
+  .description {
+    font-size: 1.3em;
+  }
+
+  .entry-word {
+    width: 95%;
+    margin-left: 2%;
+    font-size: 80px;
+    text-align: center;
+    text-transform: lowercase;
+
+    span {
+      position: relative;
+      top: 5px;
+    }
+  }
+}
+
+.result-page {
+  .lives {
+    position: absolute;
+    right: 0;
+    top: -$topbar-height;
+    height: $topbar-height;
+    padding: 3px;
+  }
+
+  .life-status {
+    width: 48px;
+    display: inline-block;
+    font-size: 30px;
+    transition: all 0.75s linear;
+    transform: scale(1);
+    
+    &.lost {
+      transform: scale(0);
+    }
+  }
+}
+
+.menu-items {
+  li {
+    padding: 0px;
+    padding-bottom: 10px;
+  }
+}
+
+.old-android {
+  .menu-items {
+    padding-bottom: 50px;
+  }
+}
+
+.menu-item {
+  @include responsive-square(90%);
+  @include as-card;
+}
+
+.home-page {
+  padding-top: 10px;
+
+  .menu-item {
+    .menu-label {
+      @include center-in-parent;
+
+      color: black;
+      font-size: 23px;
+    }
+  }
+}
+
+.categories-page, .games-page {
+  padding-top: 10px;
+  .category {
+    .inner {
+      @include center-in-parent;
+      width: 90%;
+    }
+
+    .icon {
+      margin: auto;
+      width: 70%;
+      padding-bottom: 50%;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: contain;
+    }
+
+    .name {
+      font-size: 1.1em;
+      color: black;
+    }
+  }
+}
+
+.thumbnail {
+  @include responsive-square;
+  @include full-background-image;
+}
+
+
+.entries {
+  margin-left: 2px;
+  margin-right: 2px;
+
+  li {
+    margin-top: 3px;
+    margin-bottom: 3px;
+  }
+
+  .list-entry {
+    @include as-card;
+  }
+}
+
+.entry-page, .word-of-the-day-page {
+  .entry-word, .play-word {
+    display: inline-block;
+  }
+
+  .play-word {
+    font-size: 50px;
+  }
+
+  img {
+    width: 100%;
+  }
+}
+
+.dictionary-page {
+  .letter {
+    background-color: black;
+    color: white; 
+    font-size: 25px;
+    margin-left: -0.6em;
+    margin-right: -0.6em;
+  }
+}
+
+.common-page {
+  .play-word {
+    font-size: 4em;
+  }
+}
+
+.game {
+  .picture-main {
+    @include full-background-image;
+  }
+
+  .instruction {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 1.25em;
+  }
+
+  .answer-label {
+    font-size: 4em;
+    width: 95%;
+  }
+
+  @media only screen 
+    and (orientation : portrait)
+    and (max-height : $max_height_for_small) { 
+    .instruction {
+      font-size: 1.45em;
+    }
+
+    .answer-label {
+      font-size: 3em;
+    }
+
+    li {
+      padding-bottom: 1em;
+    }
+  }
+
+  .word-row, .word-row-small {
+    text-transform: lowercase;
+    text-align: center;
+  }
+
+  .word-row-small {
+    font-size: 40px;
+  }
+
+  .play-word {
+    font-size: 120px;
+  }
+
+  .answer-text {
+    border-radius: 3px;
+    font-size: 1.3em;
+    border: 2px solid $light_grey;
+  }
+
+  .options {
+    li {
+      list-style: none;
+      display: inline-block;
+      margin: 0;
+      padding-bottom: 0;
+      vertical-align: top;
+    }
+
+    text-align: center;
+    margin: 0;
+
+    $option_padding: 12px;
+    $option_margin: 6px;
+    .option {
+      font-size: 20px;
+      line-height: 70%;
+      border-radius: 18px;
+      background-color: green;
+      padding: $option_padding;
+      margin: $option_margin;
+      box-shadow: 1px 1px 5px rgba(0,0,0,0);
+      transition: transform 250ms linear,
+                          box-shadow 250ms linear;             
+
+      border: 3px solid transparent;
+      &.selected {
+        border: 3px solid black;
+      }
+    }
+
+    .slip-reordering {
+      .option {
+        transform: rotate(3deg);
+        box-shadow: 1px 1px 5px rgba(0,0,0,0.25);
+      }
+    }    
+  }
+
+  .selected {
+    .thumbnail {
+      box-shadow: 0px 0px 20px black;
+    }
+  }
+}
+
+.keyboard-visible {
+  .game {
+    .instruction-row {
+      display: none;
+    }
+
+    .word-row {
+      opacity: 0;
+    }
+
+    .word-row-small {
+      display: block;
+    }
+
+    .audio-row {
+      height: $main_row_height_keyboard;
+    }
+
+    .audio-main {
+      width: 20%;
+      padding-bottom: 20%;
+    }
+  }
+}
+
+$tab_header_height: 60px;
+.about-page {
+  white-space: nowrap;
+  overflow: hidden;
+
+  .tab-header {
+    float: left;
+    a {
+      text-decoration: none;
+      color: white;
+    }
+  }
+
+  .tab-content {
+    white-space: normal;
+  }
+
+  .tab-page {
+    padding-top: 5px;
+    overflow-y: auto;
+    a {
+      display: inline;
+    }
+  }
+
+  .tab-header {
+    background: black;
+    color: white;
+    width: 20%;
+    text-align: center;
+    vertical-align: middle;
+
+    border-right: 1px solid grey;
+    &:last-child {
+      border-right: none;
+    }
+
+    &.active {
+      border-bottom: 4px solid red;
+    }
+  }
+
+  .logo {
+    margin-bottom: 10px;
+
+    &.nby {
+      width: 65%;
+      margin: auto;
+    }
+  }
+
+  .image-credit {
+    padding: 5px;
+
+    .attribution {
+      white-space: normal;
+      word-wrap: break-word;
+    }
+  }
+
+  .location {
+    @include responsive-square;
+    background-size: contain;
+    background-image: url(../img/location.png);
+    margin-bottom: 20px;
+  }
+} 

@@ -1,0 +1,7 @@
+.tab-page.credits-tab
+  %h2 {{ creditsTab.label }}
+
+  %h3 Image Credits
+  %ul
+    %li.image-credit{ng: {repeat: 'credit in imageCredits'}}
+      %a.attribution{href: 'javascript:void(0)', title: '{{credit.attribution_text}}', ng: {click: "openLink(credit.link)"}} {{ credit.attribution_text }}

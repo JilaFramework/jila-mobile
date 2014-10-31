@@ -1,0 +1,13 @@
+.page.dictionary-page
+  .row
+    .columns.small-12.large-5.small-centered
+      %h2.text-center{ng: {if: 'letters.length === 0'}}
+        No entries
+
+      %ol.small-block-grid-1.letters
+        %li{bindonce: '', ng: {repeat: 'letter in letters'}}
+          .letter.text-center{bo: {text: 'letter'}}
+          %ul.small-block-grid-1.entries
+            %li{bindonce: '', ng: {repeat: 'entry in grouped_entries[letter]'}}
+              %a{bo: {href: "'#/entries/' + entry.id"}}
+                = partial 'partials/list_entry'

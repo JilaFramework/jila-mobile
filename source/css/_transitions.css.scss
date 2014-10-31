@@ -1,0 +1,90 @@
+@mixin slide-transition($reverse: false) {
+  &.ng-enter, &.ng-leave {
+    transition: all 0.5s ease;
+  }
+
+  &.ng-enter {
+    @if $reverse {
+      transform: translate3d(-100%, 0, 0);
+    } @else {
+      transform: translate3d(100%, 0, 0);
+    }
+
+    z-index: 8888;
+  }
+
+  &.ng-enter-active {
+    transform: translate3d(0, 0, 0);
+  }
+
+  &.ng-leave {
+    transform: translate3d(0, 0, 0);
+    z-index: 9999;
+  }
+
+  &.ng-leave-active {
+    @if $reverse {
+      transform: translate3d(100%, 0, 0);  
+    } @else {
+      transform: translate3d(-100%, 0, 0);
+    }
+  }
+}
+
+@mixin pop-transition {
+  &.ng-enter, &.ng-leave {
+    transition: all 0.5s ease;
+  }
+
+  &.ng-enter {
+    transform: scale3d(0,0,0);
+  }
+
+  &.ng-enter-active, &.ng-leave, &.ng-leave-active {
+    transform: scale3d(1,1,1);
+  }
+
+  &.ng-leave-active {}
+}
+
+@mixin fade-transition {
+  &.ng-enter, &.ng-leave {
+    transition: all 0.5s ease;
+  }
+
+  &.ng-enter {
+    opacity: 0;
+  }
+
+  &.ng-enter-active {
+    opacity: 1;
+  }
+
+  &.ng-leave {
+    opacity: 1;
+  }
+
+  &.ng-leave-active {
+    opacity: 0;
+  }
+}
+
+.android {
+  .page-container {
+    transform: translate3d(0, 0, 0);
+    @include fade-transition;
+  }
+}
+
+.ios {
+  .page-container {
+    transform: translate3d(0, 0, 0);
+    @include slide-transition;
+  }
+
+  &.back {
+    .page-container {
+      @include slide-transition(true)
+    }
+  }
+}

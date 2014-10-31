@@ -1,0 +1,15 @@
+.navigation{ng: {controller: 'navigationController', class: '{visible: searchIsVisible}', show: 'navigationAvailable'}}
+  %nav.top-bar{data: {topbar: ''}}
+    %a.back-action{href: 'javascript:void(0)', ng: {click: 'backClicked()'}}
+      .action.back{ng: {class: '{visible: backAction}'}}
+        .fa
+          &#xf060;
+      .logo{ng: {if: '!backAction'}}
+      .title {{ labelForTitle }}
+    .title {{ labelForTitle }}
+    %a{href: 'javascript:void(0)', ng: {click: 'toggleSearch()'}}
+      .action.search{ng: {class: '{visible: searchAvailable}'}}
+        .fa
+          &#xf002;
+  
+  = partial '/partials/search'

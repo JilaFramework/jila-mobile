@@ -1,0 +1,6 @@
+.row.sort-row
+  .columns.small-12.small-centered
+    %ul.options.sorted-options{slip: '', ng: {model: 'jumbledAnswer'}}
+      %li{ng: {repeat: 'segment in jumbledAnswer'}}
+        .button.option
+          {{ segment }}

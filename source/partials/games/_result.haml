@@ -1,0 +1,9 @@
+.result-page.modal{ng: {class: '{success: success, failure: !success, loaded: loaded}'}}
+  = partial '/partials/games/status'
+
+  .inner
+    .title {{ labelForTitle }}
+    .message{ng: {if: 'labelForMessage'}} {{ labelForMessage }}
+    .thumbnail{ng: {if: 'answerImage'}, style: 'background-image: url({{answerImage}})'}
+    %a.button.radius.submit{href: 'javascript:void(0)', ng: {click: 'close()'}}
+      {{ labelForClose }}

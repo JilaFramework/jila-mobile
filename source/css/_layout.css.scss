@@ -1,0 +1,264 @@
+html, body {
+  height: 100%;
+  width: 100%;
+  margin: 0px;
+  padding: 0px;
+  overflow: hidden;
+}
+
+$status_bar_height: 20px;
+
+.navigation {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+  height: $topbar-height;
+  transition: height 0.25s ease;
+
+  &.visible {
+    height: 100%;
+    overflow: hidden;
+  }
+}
+
+.ios7 {
+  .navigation {
+    top: $status_bar_height;
+  }
+}
+
+.page-container {
+  position: fixed;
+  top: $topbar-height;
+  width: 100%;
+  height: 100%;
+}
+
+.ios7 {
+  .page-container {
+    top: $topbar-height + $status_bar_height;
+  }
+}
+
+.page {
+  height: 100%;
+  padding-bottom: $topbar-height;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.ios7 {
+  .page {
+    padding-bottom: $topbar-height + $status_bar_height;
+  }
+}
+
+.modal {
+  width: 100%;
+  height: 100%;
+}
+
+.splash {
+  position: absolute;
+  z-index: 101;
+  top: -$topbar-height;
+  height: 100%;
+  width: 100%;
+
+  .warning {
+    position: absolute;
+    bottom: 5px;
+    left: 50%;
+    transform: translate(-50%, 0%);
+  }
+}
+
+.ios7 {
+  .splash {
+    .warning {
+      bottom: $status_bar_height + 5px;
+    }
+  }
+}
+
+$tab_header_height: 60px;
+.tab-headers {
+  position: fixed;
+  width: 100%;
+  z-index: 100;
+}
+
+.tab-header {
+  height: $tab_header_height;
+  line-height: $tab_header_height;  
+}
+
+.tab-content {
+  margin-top: $tab_header_height;
+}
+
+.android {
+  .tab-header {
+    height: $tab_header_height;
+  }
+
+  .tab-content {
+    margin-top: $tab_header_height;
+  }
+}
+
+.ios {
+  .tab-headers {
+    top: initial;
+    bottom: $topbar-height;
+  }
+
+  .tab-content {
+    margin-top: 0;
+  }
+
+  .tab-page {
+    padding-bottom: $tab_header_height;
+  }
+}
+
+.ios7 {
+  .tab-headers {
+    bottom: $topbar-height + $status_bar_height;
+  }
+
+  .tab-page {
+    padding-bottom: $tab_header_height + $status_bar_height;
+  }
+}
+
+$submit_row_height: 100px;
+$submit_row_offset: $submit_row_height + 20px;
+$answer_row_height: 120px;
+$main_row_offset: $submit_row_offset + $answer_row_height + 10px;
+$main_row_height: 300px;
+$main_row_height_small: 160px;
+$main_row_height_keyboard: 50px;
+$bottom_offset: 15px;
+.game {
+  position: relative;
+
+  .word-row, 
+  .word-row-small, 
+  .audio-row, 
+  .pictures-row,
+  .sort-row, 
+  .options-row, 
+  .submit-row,
+  .answer-text-row {
+    position: absolute;
+  }
+
+  .word-row, .word-row-small, .audio-row {
+    bottom: $main_row_offset;
+  }
+
+  .options-row, .sort-row, .pictures-row, .answer-text-row {
+    bottom: $submit_row_offset;
+  }
+
+  .submit-row {
+    bottom: $bottom_offset;
+  }
+
+  .audio-row, .word-row, .word-row-small {
+    width: 100%;
+  }
+
+  .word-row-small {
+    display: none;
+    height: $main_row_height_keyboard;
+  }
+
+  .answer-text-row {
+    height: $answer_row_height;
+
+    .answer-text {
+      margin: 0;
+      height: 100%;
+    }
+  }
+
+  .word-row, .audio-row {
+    height: $main_row_height;
+  }
+
+  @media only screen 
+    and (orientation : portrait)
+    and (max-height : $max_height_for_small) { 
+    .word-row, .audio-row {
+      height: $main_row_height_small;
+    }
+  }
+
+  .options-row, .sort-row {
+    height: $answer_row_height;
+  }
+
+  .submit-row {
+    height: $submit_row_height;
+    .submit {
+      width: 100%;
+    }
+  }
+
+  .audio-main, .answer-label {
+    @include center-in-parent;
+  }
+
+  .picture-main {
+    @include responsive-square;
+  }
+
+  @media only screen 
+    and (orientation : portrait)
+    and (max-height : $max_height_for_small) { 
+    .picture-main {
+      @include responsive-square(70%);
+    }
+
+    .pictures-main {
+      margin: auto;
+      width: 80%;
+    }
+  }
+
+  .audio-main {
+    width: 50%;
+    margin: auto;
+  }
+
+  &.text-to-pictures-page {
+    .word-row {
+      position: initial;
+      height: initial;
+
+      .answer-label {
+        @include center-in-parent(0%);
+        position: relative;
+      }
+    }
+  }
+}
+
+.ios7 {
+  .game {
+    .word-row, .word-row-small, .audio-row {
+      bottom: $main_row_offset + $status_bar_height;
+    }
+
+    .options-row, .sort-row, .pictures-row, .answer-text-row {
+      bottom: $submit_row_offset + $status_bar_height;
+    }
+
+    .submit-row {
+      bottom: $bottom_offset + $status_bar_height;
+    }
+  }
+}

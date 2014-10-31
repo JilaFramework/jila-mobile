@@ -1,0 +1,33 @@
+body {
+  color: $main_text_color;
+  font-family: 'Roboto', 'Helvetica Neue', 'Segoe UI', 'sans-serif';
+}
+
+h1, h2, h3 {
+  font-family: 'Roboto', 'Helvetica Neue', 'Segoe UI', 'sans-serif';
+}
+
+h4, h5, h6 {
+  font-family: 'Roboto', 'Helvetica Neue', 'Segoe UI', 'sans-serif';
+}
+
+// TODO: These overrides for Zurb are because of Sleep Talk being so small. Should this belong somewhere else?
+h4 {
+  font-size: rem-calc(30);
+}
+
+h5 {
+  font-size: rem-calc(27);
+}
+
+h6 {
+  font-size: rem-calc(23);
+}
+
+p {
+  font-size: rem-calc(21);
+}
+
+.fa {
+  font-family: 'Font Awesome';
+}

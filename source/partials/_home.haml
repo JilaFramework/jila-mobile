@@ -1,0 +1,33 @@
+.page.home-page
+  .row
+    .columns.small-12.large-5.small-centered
+      %ul.small-block-grid-2.menu-items
+        %li
+          %a{href: '#/dictionary'}
+            .menu-item
+              %h3.menu-label {{ labelForDictionary }}
+
+        %li
+          %a{href: '#/categories'}
+            .menu-item
+              %h3.menu-label {{ labelForCategories }}
+
+        %li
+          %a{href: '#/games'}
+            .menu-item
+              %h3.menu-label {{ labelForLearn }}
+
+        %li
+          %a{href: '#/common'}
+            .menu-item
+              %h3.menu-label {{ labelForCommon }}
+
+        %li
+          %a{href: '#/word_of_the_day'}
+            .menu-item
+              %h3.menu-label {{ labelForWordOfTheDay }}
+
+        %li
+          %a{href: '#/about'}
+            .menu-item
+              %h3.menu-label {{ labelForAbout }}

@@ -1,0 +1,20 @@
+.page.entry-page 
+  .row
+    .columns.small-12.large-5.small-centered
+      .row
+        .image{style: 'background-image: url({{entry.images.normal}})'}
+      .row.entry-row
+        .entry-word{scale: {fit: ''}} 
+          %span {{ entry.entry_word }}
+          
+      .row.translation-row
+        .columns.small-4
+          %a{href: 'javascript:void(0)', ng: {click: 'listen()', if: 'entry.audio !== null'}}
+            .play-word.fa
+              &#xf144;
+        .columns.small-8
+          .translation {{ entry.translation }}
+          .word-type {{ entry.word_type }}
+      .row.description-row
+        .columns.small-12
+          .description {{ entry.description }}

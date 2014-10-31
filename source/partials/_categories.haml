@@ -1,0 +1,10 @@
+.page.categories-page 
+  .row
+    .columns.small-12.large-5.small-centered
+      %ul.small-block-grid-2.categories.menu-items
+        %li{ng: {repeat: 'category in categories'}}
+          %a{href: '#/categories/{{category.id}}'}
+            .category.menu-item
+              .inner
+                .icon{style: 'background-image: url({{category.images.thumbnail}})'}
+                %h3.name{fit: {text: '0.8'}} {{ category.name }}

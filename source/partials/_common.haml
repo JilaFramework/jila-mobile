@@ -1,0 +1,16 @@
+.page.common-page
+  .row
+    .columns.small-12.large-5.small-centered
+      %h2.text-center{ng: {if: 'entries.length === 0'}}
+        No entries
+
+      %ul.small-block-grid-1.entries
+        %li{ng: {repeat: 'entry in entries'}}
+          .list-entry.row
+            .column.small-4.large-2
+              %a{href: 'javascript:void(0)', ng: {click: 'listen(entry)'}}
+                .play-word.fa
+                  &#xf144;
+            .column.small-8.large-10
+              .entry-word {{ entry.entry_word }}
+              .translation {{ entry.translation }}

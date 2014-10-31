@@ -1,0 +1,16 @@
+.page.about-page
+  .tab-headers
+    .tab-header{ng: {repeat: 'tab in tabs', class: '{active: tab == selectedTab}'}}
+      %a{href: 'javascript:void(0)', ng: {click: 'selectContent($index)'}} {{ tab.label }}
+  .row
+    .column.small-12.large-5.small-centered.tab-content{slick: {carousel: ''}}
+      .tab
+        = partial '/partials/about_history'
+      .tab
+        = partial '/partials/about_resources'
+      .tab
+        = partial '/partials/about_location'
+      .tab
+        = partial '/partials/about_partners'
+      .tab
+        = partial '/partials/about_credits'

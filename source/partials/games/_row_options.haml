@@ -1,0 +1,6 @@
+.row.options-row
+  .columns.small-12.small-centered
+    %ul.options
+      %li{ng: {repeat: 'option in options'}}
+        .button.option{scale: {fit: '120'}, ng: {click: 'select(option)', class: '{selected: option == selectedAnswer}'}} 
+          %span {{ option.label }}
