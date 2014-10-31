@@ -2,10 +2,10 @@
 # the following line to use "https"
 source 'https://rubygems.org'
 
-gem "middleman"
+gem "middleman", "~>3.3.3"
 
 # Live-reloading plugin
-gem "middleman-livereload"
+gem "middleman-livereload", "~> 3.1.0"
 
 gem 'middleman-angular-templates', git: 'git@github.com:damrbaby/middleman-angular-templates.git'
 
