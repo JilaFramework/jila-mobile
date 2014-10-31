@@ -1,6 +1,11 @@
 body {
   color: $main_text_color;
   font-family: 'Roboto', 'Helvetica Neue', 'Segoe UI', 'sans-serif';
+  font-weight: lighter;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: lighter;
 }
 
 h1, h2, h3 {
