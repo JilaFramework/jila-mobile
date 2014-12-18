@@ -12,7 +12,7 @@ The **Jila** app is built using the [Middleman](http://middlemanapp.com) static 
 ## Development
 For development, the process is simple. Run a 'bower install' to get the assets, then once you have Middleman installed use 'middleman server' to load your work.
 ## Testing
-The **Jila** framework uses [Jasmine]() for unit testing. Once your server is running it can be accessed at 'http://localhost:[port]/jasmine'
+The **Jila** framework uses [Jasmine](http://jasmine.github.io/) for unit testing. Once your server is running it can be accessed at 'http://localhost:[port]/jasmine'
 ## Mobile App
 ### Enable Platforms
 The core repository includes a list of the Cordova plugins currently being used, but not the platforms eg. iOS or Android. To enable these you will need to use the Cordova command-line tools to add what you require. Check with the Cordova documentation on how to do this.
