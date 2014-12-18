@@ -24,9 +24,10 @@ describe 'BaseGameController', () ->
 
   beforeEach module('app')
 
-  beforeEach inject (_$q_, _$rootScope_) ->
+  beforeEach inject (_$q_, _$rootScope_, _$httpBackend_) ->
     $q = _$q_
     $rootScope = _$rootScope_
+    _$httpBackend_.whenGET('partials/splash.html').respond(200);
 
     spyOn(optionsGenerator, 'generateOptionsFor').and.callThrough()
     controller = new TestController($scope, routeParams, submissionHandler, optionsGenerator, audioService, $rootScope)

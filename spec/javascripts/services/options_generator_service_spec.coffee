@@ -26,10 +26,11 @@ describe 'optionsGeneratorService', () ->
     $provide.value('entryService', entryService)
     return
 
-  beforeEach inject (_$q_, _$rootScope_, _optionsGeneratorService_) ->
+  beforeEach inject (_$q_, _$rootScope_, _optionsGeneratorService_, _$httpBackend_) ->
     $q = _$q_
     $rootScope = _$rootScope_
     service = _optionsGeneratorService_
+    _$httpBackend_.whenGET('partials/splash.html').respond(200);
     return
 
   describe 'when generating options', () ->
@@ -67,7 +68,3 @@ describe 'optionsGeneratorService', () ->
 
       it 'should pick an answer from the options', () ->
         expect(_.contains(options, answer)).toBe true
-
-
-
-

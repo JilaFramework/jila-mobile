@@ -17,9 +17,10 @@ describe 'PictureToUnjumbleController', () ->
 
   beforeEach module('app')
 
-  beforeEach inject ($controller, _$q_, _$rootScope_) ->
+  beforeEach inject ($controller, _$q_, _$rootScope_, _$httpBackend_) ->
     $rootScope = _$rootScope_
     $q = _$q_
+    _$httpBackend_.whenGET('partials/splash.html').respond(200);
     controller = $controller 'pictureToUnjumbleController', 
       $scope: $scope
       $routeParams: routeParams
