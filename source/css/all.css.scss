@@ -1,16 +1,15 @@
 @import 'colors';
 @import 'fonts';
-@import 'normalize';
-@import 'foundation/settings';
-@import 'foundation';
-@import 'slick';
+@import 'foundation/scss/normalize';
+@import 'foundation/scss/foundation';
+@import 'transitions';
+@import 'slick-carousel/slick/slick';
 @import 'variables';
 @import 'mixins';
 @import 'type';
 @import 'animations';
 @import 'layout';
 @import 'navigation';
-@import 'transitions';
 @import 'splash';
 
 body {

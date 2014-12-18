@@ -6,7 +6,7 @@ html, body {
   overflow: hidden;
 }
 
-$status_bar_height: 20px;
+$status_bar_height: rem-calc(20);
 
 .navigation {
   position: fixed;
@@ -77,12 +77,12 @@ $status_bar_height: 20px;
 .ios7 {
   .splash {
     .warning {
-      bottom: $status_bar_height + 5px;
+      bottom: $status_bar_height + rem-calc(5);
     }
   }
 }
 
-$tab_header_height: 60px;
+$tab_header_height: rem-calc(60);
 .tab-headers {
   position: fixed;
   width: 100%;
@@ -133,14 +133,14 @@ $tab_header_height: 60px;
   }
 }
 
-$submit_row_height: 100px;
-$submit_row_offset: $submit_row_height + 20px;
-$answer_row_height: 120px;
-$main_row_offset: $submit_row_offset + $answer_row_height + 10px;
-$main_row_height: 300px;
-$main_row_height_small: 160px;
-$main_row_height_keyboard: 50px;
-$bottom_offset: 15px;
+$submit_row_height: rem-calc(100);
+$submit_row_offset: $submit_row_height + rem-calc(20);
+$answer_row_height: rem-calc(120);
+$main_row_offset: $submit_row_offset + $answer_row_height + rem-calc(10);
+$main_row_height: rem-calc(300);
+$main_row_height_small: rem-calc(160);
+$main_row_height_keyboard: rem-calc(50);
+$bottom_offset: rem-calc(15);
 .game {
   position: relative;
 
