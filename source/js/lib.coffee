@@ -1,32 +1,29 @@
-//= require ./lib/jquery-2.0.3.min
+//= require 'jquery/dist/jquery'
 
-//= require ./lib/fastclick
+//= require 'fastclick/lib/fastclick'
 
-//= require ./lib/lodash
-//= require ./lib/moment
+//= require 'lodash/dist/lodash'
+//= require 'moment/moment'
 
-//= require ./lib/lawnchair-0.6.1.min
-//= require ./lib/lawnchair-query-0.6.1
+//= require 'lawnchair/src/Lawnchair'
+//= require 'lawnchair/src/adapters/dom'
+//= require 'lawnchair/src/plugins/query'
 
-//= require ./lib/angular
-//= require ./lib/angular-route
-//= require ./lib/angular-touch
-//= require ./lib/angular-animate
+//= require 'angular/angular'
+//= require 'angular-route/angular-route'
+//= require 'angular-animate/angular-animate'
+//= require 'angular-touch/angular-touch'
 
-//= require ./lib/bindonce
+//= require 'angular-bindonce/bindonce'
 
-//= require ./lib/jquery.fittext
+//= require 'foundation/js/foundation'
+//= require 'slick-carousel/slick/slick'
 
-//= require ./lib/slick
+//= require 'jplayer/dist/jplayer/jquery.jplayer'
+
+//= require 'bower-google-analytics/analytics'
+//= require 'angulartics/dist/angulartics.min'
+//= require 'angulartics/dist/angulartics-ga.min'
 
 //= require ./lib/slip.horizontal
-
-//= require ./lib/foundation
-
-//= require ./lib/jquery.jplayer.min
-
 //= require ./lib/polyfill-blob-constructor
-
-//= require ./lib/analytics
-//= require ./lib/angulartics.min
-//= require ./lib/angulartics-ga.min
