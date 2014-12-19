@@ -40,6 +40,8 @@ class Service
       , handleError
 
     gotDirectoryEntry = (dir) =>
+      dir.setMetadata((->), handleError, { "com.apple.MobileBackup": 1});
+
       dir.getFile @filenameFor(url),
         create: true, 
       , gotFileEntry
