@@ -7,4 +7,9 @@
     color: white;
     font-size: 60px;
   }
+
+  .retry-section {
+    @include center-in-parent;
+    top: 80%;
+  }
 }

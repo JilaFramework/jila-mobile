@@ -38,6 +38,9 @@ EN =
   sessionTitleFailure: 'Oh no!'
   sessionMessageFailure: 'You\'ve run out of chances! Better luck next time!'
   acknowledgeButton: 'Ok'
+  syncFailureOfflineMessage: 'Unable to update content'
+  syncFailureRetryMessage: 'Unable to update content. Check your network connection and retry'
+  syncRetryButtonMessage: 'Retry Sync'
 
 class Service
   constructor: () ->
