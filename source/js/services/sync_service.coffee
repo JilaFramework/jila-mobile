@@ -1,5 +1,5 @@
 class Service
-  constructor: (@$http, @$q, @BACKEND_URL, @categoryService, @entryService, @imageCreditService, @downloadService) ->
+  constructor: (@$http, @$q, @BACKEND_URL, @configurationService, @categoryService, @entryService, @imageCreditService, @downloadService) ->
   refresh: () =>
     deferred = @$q.defer()
     @$http.get("#{@BACKEND_URL}/api/sync/all")
@@ -15,10 +15,11 @@ class Service
               @entryService.save e
               @downloadService.saveAssetsForEntry e
             @imageCreditService.store res.data.image_credits
+            @configurationService.initialSyncCompleted()
             deferred.resolve()
           , (err) =>
             deferred.reject()  
 
     return deferred.promise
 
-angular.module('app').service 'syncService', ['$http', '$q', 'BACKEND_URL', 'categoryService', 'entryService', 'imageCreditService', 'downloadService', Service]
+angular.module('app').service 'syncService', ['$http', '$q', 'BACKEND_URL', 'configurationService', 'categoryService', 'entryService', 'imageCreditService', 'downloadService', Service]

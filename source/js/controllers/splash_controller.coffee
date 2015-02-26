@@ -1,14 +1,38 @@
 class Controller
-  constructor: ($scope, $rootScope, $location, $timeout, SPLASH_SCREEN_DELAY, syncService) ->
-    syncFinished = false
-    delayFinished = false
-
+  constructor: ($scope, $rootScope, $location, $timeout, SPLASH_SCREEN_DELAY, syncService, configurationService, i18nService) ->
     $rootScope.$emit 'navigationConfig', 
       navigationAvailable: false
       searchAvailable: false
 
+    syncFinished = false
+    delayFinished = false
+
+    $scope.retryAvailable = false
+    $scope.retryButtonMessage = i18nService.get 'syncRetryButtonMessage'
+    $scope.retrySync = () ->
+      syncRemoteContent()    
+
     transitionIfFinished = () ->
       $location.path('/home') if syncFinished and delayFinished
+
+    syncSuccess = () ->
+      syncFinished = true
+      transitionIfFinished()
+      return
+
+    syncFailed = () ->
+      if configurationService.initialSyncComplete()
+        alert i18nService.get('syncFailureOfflineMessage')
+        syncFinished = true
+        transitionIfFinished()
+      else
+        alert i18nService.get('syncFailureRetryMessage')
+        $scope.retryAvailable = true
+      
+      return
+
+    syncRemoteContent = () ->
+      syncService.refresh().then(syncSuccess, syncFailed)
 
     Platform.isReady () ->
       $timeout () ->
@@ -16,15 +40,9 @@ class Controller
         transitionIfFinished()
       , SPLASH_SCREEN_DELAY
 
-      syncService.refresh().then () ->
-        syncFinished = true
-        transitionIfFinished()
-        return
-      , () ->
-        # TODO: This should display an error somehow
-        console.log('Error syncing')
-        syncFinished = true
-        transitionIfFinished()
-        return
+      if window.navigator.onLine
+        syncRemoteContent()
+      else
+        syncFailed()
 
-angular.module('app').controller 'splashController', ['$scope', '$rootScope', '$location', '$timeout', 'SPLASH_SCREEN_DELAY', 'syncService', Controller]
+angular.module('app').controller 'splashController', ['$scope', '$rootScope', '$location', '$timeout', 'SPLASH_SCREEN_DELAY', 'syncService', 'configurationService', 'i18nService', Controller]
