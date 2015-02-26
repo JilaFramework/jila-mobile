@@ -6,8 +6,6 @@ html, body {
   overflow: hidden;
 }
 
-$status_bar_height: rem-calc(20);
-
 .navigation {
   position: fixed;
   top: 0;
@@ -22,12 +20,6 @@ $status_bar_height: rem-calc(20);
   }
 }
 
-.ios7 {
-  .navigation {
-    top: $status_bar_height;
-  }
-}
-
 .page-container {
   position: fixed;
   top: $topbar-height;
@@ -35,23 +27,11 @@ $status_bar_height: rem-calc(20);
   height: 100%;
 }
 
-.ios7 {
-  .page-container {
-    top: $topbar-height + $status_bar_height;
-  }
-}
-
 .page {
   height: 100%;
   padding-bottom: $topbar-height;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
-}
-
-.ios7 {
-  .page {
-    padding-bottom: $topbar-height + $status_bar_height;
-  }
 }
 
 .modal {
@@ -71,14 +51,6 @@ $status_bar_height: rem-calc(20);
     bottom: 5px;
     left: 50%;
     transform: translate(-50%, 0%);
-  }
-}
-
-.ios7 {
-  .splash {
-    .warning {
-      bottom: $status_bar_height + rem-calc(5);
-    }
   }
 }
 
@@ -120,16 +92,6 @@ $tab_header_height: rem-calc(60);
 
   .tab-page {
     padding-bottom: $tab_header_height;
-  }
-}
-
-.ios7 {
-  .tab-headers {
-    bottom: $topbar-height + $status_bar_height;
-  }
-
-  .tab-page {
-    padding-bottom: $tab_header_height + $status_bar_height;
   }
 }
 
@@ -243,22 +205,6 @@ $bottom_offset: rem-calc(15);
         @include center-in-parent(0%);
         position: relative;
       }
-    }
-  }
-}
-
-.ios7 {
-  .game {
-    .word-row, .word-row-small, .audio-row {
-      bottom: $main_row_offset + $status_bar_height;
-    }
-
-    .options-row, .sort-row, .pictures-row, .answer-text-row {
-      bottom: $submit_row_offset + $status_bar_height;
-    }
-
-    .submit-row {
-      bottom: $bottom_offset + $status_bar_height;
     }
   }
 }

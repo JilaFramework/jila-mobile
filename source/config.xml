@@ -10,4 +10,8 @@
     <content src="index.html" />
     <access origin="*" />
     <preference name="orientation" value="portrait" />
+    
+    <preference name="StatusBarOverlaysWebView" value="false" />
+    <preference name="StatusBarBackgroundColor" value="#000000" />
+    <preference name="StatusBarStyle" value="blacktranslucent" />
 </widget>
