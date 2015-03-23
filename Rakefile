@@ -7,6 +7,21 @@ task :build_site do
   sh "middleman build"
 end
 
+desc "Bootstrap the project using Middleman and Cordova"
+task :bootstrap => [:build_site] do
+  puts "Adding plugins"
+  sh "cordova plugin add org.apache.cordova.device@0.2.11"
+  sh "cordova plugin add org.apache.cordova.dialogs@0.2.8"
+  sh "cordova plugin add org.apache.cordova.file@1.2.0"
+  sh "cordova plugin add org.apache.cordova.inappbrowser@0.5.2"
+  sh "cordova plugin add org.apache.cordova.media@0.2.11"
+  sh "cordova plugin add org.apache.cordova.statusbar@0.1.10"
+
+  puts "Adding iOS and Android platforms"
+  sh "cordova platform add ios"
+  sh "cordova platform add android"
+end
+
 namespace :android do
   desc "Build the app on Android"
   task :build => [:build_site] do
