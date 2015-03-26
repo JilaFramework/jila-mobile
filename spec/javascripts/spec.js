@@ -1,4 +1,4 @@
 //= require lib
 //= require all
-//= require lib/angular-mocks
+//= require angular-mocks
 //= require_tree .
