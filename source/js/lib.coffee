@@ -4,6 +4,7 @@
 
 //= require 'lodash/dist/lodash'
 //= require 'moment/moment'
+//= require 'marked/marked.min'
 
 //= require 'lawnchair/src/Lawnchair'
 //= require 'lawnchair/src/adapters/dom'
@@ -13,6 +14,7 @@
 //= require 'angular-route/angular-route'
 //= require 'angular-animate/angular-animate'
 //= require 'angular-touch/angular-touch'
+//= require 'angular-sanitize/angular-sanitize'
 
 //= require 'angular-bindonce/bindonce'
 
