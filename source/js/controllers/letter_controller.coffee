@@ -1,5 +1,5 @@
 class Controller
-  constructor: ($scope, $routeParams, $rootScope, $location, entryService, i18nService) ->
+  constructor: ($scope, $routeParams, $rootScope, $location, $q, $timeout, entryService, i18nService) ->
     $rootScope.$emit 'navigationConfig',
       labelForTitle: $routeParams.letterId
       backAction: () ->
@@ -9,10 +9,24 @@ class Controller
     $scope.category = {}
     $scope.entries = []
 
-    entryService.entries_for_letter($routeParams.letterId).then (entries) =>
-      sorted_entries = _.sortBy(entries, 'entry_word')
-      # grouped_entries = _.groupBy(sorted_entries, (e) -> e.entry_word[0])
-      $scope.entries = sorted_entries 
-        # grouped_entries[$routeParams.letterId]
+    addEntries = (entries) ->
+      [].push.apply($scope.entries, entries)
+      $timeout(angular.noop, 0)
 
-angular.module('app').controller 'letterController', ['$scope', '$routeParams', '$rootScope', '$location', 'entryService', 'i18nService', Controller]
+    computeAndRenderBatch = (entries) ->
+      computeAndLetUIRender = $q.when()
+      batchSize = 30
+      batches = _.chunk(entries, batchSize)
+      for batch in batches
+        computeNextBatch = angular.bind(null, addEntries, batch)
+        computeAndLetUIRender = computeAndLetUIRender.then(computeNextBatch)
+      computeAndLetUIRender
+
+    entryService.entries_for_letter($routeParams.letterId).then (entries) =>
+      _.sortBy(entries, 'entry_word')
+    .then (entries) ->
+      computeAndRenderBatch(entries)
+    .then (_) ->
+      console.log 'done'
+
+angular.module('app').controller 'letterController', ['$scope', '$routeParams', '$rootScope', '$location', '$q', '$timeout', 'entryService', 'i18nService', Controller]
