@@ -6,8 +6,7 @@ class Controller
         $location.path('/home')
 
     entryService.all().then (entries) =>
-      sorted_entries = _.sortBy(entries, 'entry_word')
-      this.grouped_entries = _.groupBy(sorted_entries, (e) -> e.entry_word[0])
-      $scope.letters = _.keys(this.grouped_entries)
+      first_letters = _.map(entries, (entry) -> entry.entry_word[0])
+      $scope.letters = _.uniq(first_letters).sort()
 
 angular.module('app').controller 'dictionaryController', ['$scope', '$rootScope', '$location', 'entryService', 'i18nService', Controller]
