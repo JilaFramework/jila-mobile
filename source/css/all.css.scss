@@ -13,7 +13,7 @@
 @import 'splash';
 
 body {
-  -webkit-tap-highlight-color: rgba(255, 255, 255, 0); 
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
   -webkit-tap-highlight-color: transparent;
   background-color: $body_background;
 }
@@ -121,7 +121,7 @@ a {
 
   &.success, &.success-page {
     color: white;
-    
+
     &.loaded {
       background-color: green;
     }
@@ -200,7 +200,7 @@ $page_gutter: 20px;
     font-size: 30px;
     transition: all 0.75s linear;
     transform: scale(1);
-    
+
     &.lost {
       transform: scale(0);
     }
@@ -225,13 +225,38 @@ $page_gutter: 20px;
   @include as-card;
 }
 
-.home-page {
+.categories-page, .games-page, .dictionary-page, .letter-page{
+  @include full-background-image;
+  background-image: url(../img/splash_bg.jpg);
   padding-top: 10px;
+}
 
-  .menu-item {
-    .menu-label {
-      @include center-in-parent;
+.dictionary-page{
+  .letter {
+    position: relative;
+    @include full-background-image;
+    height: 3.6em;
 
+    .name {
+      position: absolute;
+      top: 80%;
+      left: 1em;
+      transform: translate(0, -50%);
+      font-size: 2.4em;
+      text-align: center;
+      text-shadow: 2px 2px 4px black;
+      color: white;
+      text-transform: uppercase;
+    }
+  }
+}
+
+.categories-page, .games-page{
+  li:nth-of-type(2n) {
+    .category {
+      background-image: url(../img/box_bg_2n.png);
+    }
+  }
       color: black;
       font-size: 23px;
     }
@@ -296,16 +321,6 @@ $page_gutter: 20px;
   }
 }
 
-.dictionary-page {
-  .letter {
-    background-color: black;
-    color: white; 
-    font-size: 25px;
-    margin-left: -0.6em;
-    margin-right: -0.6em;
-  }
-}
-
 .common-page {
   .play-word {
     font-size: 4em;
@@ -328,9 +343,9 @@ $page_gutter: 20px;
     width: 95%;
   }
 
-  @media only screen 
+  @media only screen
     and (orientation : portrait)
-    and (max-height : $max_height_for_small) { 
+    and (max-height : $max_height_for_small) {
     .instruction {
       font-size: 1.45em;
     }
@@ -386,7 +401,7 @@ $page_gutter: 20px;
       margin: $option_margin;
       box-shadow: 1px 1px 5px rgba(0,0,0,0);
       transition: transform 250ms linear,
-                          box-shadow 250ms linear;             
+                          box-shadow 250ms linear;
 
       border: 3px solid transparent;
       &.selected {
@@ -399,7 +414,7 @@ $page_gutter: 20px;
         transform: rotate(3deg);
         box-shadow: 1px 1px 5px rgba(0,0,0,0.25);
       }
-    }    
+    }
   }
 
   .selected {
@@ -500,4 +515,4 @@ $tab_header_height: 60px;
     background-image: url(../img/location.png);
     margin-bottom: 20px;
   }
-} 
+}

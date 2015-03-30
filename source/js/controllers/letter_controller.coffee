@@ -6,9 +6,7 @@ class Controller
         $location.path('/dictionary')
         return
 
-    $scope.category = {}
     $scope.entries = []
-
     addEntries = (entries) ->
       [].push.apply($scope.entries, entries)
       $timeout(angular.noop, 0)
@@ -26,7 +24,5 @@ class Controller
       _.sortBy(entries, 'entry_word')
     .then (entries) ->
       computeAndRenderBatch(entries)
-    .then (_) ->
-      console.log 'done'
 
 angular.module('app').controller 'letterController', ['$scope', '$routeParams', '$rootScope', '$location', '$q', '$timeout', 'entryService', 'i18nService', Controller]
