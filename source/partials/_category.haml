@@ -5,6 +5,6 @@
         No entries
 
       %ul.small-block-grid-1.entries
-        %li{bindonce: '', ng: {repeat: 'entry in entries'}}
-          %a{bo: {href: "'#/entries/' + entry.id"}}
+        %li{ng: {repeat: 'entry in entries track by entry.id'}}
+          %a{ng: {href: "#/entries/{{entry.id}}"}}
             = partial 'partials/list_entry'
