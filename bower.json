@@ -19,8 +19,8 @@
     "jplayer": "~2.9.2",
     "angulartics": "~0.17.1",
     "angular-bindonce": "~0.3.3",
-    "lodash": "~2.4.1",
     "moment": "~2.8.4",
-    "bower-google-analytics": "~0.1.1"
+    "bower-google-analytics": "~0.1.1",
+    "lodash": "~3.6.0"
   }
 }
