@@ -6,6 +6,12 @@
       .row.entry-row
         .entry-word{scale: {fit: ''}}
           %span {{ entry.entry_word }}
+      .row.alternate_spelling-row{'ng-show'=>'entry.alternate_spellings.length > 0'}
+        .columns.small-2
+          %span also:
+        .columns.small-10
+          .alternate-spelling{'ng-repeat'=>'alternate_spelling in entry.alternate_spellings'}
+            {{ alternate_spelling }}
 
       .row.translation-row
         .columns.small-4
