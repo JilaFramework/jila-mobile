@@ -10,6 +10,9 @@
 # Ignore the www directory
 /www
 
+# Ignore the Cordova plugins folder
+/plugins
+
 # Ignore Sass' cache
 /.sass-cache
 
