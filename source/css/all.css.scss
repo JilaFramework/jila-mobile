@@ -225,6 +225,19 @@ $page_gutter: 20px;
   @include as-card;
 }
 
+.home-page {
+  padding-top: 10px;
+
+  .menu-item {
+    .menu-label {
+      @include center-in-parent;
+
+      color: black;
+      font-size: 23px;
+    }
+  }
+}
+
 .categories-page, .games-page, .dictionary-page, .letter-page{
   @include full-background-image;
   background-image: url(../img/splash_bg.jpg);
@@ -247,18 +260,6 @@ $page_gutter: 20px;
       text-shadow: 2px 2px 4px black;
       color: white;
       text-transform: uppercase;
-    }
-  }
-}
-
-.categories-page, .games-page{
-  li:nth-of-type(2n) {
-    .category {
-      background-image: url(../img/box_bg_2n.png);
-    }
-  }
-      color: black;
-      font-size: 23px;
     }
   }
 }
