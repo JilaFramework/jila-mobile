@@ -1,6 +1,6 @@
 class Controller
   constructor: ($scope, $routeParams, entryService, audioService, $rootScope) ->
-    $rootScope.$emit 'navigationConfig', 
+    $rootScope.$emit 'navigationConfig',
       labelForTitle: ""
       backAction: () ->
         window.history.back()
@@ -10,7 +10,8 @@ class Controller
 
     entryService.get($routeParams.entryId).then (entry) =>
       $scope.entry = entry
-      $rootScope.$emit 'navigationConfig', 
+      $scope.formattedDescription = marked(entry.description)
+      $rootScope.$emit 'navigationConfig',
         labelForTitle: entry.entry_word
 
     $scope.listen = () =>
