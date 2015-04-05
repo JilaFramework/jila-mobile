@@ -2,7 +2,7 @@
 
 //= require 'fastclick/lib/fastclick'
 
-//= require 'lodash/dist/lodash'
+//= require 'lodash/lodash'
 //= require 'moment/moment'
 //= require 'marked/marked.min'
 
