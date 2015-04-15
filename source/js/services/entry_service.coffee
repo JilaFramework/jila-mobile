@@ -6,18 +6,26 @@ class Service
       store.where "_.contains(record.value.categories, #{categoryId})", (entries) ->
         deferred.resolve entries.map (e) -> e.value
     return deferred.promise
-  get: (entryId) => 
+  get: (entryId) =>
     deferred = @$q.defer()
     Lawnchair {name: 'entries', adapter: 'dom'}, (store) ->
       store.get entryId, (entry) ->
         deferred.resolve entry.value
     return deferred.promise
-  all: () => 
+  all: () =>
     deferred = @$q.defer()
     Lawnchair {name: 'entries', adapter: 'dom'}, (store) ->
       store.all (entries) ->
         deferred.resolve entries.map (e) -> e.value
     return deferred.promise
+  entries_for_letter: (letter) =>
+    deferred = @$q.defer()
+    Lawnchair {name: 'entries', adapter: 'dom'}, (store) ->
+      store.all (entry_data) ->
+        entries = entry_data.map (e) -> e.value
+        deferred.resolve entries.filter (e) -> e.entry_word[0] == letter
+    return deferred.promise
+
   save: (entry) =>
     Lawnchair {name: 'entries', adapter: 'dom'}, (store) ->
       store.save {key: entry.id, value: entry}
