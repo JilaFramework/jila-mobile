@@ -42,7 +42,10 @@ activate :angular_templates
 
 activate :jasmine
 
-activate :autoprefixer
+activate :autoprefixer do |config|
+  config.browsers = ['Android > 0', 'iOS > 0']
+  config.remove   = false
+end
 
 # Methods defined in the helpers block are available in templates
 # helpers do
