@@ -1,51 +1,42 @@
-* Work in Progress. *
+## What is this?
 
-# What is this?
-
-**Jila** is a framework for building simple language learning apps. This particular repository is the mobile web / Apache Cordova front end.
+[**Jila**](http://jilaframework.github.io) is a framework for building simple language learning apps. This particular repository is the mobile web / Apache Cordova front end. It was originally intended as a mobile application but has been used on different platforms due to it being based on web technologies.
 
 The **Jila** app is built using the [Middleman](http://middlemanapp.com) static site generator. Client-side assets are managed using [Bower](http://bower.io/). When used as a Cordova app it makes use of the [Apache Cordova](http://cordova.apache.org/) command-line tools which themselves are built on [NodeJS](http://nodejs.org/).
 
-# Prerequisites
+## Prerequisites
 
-- Homebrew
-- Ruby 2.1
-- Node.js 0.10
+- Ruby
+- Node.js
+- Xcode (for iOS apps)
+- Android SDK (for Android apps)
+- Apache Ant (for Android apps)
 
-# Installation
+## Installation
 
 Install Ruby gems
 `bundle install`
 
-Install Bower
-`npm install -g bower`
-
-Install Bower packages
-`bower install`
-
-Install Cordova and dependencies
-`npm install -g cordova`
-`npm install -g plugman`
-`npm install -g ios-deploy`
-`npm install -g ios-sim`
-
-Install Ant
-`brew install ant`
+Bootstrap non-Ruby tools (this may require sudo)
+`bundle exec rake install_tools`
 
 Bootstrap Cordova platforms and plugins
-`rake bootstrap`
+`bundle exec rake bootstrap`
 
-# Getting Started
+## Getting Started
 
-## Development
-Use 'middleman server' to load your work.
+### Development
+Use `bundle exec middleman` to load your work. This will by default start a server at 'http://localhost:4567'.
 
-## Testing
-The **Jila** framework uses [Jasmine](http://jasmine.github.io/) for unit testing. Once your server is running it can be accessed at 'http://localhost:[port]/jasmine'
+### Testing
+The **Jila** framework uses [Jasmine](http://jasmine.github.io/) for unit testing. Once your server is running it can be accessed at 'http://localhost:4567/jasmine'.
 
-## Mobile App
-### Enable Platforms
-The core repository includes a list of the Cordova plugins currently being used, but not the platforms eg. iOS or Android. To enable these you will need to use the Cordova command-line tools to add what you require. Check with the Cordova documentation on how to do this.
+### Mobile Web
+As it is based on web technologies, Jila can be used on any platform that supports the modern web. It falls back to HTML5 audio for playback and remote access of images and audio. There is a rake task for building the site which you can use with `bundle exec rake build_site`.
 
-### Build and Run
-Middleman is configured to output the compiled code into the directory structure expected by Cordova. As such, to run on the target platform it's just a matter of building via Middleman and running the appropriate Cordova command eg. 'middleman build && cordova run ios'. To simplify this process we have created some Rake tasks, use 'rake -T' to see the available commands.
+### Mobile App
+There are rake tasks that coordinate the building of the site and deploying to the various platforms. You can see the full list of them using `bundle exec rake -T`.
+
+## Customisation
+There are a few ways that Jila is configurable out of the box, these are located in the file **configuration.coffee**. The most important of which is probably the **BACKEND_URL** which specifies where the administration console is hosted.
+The app can be re-styled without any changes to the functionality. If you do make changes, **please consider submitting a pull request so the community can benefit**.

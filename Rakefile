@@ -1,15 +1,18 @@
 require 'jasmine'
 load 'jasmine/tasks/jasmine.rake'
 
-desc "Build the site using Middleman"
-task :build_site do
-  puts "Building the site using Middleman"
-  sh "middleman build"
+desc "Install tools (this may require sudo)"
+task :install_tools do
+  sh "npm install -g bower"
+  sh "npm install -g cordova plugman ios-deploy ios-sim"
 end
 
 desc "Bootstrap the project using Middleman and Cordova"
-task :bootstrap => [:build_site] do
-  puts "Adding plugins"
+task :bootstrap do
+  puts "Installing Bower dependencies"
+  sh "bower install"
+
+  puts "Installing Cordova and plugins"
   sh "cordova plugin add org.apache.cordova.device@0.2.11"
   sh "cordova plugin add org.apache.cordova.dialogs@0.2.8"
   sh "cordova plugin add org.apache.cordova.file@1.2.0"
@@ -20,6 +23,12 @@ task :bootstrap => [:build_site] do
   puts "Adding iOS and Android platforms"
   sh "cordova platform add ios"
   sh "cordova platform add android"
+end
+
+desc "Build the site using Middleman"
+task :build_site do
+  puts "Building the site using Middleman"
+  sh "bundle exec middleman build"
 end
 
 namespace :android do
