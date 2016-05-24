@@ -19,8 +19,8 @@ class Controller
         $scope.backAction = config.backAction if config.backAction != undefined
         $scope.searchAvailable = config.searchAvailable if config.searchAvailable != undefined
         if config.navigationAvailable != undefined
-          $scope.navigationAvailable = config.navigationAvailable 
-        else 
+          $scope.navigationAvailable = config.navigationAvailable
+        else
           $scope.navigationAvailable = true
       return
 
@@ -36,16 +36,20 @@ class Controller
       if $scope.backAction
         window.backInProgress++
         $('body').addClass 'back'
-        $scope.backAction()    
+        $scope.backAction()
       else
         navigator.app.exitApp() if $location.path() == '/home'
       return
+
     $scope.toggleSearch = () =>
       $scope.searchIsVisible = !$scope.searchIsVisible
-    $scope.hideSearch = () =>
+
+    $scope.hideSearch = (path) =>
       $scope.searchIsVisible = false
-    
+      $location.path(path)
+
     searchAction = null
+
     searchFor = (query) =>
       entryService.search_for($scope.searchString).then (entries) =>
         $scope.entries = entries
