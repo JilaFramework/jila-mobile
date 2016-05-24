@@ -1,11 +1,14 @@
 .page.entry-page
   .row
     .columns.small-12.large-5.small-centered
+
       .row
         .image{style: 'background-image: url({{ entry.images.normal }})'}
-      .row.entry-row
+
+      .row.entry-row{ng: {swipe: {left: 'swipeChangeEntry("next")', right: 'swipeChangeEntry("previous")'}}}
         .entry-word{scale: {fit: ''}}
           %span {{ entry.entry_word }}
+
       .row.alternate_spelling-row{'ng-show'=>'entry.alternate_spellings.length > 0'}
         .columns.small-2
           %span also:
@@ -21,6 +24,7 @@
         .columns.small-8
           .translation {{ entry.translation }}
           .word-type {{ entry.word_type }}
+
       .row.description-row
         .columns.small-12
           .description{"ng-bind-html" => "formattedDescription"}

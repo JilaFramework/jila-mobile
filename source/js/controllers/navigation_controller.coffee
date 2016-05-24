@@ -7,6 +7,8 @@ class Controller
     $scope.navigationAvailable = false
     $scope.searchString = ''
     $scope.entries = []
+    entryService.entriesIndex = []
+    @searchEntriesIndex = []
 
     $rootScope.$on '$locationChangeStart', () ->
       $scope.searchIsVisible = false
@@ -31,6 +33,7 @@ class Controller
       return
 
     window.backInProgress = 0
+
     $scope.backClicked = () =>
       $scope.hideSearch()
       if $scope.backAction
@@ -43,6 +46,7 @@ class Controller
 
     $scope.toggleSearch = () =>
       $scope.searchIsVisible = !$scope.searchIsVisible
+      entryService.entriesIndex = @searchEntriesIndex if $scope.searchIsVisible
 
     $scope.hideSearch = (path) =>
       $scope.searchIsVisible = false
@@ -53,6 +57,8 @@ class Controller
     searchFor = (query) =>
       entryService.search_for($scope.searchString).then (entries) =>
         $scope.entries = entries
+        entryService.entriesIndex = entries.map (e) -> e.id
+        @searchEntriesIndex = entryService.entriesIndex
 
     $scope.searchStringChanged = () =>
       $timeout.cancel searchAction if searchAction
@@ -63,6 +69,6 @@ class Controller
         , 300
       else
         $scope.entries = []
-
+        entryService.entriesIndex = []
 
 angular.module('app').controller 'navigationController', ['$scope', '$rootScope', '$timeout', '$location', 'entryService', 'i18nService', Controller]

@@ -7,6 +7,9 @@ class Controller
         return
 
     $scope.entries = []
+    entryService.entriesIndex = []
+    entryService.entryBackButtonURL = '/dictionary/' + $routeParams.letterId
+
     addEntries = (entries) ->
       [].push.apply($scope.entries, entries)
       $timeout(angular.noop, 0)
@@ -24,5 +27,6 @@ class Controller
       _.sortBy(entries, 'entry_word')
     .then (entries) ->
       computeAndRenderBatch(entries)
+      entryService.entriesIndex = entries.map (e) -> e.id
 
 angular.module('app').controller 'letterController', ['$scope', '$routeParams', '$rootScope', '$location', '$q', '$timeout', 'entryService', 'i18nService', Controller]

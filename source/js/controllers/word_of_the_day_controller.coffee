@@ -1,12 +1,13 @@
 class Controller
   constructor: ($scope, $rootScope, $location, entryService, audioService, i18nService) ->
-    $rootScope.$emit 'navigationConfig', 
+    $rootScope.$emit 'navigationConfig',
       labelForTitle: i18nService.get 'wordOfTheDayTitle'
       backAction: () ->
         $location.path('/home')
         return
 
     $scope.entry = {}
+    entryService.entryBackButtonURL = '/home'
 
     $scope.listen = () ->
       audioService.play($scope.entry.audio) if $scope.entry.audio

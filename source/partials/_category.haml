@@ -4,7 +4,7 @@
       %h2.text-center{ng: {if: 'entries.length === 0'}}
         No entries
 
-      %ul.small-block-grid-1.entries
+      %ul.small-block-grid-1.entries{:keep_scroll_pos => true}
         %li{ng: {repeat: 'entry in entries track by entry.id'}}
-          %a{ng: {href: "#/entries/{{entry.id}}"}}
+          %a{ng: {href: "#/entries/{{entry.id}}"}, id: "entry-{{entry.id}}"}
             = partial 'partials/list_entry'

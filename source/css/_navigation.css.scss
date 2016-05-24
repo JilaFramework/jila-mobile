@@ -8,10 +8,10 @@ $action_button_width: 45px;
 
   .action {
     position: absolute;
-    
+
     height: 100%;
     width: $action_button_width;
-    
+
     text-align: center;
 
     visibility: hidden;
@@ -79,39 +79,6 @@ $action_button_width: 45px;
 
     .entries {
       padding-bottom: 100px;
-    }
-  }
-}
-
-.android {
-  .navigation {
-    .logo {
-      display: block;
-      position: absolute;
-      left: 0;
-      width: $action_button_width;
-      height: 100%;
-      background-image: url(../img/logo.png);
-      background-position: center;
-      background-size: 70% 70%;
-      background-repeat: no-repeat;
-    }
-
-    .title {
-      position: absolute;
-      left: $action_button_width;
-    }
-
-    .back-action {
-      >.title {
-        display: inline-block;
-      }
-    }
-
-    .top-bar {
-      >.title {
-        display: none;
-      }
     }
   }
 }
