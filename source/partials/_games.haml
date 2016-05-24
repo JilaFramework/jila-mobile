@@ -1,4 +1,4 @@
-.page.games-page 
+.page.games-page
   .row
     .columns.small-12.large-5.small-centered
       %ul.small-block-grid-2.categories.menu-items
@@ -6,5 +6,5 @@
           %a{href: 'javascript:void(0)', ng: {click: 'startGamesFor(category)'}}
             .category.menu-item
               .inner
-                .icon{style: 'background-image: url({{category.images.thumbnail}})'}
+                .icon{style: 'background-image: url({{ category.images.thumbnail }})'}
                 %h3.name{fit: {text: '0.8'}} {{ category.name }}
