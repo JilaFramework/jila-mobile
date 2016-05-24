@@ -72,10 +72,6 @@ a {
 }
 
 .entry {
-  padding: 5px;
-  background: white;
-  border-bottom: 1px solid black;
-
   .word-type, .translation {
     vertical-align: middle;
     margin-bottom: 0px;
@@ -329,6 +325,16 @@ $page_gutter: 20px;
 
   img {
     width: 100%;
+  }
+
+  // prevent selecting text when swiping
+  .entry-row {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
   }
 }
 

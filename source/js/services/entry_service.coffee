@@ -1,5 +1,7 @@
 class Service
   constructor: (@$q, @$analytics) ->
+    entriesIndex: []
+    entryBackButtonURL: null
   entries_for: (categoryId) =>
     deferred = @$q.defer()
     Lawnchair {name: 'entries', adapter: 'dom'}, (store) =>

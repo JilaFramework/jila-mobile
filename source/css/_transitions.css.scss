@@ -24,7 +24,7 @@
 
   &.ng-leave-active {
     @if $reverse {
-      transform: translate3d(100%, 0, 0);  
+      transform: translate3d(100%, 0, 0);
     } @else {
       transform: translate3d(-100%, 0, 0);
     }
@@ -73,6 +73,20 @@
   .page-container {
     transform: translate3d(0, 0, 0);
     @include fade-transition;
+  }
+  .page-container:not(.entry) {
+    transform: translate3d(0, 0, 0);
+    @include fade-transition;
+  }
+  .page-container.entry {
+    transform: translate3d(0, 0, 0);
+    @include slide-transition;
+  }
+  &.swipe-back,
+  &.back {
+    .page-container.entry {
+      @include slide-transition(true)
+    }
   }
 }
 

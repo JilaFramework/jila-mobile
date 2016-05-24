@@ -8,6 +8,8 @@ class Controller
 
     $scope.category = {}
     $scope.entries = []
+    entryService.entriesIndex = []
+    entryService.entryBackButtonURL = '/categories/' + $routeParams.categoryId
 
     addEntries = (entries) ->
       [].push.apply($scope.entries, entries)
@@ -29,6 +31,7 @@ class Controller
       entryService.entries_for(category.id)
     .then (entries) ->
       computeAndRenderBatch(entries)
+      entryService.entriesIndex = entries.map (e) -> e.id
     .then (_) ->
       console.log 'done'
 
