@@ -23,7 +23,7 @@ class Service
     Lawnchair {name: 'entries', adapter: 'dom'}, (store) ->
       store.all (entry_data) ->
         entries = entry_data.map (e) -> e.value
-        deferred.resolve entries.filter (e) -> e.entry_word[0] == letter
+        deferred.resolve entries.filter (e) -> e.entry_word[0].toUpperCase() == letter
     return deferred.promise
 
   save: (entry) =>
@@ -32,7 +32,8 @@ class Service
   search_for: (query) =>
     deferred = @$q.defer()
     Lawnchair {name: 'entries', adapter: 'dom'}, (store) =>
-      store.where "record.value.translation.toLowerCase().indexOf('#{query.toLowerCase()}') !== -1", (entries) =>
+      store.where "record.value.entry_word.toLowerCase().indexOf('#{query.toLowerCase()}') !== -1 ||
+      record.value.translation.toLowerCase().indexOf('#{query.toLowerCase()}') !== -1" , (entries) =>
         if entries.length == 0
           @$analytics.eventTrack 'SearchNotFound',
               category: 'SearchNotFound'
