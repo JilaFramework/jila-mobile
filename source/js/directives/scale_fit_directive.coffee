@@ -1,12 +1,17 @@
 angular.module('app').directive "scaleFit", ['$timeout', ($timeout) ->
   restrict: "A"
   link: ($scope, $element, attrs) ->
+
+    # replace hyphens with non-breaking to prevent separation of suffixes
+    $scope.$watch 'entries', () ->
+      $scope.entry.entry_word = $scope.entry.entry_word.replace /-/g, '\u2011'
+
     maxWidth = $element.innerWidth()
 
     maxWidth = attrs.scaleFit if attrs.scaleFit
 
     $timeout () ->
-      $element.css 'white-space', 'nowrap'
+      $element.css 'white-space', 'normal'
       childSpan = $element.find('span')
       spanWidth = childSpan.innerWidth()
 

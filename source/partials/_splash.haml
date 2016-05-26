@@ -1,5 +1,7 @@
 .splash
-  .name JILA
+  .name
+    %h1 {{ splashTitle }}
+    %h4.subtitle {{ splashSubTitle }}
 
   %div.retry-section{ng: {if: 'retryAvailable'}}
     %button{ng: {click: 'retrySync()'}} {{ retryButtonMessage }}

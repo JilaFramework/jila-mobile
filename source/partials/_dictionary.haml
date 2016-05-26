@@ -1,10 +1,10 @@
 .page.dictionary-page
   .row
     .columns.small-12.large-5.small-centered
-      %ul.letters.small-block-grid-4.menu-items
+      %ul.letters.small-block-grid-3.menu-items
         %h2.text-center{ng: {if: 'letters.length === 0'}}
           No entries
         %li{ng: {repeat: 'letter in letters'}}
           %a{href: '#/dictionary/{{letter}}'}
             .letter
-              %h3.name{fit: {text: '0.8'}} {{ letter }}
+              %h1.name {{ letter }}

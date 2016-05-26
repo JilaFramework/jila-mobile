@@ -1,16 +1,30 @@
 .page.about-page
-  .tab-headers
-    .tab-header{ng: {repeat: 'tab in tabs', class: '{active: tab == selectedTab}'}}
-      %a{href: 'javascript:void(0)', ng: {click: 'selectContent($index)'}} {{ tab.label }}
   .row
-    .column.small-12.large-5.small-centered.tab-content{slick: {carousel: ''}}
-      .tab
-        = partial '/partials/about_history'
-      .tab
-        = partial '/partials/about_resources'
-      .tab
-        = partial '/partials/about_location'
-      .tab
-        = partial '/partials/about_partners'
-      .tab
-        = partial '/partials/about_credits'
+    .column.small-12.medium-10.small-centered.tab-content
+      %h1 About
+      This app has been produced by the Research Unit for Indigenous Language at Melbourne University and Batchelor Institute of Indigenous Tertiary Education, as part of the #{ link_to 'Getting in Touch project', 'http://gettingintouch.com.au'}
+
+      / %h3 Audio Credits
+      / .span names
+
+      %h3 Image Credits
+      %ul
+        %li.image-credit{ng: {repeat: 'credit in imageCredits'}}
+          / %a.attribution{href: 'javascript:void(0)', title: '{{credit.attribution_text}}', ng: {click: "openLink(credit.link)"}} {{ credit.attribution_text }}
+          {{ credit }}
+
+      %h3 A Jila app
+      Built on the #{ link_to 'Jila', 'https://github.com/JilaFramework'} framework, proudly created by ThoughtWorks and modified by Ben Foley.
+
+      .logos
+        %a{href: 'javascript:void(0)', ng: {click: 'openLink("https://indiglang.arts.unimelb.edu.au/")'}}
+          %img.logo{src: 'img/ruil_logo.png'}
+
+        %a{href: 'javascript:void(0)', ng: {click: 'openLink("http://call.batchelor.edu.au")'}}
+          %img.logo{src: 'img/batchelor_logo.png'}
+
+        %a{href: 'javascript:void(0)', ng: {click: 'openLink("http://www.thoughtworks.com")'}}
+          %img.logo{src: 'img/tw_logo.png'}
+
+        %a{href: 'javascript:void(0)', ng: {click: 'openLink("http://www.cbmm.io")'}}
+          %img.logo{src: 'img/cbmm_logo.png'}

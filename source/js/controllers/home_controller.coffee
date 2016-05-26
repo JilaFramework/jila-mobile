@@ -1,6 +1,6 @@
 class Controller
   constructor: ($scope, $rootScope, i18nService) ->
-    $rootScope.$emit 'navigationConfig', 
+    $rootScope.$emit 'navigationConfig',
       labelForTitle: i18nService.get 'homeTitle'
       backAction: null
 
@@ -12,7 +12,7 @@ class Controller
     $scope.labelForAbout = i18nService.get 'homeAbout'
 
     WARNING_KEY = 'warningSeen'
-    warningSeen = () -> 
+    warningSeen = () ->
       window.localStorage[WARNING_KEY] = true
       return
 

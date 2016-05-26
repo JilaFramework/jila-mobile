@@ -1,16 +1,19 @@
 class Controller
   constructor: ($scope, $rootScope, $location, $timeout, SPLASH_SCREEN_DELAY, syncService, configurationService, i18nService) ->
-    $rootScope.$emit 'navigationConfig', 
+    $rootScope.$emit 'navigationConfig',
       navigationAvailable: false
       searchAvailable: false
 
     syncFinished = false
     delayFinished = false
 
+    $scope.splashTitle = i18nService.get 'splashTitle'
+    $scope.splashSubTitle = i18nService.get 'splashSubTitle'
+
     $scope.retryAvailable = false
     $scope.retryButtonMessage = i18nService.get 'syncRetryButtonMessage'
     $scope.retrySync = () ->
-      syncRemoteContent()    
+      syncRemoteContent()
 
     transitionIfFinished = () ->
       $location.path('/home') if syncFinished and delayFinished
@@ -28,7 +31,7 @@ class Controller
       else
         alert i18nService.get('syncFailureRetryMessage')
         $scope.retryAvailable = true
-      
+
       return
 
     syncRemoteContent = () ->

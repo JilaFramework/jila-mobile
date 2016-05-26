@@ -24,6 +24,14 @@ class Controller
       audioService.play($scope.entry.audio) if $scope.entry
       return
 
+    $scope.call_listen = () =>
+      audioService.play($scope.entry.call_audio) if $scope.entry
+      return
+
+    $scope.sentence_listen = () =>
+      audioService.play($scope.entry.sentence_audio) if $scope.entry
+      return
+
     getPreviousEntryID = (arr, curr) ->
       foundItem = arr.filter (e) -> e == curr
       i = arr.indexOf( parseInt(foundItem) );

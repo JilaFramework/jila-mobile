@@ -1,10 +1,10 @@
 class Service
   constructor: (@$q) ->
-  all: () => 
+  all: () =>
     deferred = @$q.defer()
     storedCredits = window.localStorage['imageCredits']
 
-    deferred.resolve JSON.parse(storedCredits) if storedCredits
+    deferred.resolve _.uniq(JSON.parse( storedCredits ).map (e) -> e.attribution_text) if storedCredits
 
     return deferred.promise
   store: (imageCredits) =>

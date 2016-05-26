@@ -1,0 +1,220 @@
+@font-face
+{
+  font-family: 'Sassoon Sans Regular';
+  src: url('../fonts/sassoonsans-regular-webfont.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face
+{
+  font-family: 'Sassoon Sans Medium';
+  src: url('../fonts/sassoonsans-medium-webfont.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body, h1, h2, h3, h4, h5, h6,
+.title,
+.search-panel
+{
+  font-family: 'Sassoon Sans Regular' !important;
+}
+
+// set the bottom so that height doesn't bleed
+.page-container { height: auto; bottom: 0 }
+
+// home page panels can fill the page
+.flex-fill-height
+{
+  display: flex;
+  flex-direction: column;
+}
+.flex-fill-height > .item {
+  flex: 1;
+}
+
+.home-page {
+  padding: 0 !important;
+
+  .item {
+    position: relative;
+    a {
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      .menu-label { @include center-in-parent }
+    }
+  }
+}
+
+// funky colours
+$opacity: 0.9;
+$swatch-1: rgba(117, 242, 255, $opacity); // blue   #75F2FF
+$swatch-2: rgba(186, 240, 146, $opacity); // green  #A6D087
+$swatch-3: rgba(237, 166, 240, $opacity); // purple #C89AC8
+$swatch-4: rgba(255, 150, 120, $opacity); // orange #FF9577
+$swatch-5: rgba(255, 220, 120, $opacity); // yellow #FFDC77
+$swatch-5: rgba(255, 220, 120, $opacity); // yellow #FFDC77
+$swatch-6: rgba(150, 255, 200, $opacity); // blue/green
+
+.page.categories-page,
+.page.category-page,
+.home-page .item:nth-child(1) { background-color: $swatch-1; }
+
+.page.games-page,
+.home-page .item:nth-child(2) { background-color: $swatch-2; }
+
+.page.dictionary-page,
+.dictionary-page .letter,
+.home-page .item:nth-child(3) { background-color: $swatch-3; }
+
+.home-page .item:nth-child(4) { background-color: $swatch-4; background-image: none }
+
+.home-page .item:nth-child(5) { background-color: $swatch-5; background-image: none }
+
+.home-page .item:nth-child(6) { background-color: $swatch-6; background-image: none }
+
+.page.about-page,
+.page.entry-page { background-color: #ddd; background-image: none }
+
+.games-page,
+.categories-page {
+  a { position: relative }
+
+  .menu-item {
+    background-color: rgba(255,255,255,0.8);
+    background-position: top center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  .name {
+    bottom: 0;
+    display: block;
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 0;
+    width: 90%;
+    left: 5%;
+    background-color: #fff;
+  }
+
+}
+
+.dictionary-page {
+  .letter {
+    position: relative;
+    @include responsive-circle
+  }
+  .name {
+    @include center-in-parent;
+    text-shadow: 1px 1px 1px #ddd;
+  }
+}
+
+// play button size
+$button-size: 40px;
+
+.page-container {
+  .entries .list-entry { background-color: rgba(255,255,255,0.9)}
+
+  .entry-page, .word-of-the-day-page {
+
+    .image-row
+    {
+      position: relative;
+      height: 250px;
+
+      .image-bgd {
+        width: 100%;
+        height: 250px;
+        background-position: center;
+        margin-bottom: 10px;
+        filter: blur(20px);
+        z-index: 0;
+        position: absolute;
+      }
+
+      img {
+        width: auto;
+        max-height: 250px;
+        @include center-in-parent;
+        z-index: 888;
+      }
+
+      .audio-player
+      {
+        position: relative;
+        top: 200px;
+        z-index: 999;
+      }
+    }
+
+    // prevent selecting text when swiping
+    .not-selectable { user-select: none }
+
+    .entry-word-row { margin-top: 1em }
+
+    .entry-word {
+      font-size: 1.6em;
+      margin: 0 !important;
+      text-align: left !important;
+      line-height: 1;
+
+      span { top: 0 !important }
+    }
+
+    .translation { font-size: 1.3em; line-height: 1; text-align: left; }
+
+    .alternate-spellings,
+    .alternate-translations
+    {
+      margin-bottom: 0.5em;
+      span {
+        float: left;
+        padding-right: 0.5em;
+      }
+    }
+
+    .scientific-name { font-style: italic }
+
+    .sentence-row, .description-row { margin-top: 1em }
+
+    .sentence,
+    .sentence-translation { max-width: 30em }
+
+    .sentence-translation { margin-top: 2em }
+
+    .description p {
+      font-size: 1rem;
+      border-top: 1px solid #eee;
+      padding-top: 1em
+    }
+  }
+}
+
+.entry-page, .word-of-the-day-page, .common-page {
+  .play-button {
+    font-size: $button-size;
+  }
+}
+
+.about-page {
+  h3 { margin-top: 1em }
+  a { display: inline }
+  li.image-credit { padding: 0; margin: 0;}
+  .logos {
+    background-color: #fff;
+    margin: 2em 0;
+    padding: 2em 1em;
+    a {
+      display: block;
+      text-align: center;
+    }
+    .logo {
+      margin: 0;
+      width: 100%;
+      max-width: 380px;
+    }
+  }
+}

@@ -1,30 +1,52 @@
 .page.entry-page
-  .row
-    .columns.small-12.large-5.small-centered
 
-      .row
-        .image{style: 'background-image: url({{ entry.images.normal }})'}
+  .image-row
+    .image-bgd{style: 'background-image: url({{ entry.images.normal }})'}
 
-      .row.entry-row{ng: {swipe: {left: 'swipeChangeEntry("next")', right: 'swipeChangeEntry("previous")'}}}
+    %img(src="{{ entry.images.normal }}")
+
+    .row.audio-player{ng: {if: 'entry.call_audio'}}
+      .columns.small-2
+        %a{href: 'javascript:void(0)', ng: {click: 'call_listen()', if: 'entry.call_audio'}}
+          .play-button.fa
+            &#xf144;
+
+  .swiper{ng: {swipe: {left: 'swipeChangeEntry("next")', right: 'swipeChangeEntry("previous")'}}}
+
+    .row.entry-word-row
+      .columns.small-2
+        .audio-player{ng: {if: 'entry.audio'}}
+          %a{href: 'javascript:void(0)', ng: {click: 'listen()', if: 'entry.audio'}}
+            .play-button.fa
+              &#xf144;
+      .columns.small-10
         .entry-word{scale: {fit: ''}}
           %span {{ entry.entry_word }}
 
-      .row.alternate_spelling-row{'ng-show'=>'entry.alternate_spellings.length > 0'}
-        .columns.small-2
+        .alternate-spellings{'ng-show'=>'entry.alternate_spellings.length > 0'}
           %span also:
-        .columns.small-10
           .alternate-spelling{'ng-repeat'=>'alternate_spelling in entry.alternate_spellings'}
             {{ alternate_spelling }}
 
-      .row.translation-row
-        .columns.small-4
-          %a{href: 'javascript:void(0)', ng: {click: 'listen()', if: 'entry.audio !== null'}}
-            .play-word.fa
-              &#xf144;
-        .columns.small-8
-          .translation {{ entry.translation }}
-          .word-type {{ entry.word_type }}
+        .translation {{ entry.translation }}
 
-      .row.description-row
-        .columns.small-12
-          .description{"ng-bind-html" => "formattedDescription"}
+        .alternate-translations{'ng-show'=>'entry.alternate_translations.length > 0'}
+          %span also:
+          .alternate-translation{'ng-repeat'=>'alternate_translation in entry.alternate_translations'}
+            {{ alternate_translation }}
+
+        .scientific-name {{ entry.scientific_name }}
+
+    .row.sentence-row
+      .columns.small-2
+        .audio-player{ng: {if: 'entry.sentence_audio'}}
+          %a{href: 'javascript:void(0)', ng: {click: 'sentence_listen()', if: 'entry.sentence_audio'}}
+            .play-button.fa
+              &#xf144;
+      .columns.small-10
+        .sentence {{ entry.sentence }}
+        .sentence-translation {{ entry.sentence_translation }}
+
+    .row.description-row
+      .columns.small-offset-2.small-10
+        .description{"ng-bind-html" => "formattedDescription"}

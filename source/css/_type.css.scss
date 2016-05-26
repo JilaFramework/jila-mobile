@@ -1,6 +1,6 @@
 body {
   color: $main_text_color;
-  font-family: 'Roboto', 'Helvetica Neue', 'Segoe UI', 'sans-serif';
+  font-family: 'Sassoon Sans Regular', 'Roboto', 'Helvetica Neue', 'Segoe UI', 'sans-serif';
   font-weight: lighter;
 }
 
@@ -9,11 +9,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1, h2, h3 {
-  font-family: 'Roboto', 'Helvetica Neue', 'Segoe UI', 'sans-serif';
+  font-family: 'Sassoon Sans Regular', 'Roboto', 'Helvetica Neue', 'Segoe UI', 'sans-serif';
 }
 
 h4, h5, h6 {
-  font-family: 'Roboto', 'Helvetica Neue', 'Segoe UI', 'sans-serif';
+  font-family: 'Sassoon Sans Regular', 'Roboto', 'Helvetica Neue', 'Segoe UI', 'sans-serif';
 }
 
 // TODO: These overrides for Zurb are because of Sleep Talk being so small. Should this belong somewhere else?

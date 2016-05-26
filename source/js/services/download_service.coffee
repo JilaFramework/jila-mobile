@@ -1,8 +1,8 @@
 class Service
   constructor: (@$http, @$q, @categoryService, @entryService, @fileService) ->
 
-  saveAssetsForCategory: (category) => 
-    @imageTypesFor(category).forEach (imageType) => 
+  saveAssetsForCategory: (category) =>
+    @imageTypesFor(category).forEach (imageType) =>
       if category.images[imageType] && category.images[imageType].indexOf('http') == 0
         @saveAsset(category.images[imageType]).then (dataUri) =>
           category.images[imageType] = dataUri
@@ -18,6 +18,14 @@ class Service
       @saveAsset(entry.audio).then (dataUri) =>
         entry.audio = "#{dataUri}"
         @entryService.save entry
+    if entry.call_audio and entry.call_audio.indexOf('http') == 0
+      @saveAsset(entry.call_audio).then (dataUri) =>
+        entry.call_audio = "#{dataUri}"
+        @entryService.save entry
+    if entry.sentence_audio and entry.sentence_audio.indexOf('http') == 0
+      @saveAsset(entry.sentence_audio).then (dataUri) =>
+        entry.sentence_audio = "#{dataUri}"
+        @entryService.save entry
 
   saveAsset: (url) =>
     deferred = @$q.defer()
@@ -32,7 +40,7 @@ class Service
       @$http.get(url, {responseType: 'arraybuffer'})
             .then (res) =>
               blob = new Blob([res.data], type: 'text/plain')
-              
+
               @fileService.store(blob, url).then (uri) ->
                 deferred.resolve uri
               , handleError
