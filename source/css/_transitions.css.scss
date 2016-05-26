@@ -95,7 +95,7 @@
     transform: translate3d(0, 0, 0);
     @include slide-transition;
   }
-
+  &.swipe-back,
   &.back {
     .page-container {
       @include slide-transition(true)
