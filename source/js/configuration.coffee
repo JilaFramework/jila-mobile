@@ -1,5 +1,5 @@
 
-BACKEND_URL = 'http://jila-arrernte-admin.herokuapp.com'
+BACKEND_URL = 'http://jila-staging-admin.herokuapp.com'
 
 angular.module('configuration', [])
        .constant('SPLASH_SCREEN_DELAY', 1000)
