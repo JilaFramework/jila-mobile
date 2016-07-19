@@ -24,6 +24,7 @@ task :bootstrap do
   sh "cordova plugin add cordova-plugin-statusbar@2.1.3"
   sh "cordova plugin add cordova-plugin-whitelist@1.2.2"
   sh "cordova plugin add cordova-plugin-network-information@1.2.1"
+  sh "cordova plugin add cordova-plugin-app-version@0.1.8"
 
   puts "Adding iOS and Android platforms"
   sh "cordova platform add ios"

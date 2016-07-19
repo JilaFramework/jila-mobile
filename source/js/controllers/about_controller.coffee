@@ -6,6 +6,12 @@ class Controller
         $location.path('/home')
         return
 
+    $scope.appVersion = "getting version"
+    Platform.isReady () ->
+      cordova.getAppVersion.getVersionNumber().then (version) ->
+        $scope.$apply () ->
+          $scope.appVersion = version
+
     $scope.imageCredits = []
     imageCreditService.all().then (credits) ->
       $scope.imageCredits = credits
