@@ -11,7 +11,7 @@ class Service
     @livesRemaining--
     @gameInProgress = false if @livesRemaining == 0
     @lastRoundSuccessful = false
-    @gameStatus()   
+    @gameStatus()
 
   initialiseStatus: () =>
     @livesLost = 0
@@ -29,8 +29,8 @@ class Service
     deferred = @$q.defer()
 
     @categoryService.get(categoryId).then (category) =>
-      wordGames = [6,7]
-      audioGames = [1,2,5,8]
+      wordGames = [6] #7 - remove for birds app
+      audioGames = [1,2,8] #5 - remove for birds app
       pictureGames = [3,4,9]
 
       games = wordGames
@@ -38,7 +38,7 @@ class Service
       games = games.concat pictureGames if category.games.image
 
       numGamesRemaining = @GAMES_PER_ROUND - games.length
-      randomGames = [1..numGamesRemaining].map (g) -> 
+      randomGames = [1..numGamesRemaining].map (g) ->
         randomIndex = Math.floor(Math.random() * (games.length - 1))
         games[randomIndex]
       games = games.concat randomGames
@@ -50,8 +50,8 @@ class Service
   setupGamesFor: (categoryId) =>
     @generateGamesListFor(categoryId).then (games) =>
       @initialiseStatus()
-    
-      first_game = games.pop()    
+
+      first_game = games.pop()
       @$location.path("/games/#{categoryId}/#{first_game}").search("games=#{JSON.stringify(games)}")
 
 
