@@ -1,22 +1,24 @@
 class BaseGameController
   constructor: () ->
-    @$rootScope.$emit 'navigationConfig', 
+    @$rootScope.$emit 'navigationConfig',
       searchAvailable: false
       labelForTitle: ''
       backAction: () =>
-        goHome = () =>
-          @$location.path('/games').search('')
-          return
+        @$location.path('/games').search('')
 
-        confirmationMessage = @i18nService.get 'exitGameConfirmation'
-        if navigator.notification
-          navigator.notification.confirm confirmationMessage, (button) =>
-            @$rootScope.$apply () -> 
-              goHome() if button == 1
-        else
-          exit = confirm(confirmationMessage)
-          goHome() if exit
-          return
+        # goHome = () =>
+        #   @$location.path('/games').search('')
+        #   return
+
+        # confirmationMessage = @i18nService.get 'exitGameConfirmation'
+        # if navigator.notification
+        #   navigator.notification.confirm confirmationMessage, (button) =>
+        #     @$rootScope.$apply () ->
+        #       goHome() if button == 1
+        # else
+        #   exit = confirm(confirmationMessage)
+        #   goHome() if exit
+        #   return
 
     @$scope.answer = null
     @$scope.selectedAnswer = null
@@ -37,7 +39,7 @@ class BaseGameController
     @$scope.select = (option) => @$scope.selectedAnswer = option
     @$scope.submitDisabled = @submitDisabled
 
-    @$scope.listen = () => 
+    @$scope.listen = () =>
       @audioService.play(@$scope.answer.audio)
       return
 
@@ -62,21 +64,21 @@ class BaseGameController
       o.audio != null
 
   validOptionsForPictureGameFrom: (allOptions) ->
-    _.filter allOptions, (o) -> 
+    _.filter allOptions, (o) ->
       o.images.thumbnail != null
 
   jumbleAnswer: () =>
     baseAnswer = @$scope.answer.label.toLowerCase()
 
     if baseAnswer.isPhrase()
-      splitSegments = baseAnswer.split(' ').map (s) -> 
+      splitSegments = baseAnswer.split(' ').map (s) ->
         s.onlyAlphanumeric()
     else
       baseAnswer = baseAnswer.onlyAlphanumeric()
       numberSegments = if baseAnswer.length > 4 then 3 else 2
       segmentSize = Math.ceil baseAnswer.length / numberSegments
       splitSegments = baseAnswer.splitIntoSegmentsOf segmentSize
-    
+
     jumbledSegments = _.sample(splitSegments, splitSegments.length)
     while baseAnswer.indexOf(jumbledSegments[0]) == 0
       jumbledSegments = _.sample(splitSegments, splitSegments.length)
@@ -87,7 +89,7 @@ class BaseGameController
   numOptionsRequired: () ->
     3
 
-  hasValidAnswer: () -> 
+  hasValidAnswer: () ->
     @$scope.answer == @$scope.selectedAnswer
 
   allowsAcceptableAnswer: () =>

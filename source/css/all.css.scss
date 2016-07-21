@@ -352,19 +352,22 @@ $page_gutter: 20px;
   }
 
   .answer-label {
-    font-size: 4em;
-    width: 95%;
+    font-size: 2.5em;
+    z-index: 200;
+    line-height: 1;
+    padding: 0.2em 1em;
+    // width: 95%;
   }
 
   @media only screen
     and (orientation : portrait)
     and (max-height : $max_height_for_small) {
     .instruction {
-      font-size: 1.45em;
+      font-size: 1.2em;
     }
 
     .answer-label {
-      font-size: 3em;
+      font-size: 1.5em;
     }
 
     li {

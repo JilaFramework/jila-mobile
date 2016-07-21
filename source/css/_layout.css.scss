@@ -63,7 +63,7 @@ $tab_header_height: rem-calc(60);
 
 .tab-header {
   height: $tab_header_height;
-  line-height: $tab_header_height;  
+  line-height: $tab_header_height;
 }
 
 .tab-content {
@@ -106,27 +106,27 @@ $bottom_offset: rem-calc(15);
 .game {
   position: relative;
 
-  .word-row, 
-  .word-row-small, 
-  .audio-row, 
+  .word-row,
+  .word-row-small,
+  .audio-row,
   .pictures-row,
-  .sort-row, 
-  .options-row, 
+  .sort-row,
+  .options-row,
   .submit-row,
   .answer-text-row {
-    position: absolute;
+    // position: absolute;
   }
 
   .word-row, .word-row-small, .audio-row {
-    bottom: $main_row_offset;
+    // bottom: $main_row_offset;
   }
 
   .options-row, .sort-row, .pictures-row, .answer-text-row {
-    bottom: $submit_row_offset;
+    // bottom: $submit_row_offset;
   }
 
   .submit-row {
-    bottom: $bottom_offset;
+    // bottom: $bottom_offset;
   }
 
   .audio-row, .word-row, .word-row-small {
@@ -135,11 +135,11 @@ $bottom_offset: rem-calc(15);
 
   .word-row-small {
     display: none;
-    height: $main_row_height_keyboard;
+    // height: $main_row_height_keyboard;
   }
 
   .answer-text-row {
-    height: $answer_row_height;
+    // height: $answer_row_height;
 
     .answer-text {
       margin: 0;
@@ -147,64 +147,113 @@ $bottom_offset: rem-calc(15);
     }
   }
 
-  .word-row, .audio-row {
-    height: $main_row_height;
+  .word-row,
+  .audio-row {
+    // height: $main_row_height;
   }
 
-  @media only screen 
+  @media only screen
     and (orientation : portrait)
-    and (max-height : $max_height_for_small) { 
+    and (max-height : $max_height_for_small) {
     .word-row, .audio-row {
-      height: $main_row_height_small;
+      // height: $main_row_height_small;
     }
   }
 
-  .options-row, .sort-row {
-    height: $answer_row_height;
+  .options-row,
+  .sort-row {
+    // height: $answer_row_height;
   }
 
   .submit-row {
-    height: $submit_row_height;
+    // height: $submit_row_height;
     .submit {
       width: 100%;
     }
   }
 
-  .audio-main, .answer-label {
-    @include center-in-parent;
+  // .audio-main,
+  .answer-label {
+    // @include center-in-parent;
   }
 
   .picture-main {
-    @include responsive-square;
+    // @include responsive-square;
   }
 
-  @media only screen 
+  @media only screen
     and (orientation : portrait)
-    and (max-height : $max_height_for_small) { 
+    and (max-height : $max_height_for_small) {
     .picture-main {
-      @include responsive-square(70%);
+      // @include responsive-square(70%);
     }
 
     .pictures-main {
       margin: auto;
-      width: 80%;
+      width: 90%;
     }
   }
 
   .audio-main {
-    width: 50%;
-    margin: auto;
+    // width: 50%;
+    // margin: auto;
   }
 
   &.text-to-pictures-page {
     .word-row {
-      position: initial;
-      height: initial;
+      // position: initial;
+      // height: initial;
 
       .answer-label {
-        @include center-in-parent(0%);
-        position: relative;
+        // @include center-in-parent(0%);
+        // position: relative;
       }
     }
   }
 }
+
+
+// flex layout for games
+// .page.game       { background-color: #A4E6DA }
+// .instruction-row { background-color: #FFE6DA }
+// .picture-row     { background-color: #DFE6DA }
+// .options-row     { background-color: #FFB7DA }
+// .submit-row      { background-color: #FFE674 }
+
+.page.game
+{
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+}
+
+.audio-row,
+.picture-row,
+.word-row{ flex: 1; }
+
+.picture-row
+{
+  background-image: url("blue-dot-hi.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+
+
+
+.audio-row,
+.word-row {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+
+  .audio-main { text-align: center; }
+}
+
+.submit-row { padding: 1em; }
+button.submit { margin: 0;}
+
+
