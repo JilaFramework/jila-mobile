@@ -48,4 +48,6 @@ class Controller
       else
         syncFailed()
 
+    $('body').addClass 'body-splash'
+
 angular.module('app').controller 'splashController', ['$scope', '$rootScope', '$location', '$timeout', 'SPLASH_SCREEN_DELAY', 'syncService', 'configurationService', 'i18nService', Controller]

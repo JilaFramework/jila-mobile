@@ -19,6 +19,8 @@ body {
   background-color: $body_background;
 }
 
+.body-splash { background-color: $navbar_background }
+
 a {
   display: block;
   &:active {
