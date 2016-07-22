@@ -251,7 +251,7 @@ $page_gutter: 20px;
   padding-top: 10px;
 }
 
-.dictionary-page{
+.dictionary-page {
   .letter {
     // position: relative;
     // @include full-background-image;
@@ -466,8 +466,13 @@ $page_gutter: 20px;
 }
 
 $tab_header_height: 60px;
+
 .about-page {
   white-space: nowrap;
+  p {
+    font-size: 1rem;
+    line-height: 1.3;
+  }
   // overflow: hidden;
 
   .tab-header {
@@ -532,3 +537,5 @@ $tab_header_height: 60px;
     margin-bottom: 20px;
   }
 }
+
+span.copyright { font-family: Arial }

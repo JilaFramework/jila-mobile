@@ -67,7 +67,8 @@ $tab_header_height: rem-calc(60);
 }
 
 .tab-content {
-  margin-top: $tab_header_height;
+  // margin-top: $tab_header_height;
+  margin-top: 0;
 }
 
 .android {
@@ -76,7 +77,7 @@ $tab_header_height: rem-calc(60);
   }
 
   .tab-content {
-    margin-top: $tab_header_height;
+    // margin-top: $tab_header_height;
   }
 }
 
@@ -87,7 +88,7 @@ $tab_header_height: rem-calc(60);
   }
 
   .tab-content {
-    margin-top: 0;
+    // margin-top: 0;
   }
 
   .tab-page {

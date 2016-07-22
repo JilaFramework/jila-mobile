@@ -4,6 +4,12 @@
       %h1 About
       This app has been produced by the Research Unit for Indigenous Language at Melbourne University and Batchelor Institute of Indigenous Tertiary Education, as part of the #{ link_to 'Getting in Touch project', 'http://gettingintouch.com.au'}
 
+      %p
+
+      %span.copyright
+      &#169;
+      All rights reserved
+
       / %h3 Audio Credits
       / .span names
 
@@ -12,6 +18,7 @@
         %li.image-credit{ng: {repeat: 'credit in imageCredits'}}
           / %a.attribution{href: 'javascript:void(0)', title: '{{credit.attribution_text}}', ng: {click: "openLink(credit.link)"}} {{ credit.attribution_text }}
           {{ credit }}
+
 
       %h3 A Jila app
       Built on the #{ link_to 'Jila', 'https://github.com/JilaFramework'} framework, proudly created by ThoughtWorks and modified by Ben Foley.
@@ -32,3 +39,7 @@
 
         %a{href: 'javascript:void(0)', ng: {click: 'openLink("http://www.cbmm.io")'}}
           %img.logo{src: 'img/cbmm_logo.png'}
+
+        %img.logo{src: 'img/ila_logo.png'}
+
+        %img.logo{src: 'img/social_equity_institute_logo.png'}
