@@ -44,6 +44,13 @@ namespace :android do
     sh "cordova build android"
   end
 
+  desc "Build icons for Android release - see icons.sh for more info"
+  task :build_icons, [:arg1] do |t, args|
+    puts "Generate icons for release"
+    puts args[:arg1]
+    sh "./app-icons/icons.sh #{args.arg1}"
+  end
+
   desc "Run the app on Android"
   task :run => [:build_site] do
     puts "Running the app on Android"
