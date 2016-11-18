@@ -1,7 +1,10 @@
 # List files here that will hold settings/strings for individual apps.
 # We don't want these to ever override master.
 
+app-icons/ merge=ours
+source/img/splash_bg.png merge=ours
 source/config.xml merge=ours
 source/js/configuration.coffee merge=ours
 source/js/services/i18n_service.coffee merge=ours
 source/js/partials/_about.haml merge=ours
+source/partials/_home.haml merge=ours
