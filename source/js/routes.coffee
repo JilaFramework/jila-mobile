@@ -30,4 +30,6 @@ app.config ['$routeProvider'
     $routeProvider.when '/games/:categoryId/result', templateUrl: 'partials/games/result.html', controller: 'resultController'
     $routeProvider.when '/games/success', templateUrl: 'partials/games/success.html', controller: 'successController'
     $routeProvider.when '/games/failure', templateUrl: 'partials/games/failure.html', controller: 'failureController'
+
+    $routeProvider.when '/download-manager', templateUrl: 'partials/download_manager.html', controller: 'downloadManagerController'
 ]

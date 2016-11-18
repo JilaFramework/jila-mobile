@@ -1,6 +1,16 @@
 .list-entry.row
   .column.small-4.large-4.thumbnail-column
-    .thumbnail{ng: {style: "{'background-image': 'url({{ entry.images.thumbnail }})'}"}}
+
+    .img-container
+
+      .loading-container{ng: {if: 'isWebView && entry.images.thumbnail.indexOf("http") === 0'}}
+        .loading.spin
+
+      .thumbnail{data: {id: '{{entry.id}}', imagetype: 'thumbnail'},
+        ng: {style: "{'background-image': 'url({{ entry.images.thumbnail }})'}",
+        class: '{ lazyload: entry.images.thumbnail.indexOf("http") === 0,
+                  local: entry.images.thumbnail.indexOf("http") !== 0}'}}
+
   .column.small-8.large-8
     .entry-word {{entry.entry_word}}
     .translation {{entry.translation}}

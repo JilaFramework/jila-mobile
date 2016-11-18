@@ -12,6 +12,8 @@
 @import 'navigation';
 @import 'splash';
 @import 'birds';
+@import 'download-manager';
+@import 'loading';
 
 body {
   -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
@@ -539,3 +541,8 @@ $tab_header_height: 60px;
 }
 
 span.copyright { font-family: Arial }
+
+.lazyload { background-color: orange }
+// .lazyloaded { outline: 2px solid orange }
+// .www { outline: 2px solid red }
+// .local { outline: 2px solid green }

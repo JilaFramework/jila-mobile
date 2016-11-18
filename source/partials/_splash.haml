@@ -3,5 +3,8 @@
     %h1 {{ splashTitle }}
     %h4.subtitle {{ splashSubTitle }}
 
+    .loading-container
+      .loading.spin
+
   %div.retry-section{ng: {if: 'retryAvailable'}}
     %button{ng: {click: 'retrySync()'}} {{ retryButtonMessage }}

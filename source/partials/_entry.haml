@@ -1,24 +1,35 @@
 .page.entry-page
 
   .image-row
+
     .image-bgd{style: 'background-image: url({{ entry.images.normal }})'}
 
-    %img(src="{{ entry.images.normal }}")
+    .img-container
+      / leaving this without the ng-if .. not loading on slow android
+      .loading-container
+        .loading.spin
 
-    .row.audio-player{ng: {if: 'entry.call_audio'}}
-      .columns.small-2
-        %a{href: 'javascript:void(0)', ng: {click: 'call_listen()', if: 'entry.call_audio'}}
-          .play-button.fa
-            &#xf144;
+      %img.main{data: {id: '{{entry.id}}', imagetype: 'thumbnail'},
+        ng: {src: '{{ entry.images.normal }}',
+             class: '{www: entry.images.normal.indexOf("http") === 0,
+                      local: entry.images.normal.indexOf("http") !== 0}'}}
+
+    .row.audio-player-row
+      .columns.small-2.audio-player-container
+        .audio-player{ng: {if: 'entry.call_audio'}}
+          %a.play-button{href: 'javascript:void(0)', ng: {click: 'call_listen()', if: ' ! isWebView || isWebView && entry.call_audio.indexOf("http") !== 0'}}
+          .loading-container{ng: {if: 'isWebView && entry.call_audio.indexOf("http") === 0'}}
+            .loading.spin
 
   .swiper{ng: {swipe: {left: 'swipeChangeEntry("next")', right: 'swipeChangeEntry("previous")'}}}
 
     .row.entry-word-row
-      .columns.small-2
+      .columns.small-2.audio-player-container
         .audio-player{ng: {if: 'entry.audio'}}
-          %a{href: 'javascript:void(0)', ng: {click: 'listen()', if: 'entry.audio'}}
-            .play-button.fa
-              &#xf144;
+          %a.play-button{href: 'javascript:void(0)', ng: {click: 'listen()', if: ' ! isWebView || isWebView && entry.audio.indexOf("http") !== 0'}}
+          .loading-container{ng: {if: 'isWebView && entry.audio.indexOf("http") === 0'}}
+            .loading.spin
+
       .columns.small-10
         .entry-word{scale: {fit: ''}}
           %span {{ entry.entry_word }}
@@ -38,11 +49,12 @@
         .scientific-name {{ entry.scientific_name }}
 
     .row.sentence-row
-      .columns.small-2
+      .columns.small-2.audio-player-container
         .audio-player{ng: {if: 'entry.sentence_audio'}}
-          %a{href: 'javascript:void(0)', ng: {click: 'sentence_listen()', if: 'entry.sentence_audio'}}
-            .play-button.fa
-              &#xf144;
+          %a.play-button{href: 'javascript:void(0)', ng: {click: 'sentence_listen()', if: ' ! isWebView || isWebView && entry.sentence_audio.indexOf("http") !== 0'}}
+          .loading-container{ng: {if: 'isWebView && entry.sentence_audio.indexOf("http") === 0'}}
+            .loading.spin
+
       .columns.small-10
         .sentence {{ entry.sentence }}
         .sentence-translation {{ entry.sentence_translation }}

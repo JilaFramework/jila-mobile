@@ -7,9 +7,15 @@
       .logo{ng: {if: '!backAction'}}
       .title {{ labelForTitle }}
     .title {{ labelForTitle }}
+
+    %a{href: '#/download-manager', ng: {if: 'showDownloadManager'}}
+      .action.download
+        .fa
+          &#xf0ed;
+
     %a{href: 'javascript:void(0)', ng: {click: 'toggleSearch()'}}
       .action.search{ng: {class: '{visible: searchAvailable}'}}
         .fa
           &#xf002;
-  
+
   = partial '/partials/search'

@@ -1,16 +1,16 @@
 <?xml version='1.0' encoding='utf-8'?>
     <widget
-        id="org.jila.vanilla"
+        id="org.jila.birds.test"
         version="0.2.0"
         xmlns="http://www.w3.org/ns/widgets"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:cdv="http://cordova.apache.org/ns/1.0">
 
-        <name>Jila</name>
+        <name>Aa Test</name>
         <description>
         </description>
         <author email="" href="">
-            Jila
+            Aa Test
         </author>
 
         <content src="index.html" />

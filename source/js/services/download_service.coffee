@@ -1,5 +1,5 @@
 class Service
-  constructor: (@$http, @$q, @categoryService, @entryService, @fileService) ->
+  constructor: (@$http, @$q, @$rootScope, @categoryService, @entryService, @fileService) ->
 
   saveAssetsForCategory: (category) =>
     @imageTypesFor(category).forEach (imageType) =>
@@ -12,20 +12,17 @@ class Service
     @imageTypesFor(entry).forEach (imageType) =>
       if entry.images[imageType] && entry.images[imageType].indexOf('http') == 0
         @saveAsset(entry.images[imageType]).then (dataUri) =>
+          # dataUri = 'test' if not window.isWebView # testing in browser
           entry.images[imageType] = dataUri
-          @entryService.save entry
-    if entry.audio and entry.audio.indexOf('http') == 0
-      @saveAsset(entry.audio).then (dataUri) =>
-        entry.audio = "#{dataUri}"
-        @entryService.save entry
-    if entry.call_audio and entry.call_audio.indexOf('http') == 0
-      @saveAsset(entry.call_audio).then (dataUri) =>
-        entry.call_audio = "#{dataUri}"
-        @entryService.save entry
-    if entry.sentence_audio and entry.sentence_audio.indexOf('http') == 0
-      @saveAsset(entry.sentence_audio).then (dataUri) =>
-        entry.sentence_audio = "#{dataUri}"
-        @entryService.save entry
+          @entryService.save(entry).then () =>
+            @$rootScope.$emit('saveAsset:success', {id:entry.id, format:imageType})
+    @audioTypesFor(entry).forEach (audioType) =>
+      if entry[audioType] and entry[audioType].indexOf('http') == 0
+        @saveAsset(entry[audioType]).then (dataUri) =>
+          # dataUri = 'test' if not window.isWebView # testing in browser
+          entry[audioType] = dataUri
+          @entryService.save(entry).then () =>
+            @$rootScope.$emit('saveAsset:success', {id:entry.id, format:audioType})
 
   saveAsset: (url) =>
     deferred = @$q.defer()
@@ -48,10 +45,28 @@ class Service
 
     return deferred.promise
 
+  saveAssetForEntryId: (id, imageType) =>
+    deferred = @$q.defer()
+    console.log 'doing saveAssetForEntryId', id + ' ' + imageType
+    @entryService.get(id).then (entry) =>
+      if entry.images[imageType] && entry.images[imageType].indexOf('http') == 0
+        @saveAsset(entry.images[imageType]).then (dataUri) =>
+          entry.images[imageType] = dataUri
+          @entryService.save entry
+          deferred.resolve dataUri
+    return deferred.promise
+
   imageTypesFor: (model) =>
     imageTypes = []
     for imageType of model.images
       imageTypes.push imageType
     return imageTypes
 
-angular.module('app').service 'downloadService', ['$http', '$q', 'categoryService', 'entryService', 'fileService', Service]
+  audioTypesFor: (model) =>
+    audioTypes = [
+      'audio'
+      'call_audio'
+      'sentence_audio'
+    ]
+
+angular.module('app').service 'downloadService', ['$http', '$q', '$rootScope', 'categoryService', 'entryService', 'fileService', Service]

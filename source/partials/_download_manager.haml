@@ -1,0 +1,46 @@
+.page.download-manager
+
+
+  .status.row
+    .column.small-6
+      .chart-container
+        .stats
+          {{chartOptions.data[0].downloaded}} /
+          {{chartOptions.data[0].remaining}}
+        %angular-chart{options: "chartOptions"}
+    .column.small-6
+      .downloading.fade{ng: {if: 'entriesIndex.length > 0'}}
+        %button{ng: {click: 'toggleDownloading()', class: '{stop: downloading}' }} {{ downloading && 'Stop' || 'Keep going'}}
+
+
+
+  .entries-scroll
+    %ul.entries
+      %li{ng: {repeat: 'entry in entries'}}
+        / .row
+        /   .column.small-5.large-3
+        /     / .img.loading{ng: style: 'background-image: url({{ entry.images.thumbnail }})'}
+        /     .thumbnail{ng: {style: "{'background-image': 'url({{ entry.images.thumbnail }})'}"}}
+
+        /   .column.small-7.large-9
+
+        .asset-container
+          .entry_word
+            {{entry.entry_word}}
+
+          .asset{ng: {if: 'entry.images.thumbnail' ,
+                class: '{local: entry.images.thumbnail.indexOf("http")!=0 }'}}
+
+          .asset{ng: {if: 'entry.images.normal',
+                class: '{local: entry.images.normal.indexOf("http")!=0 }'}}
+
+          .asset{ng: {if: 'entry.call_audio',
+                class: '{local: entry.call_audio.indexOf("http")!=0 }'}}
+
+          .asset{ng: {if: 'entry.audio',
+                class: '{local: entry.audio.indexOf("http")!=0 }'}}
+
+          .asset{ng: {if: 'entry.sentence_audio',
+                class: '{local: entry.sentence_audio.indexOf("http")!=0 }'}}
+
+

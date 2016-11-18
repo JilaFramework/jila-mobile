@@ -10,6 +10,11 @@ class Controller
     $scope.splashTitle = i18nService.get 'splashTitle'
     $scope.splashSubTitle = i18nService.get 'splashSubTitle'
 
+    syncTitle = i18nService.get 'syncFailureTitle'
+    offlineMessage = i18nService.get 'syncFailureOfflineMessage'
+    retryMessage = i18nService.get 'syncFailureRetryMessage'
+    retryButton = i18nService.get 'syncRetryButtonMessage'
+
     $scope.retryAvailable = false
     $scope.retryButtonMessage = i18nService.get 'syncRetryButtonMessage'
     $scope.retrySync = () ->
@@ -25,13 +30,20 @@ class Controller
 
     syncFailed = () ->
       if configurationService.initialSyncComplete()
-        alert i18nService.get('syncFailureOfflineMessage')
+        # alert i18nService.get('syncFailureOfflineMessage')
+        if navigator.notification
+          navigator.notification.alert offlineMessage, null, syncTitle
+        else
+          alert offlineMessage
         syncFinished = true
         transitionIfFinished()
       else
-        alert i18nService.get('syncFailureRetryMessage')
+        # alert i18nService.get('syncFailureRetryMessage')
+          if navigator.notification
+            navigator.notification.alert retryMessage, syncRemoteContent, syncTitle, retryButton
+          else
+            alert retryMessage
         $scope.retryAvailable = true
-
       return
 
     syncRemoteContent = () ->

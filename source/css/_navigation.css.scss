@@ -28,6 +28,11 @@ $action_button_width: 45px;
       }
     }
 
+    &.download {
+      right: 50px;
+      visibility: visible;
+    }
+
     &.search {
       right: $action_margin;
       $search_scale: 70%;

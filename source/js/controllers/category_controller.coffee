@@ -10,6 +10,7 @@ class Controller
     $scope.entries = []
     entryService.entriesIndex = []
     entryService.entryBackButtonURL = '/categories/' + $routeParams.categoryId
+    $scope.isWebView = window.isWebView
 
     addEntries = (entries) ->
       [].push.apply($scope.entries, entries)

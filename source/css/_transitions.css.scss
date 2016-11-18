@@ -102,3 +102,5 @@
     }
   }
 }
+
+.fade { @include fade-transition }

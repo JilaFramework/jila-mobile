@@ -74,6 +74,7 @@ $swatch-6: rgba(150, 255, 200, $opacity); // blue/green
 
 .home-page .item:nth-child(6) { background-color: $swatch-6; background-image: none }
 
+.page.download-manager,
 .page.about-page,
 .page.game,
 .page.entry-page { background-color: #ddd; background-image: none }
@@ -121,6 +122,9 @@ $button-size: 40px;
 
   .entry-page, .word-of-the-day-page {
 
+    .audio-player-container { min-height: 50px }
+    .entry-word-row, .sentence-row, .description-row, .sentence-translation { margin-top: 1em }
+
     .image-row
     {
       position: relative;
@@ -128,17 +132,16 @@ $button-size: 40px;
 
       .image-bgd {
         width: 100%;
-        height: 250px;
+        height: 100%;
         background-position: center;
-        margin-bottom: 10px;
-        filter: blur(20px);
+        filter: blur(40px);
         z-index: 0;
         position: absolute;
       }
 
-      img {
+      img.main {
         width: auto;
-        max-height: 250px;
+        height: 100%;
         @include center-in-parent;
         z-index: 888;
       }
@@ -148,20 +151,18 @@ $button-size: 40px;
         position: relative;
         top: 200px;
         z-index: 999;
+        a { text-align: center }
       }
     }
 
     // prevent selecting text when swiping
     .not-selectable { user-select: none }
 
-    .entry-word-row { margin-top: 1em }
-
     .entry-word {
       font-size: 1.6em;
       margin: 0 !important;
       text-align: left !important;
       line-height: 1;
-
       span { top: 0 !important }
     }
 
@@ -179,12 +180,8 @@ $button-size: 40px;
 
     .scientific-name { font-style: italic }
 
-    .sentence-row, .description-row { margin-top: 1em }
-
     .sentence,
     .sentence-translation { max-width: 30em }
-
-    .sentence-translation { margin-top: 2em }
 
     .description p {
       font-size: 1rem;
@@ -196,7 +193,12 @@ $button-size: 40px;
 
 .entry-page, .word-of-the-day-page, .common-page {
   .play-button {
-    font-size: $button-size;
+    // font-size: $button-size;
+    background: url('../img/play-circle.svg') no-repeat;
+    background-size: 50px;
+    height: 50px;
+    width: 50px;
+    @include center-in-parent;
   }
 }
 
@@ -216,6 +218,27 @@ $button-size: 40px;
     .logo {
       margin: 1em 0;
       width: auto;
+    }
+  }
+}
+
+
+
+@media only screen
+  and (orientation : portrait)
+  and (min-height : $max_height_for_small) {
+  .page-container {
+    .entry-page, .word-of-the-day-page {
+      .image-row {
+        height: 50%;
+        .image-normal {
+          img {
+            max-width: none;
+            max-height: none;
+            height: 100%;
+          }
+        }
+      }
     }
   }
 }

@@ -11,6 +11,7 @@ class Controller
     @searchEntriesIndex = []
 
     $rootScope.$on '$locationChangeStart', () ->
+      $scope.showDownloadManager = if $location.path() == '/home' then true else false
       $scope.searchIsVisible = false
       $scope.searchAvailable = true
       return

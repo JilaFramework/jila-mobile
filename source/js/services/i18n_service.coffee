@@ -1,7 +1,7 @@
 EN =
-  splashTitle: 'Thipe'
+  splashTitle: 'Test'
   splashSubTitle: 'birds'
-  homeTitle: 'Thipe'
+  homeTitle: 'Test'
   homeDictionary: 'Dictionary'
   homeCategories: 'Explore'
   homeLearn: 'Games'
@@ -43,6 +43,10 @@ EN =
   syncFailureOfflineMessage: 'Unable to update content'
   syncFailureRetryMessage: 'Unable to update content. Check your network connection and retry'
   syncRetryButtonMessage: 'Retry Sync'
+
+  syncFailureTitle: 'Sync'
+  downloadingAssets: 'Downloading'
+  downloadingAssetsComplete: 'Done'
 
 class Service
   constructor: () ->

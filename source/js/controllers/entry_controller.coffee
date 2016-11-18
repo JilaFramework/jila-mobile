@@ -1,5 +1,5 @@
 class Controller
-  constructor: ($scope, $routeParams, entryService, audioService, $rootScope, $location) ->
+  constructor: ($scope, $routeParams, entryService, audioService, downloadService, $rootScope, $location) ->
     $rootScope.$emit 'navigationConfig',
       labelForTitle: ""
       backAction: () ->
@@ -12,6 +12,7 @@ class Controller
 
     $scope.entry = {}
     window.hasSwiped = 0 if ! window.hasSwiped?
+    $scope.isWebView = window.isWebView
 
     entryService.get($routeParams.entryId).then (entry) =>
       $scope.entry = entry
@@ -19,6 +20,7 @@ class Controller
       entryService.entryBackButtonURL = '/home' if ! entryService.entryBackButtonURL?
       $rootScope.$emit 'navigationConfig',
         labelForTitle: entry.entry_word
+      downloadService.saveAssetsForEntry(entry)
 
     $scope.listen = () =>
       audioService.play($scope.entry.audio) if $scope.entry
@@ -55,4 +57,4 @@ class Controller
         $location.path('entries/' + nextID)
       return false
 
-angular.module('app').controller 'entryController', ['$scope', '$routeParams', 'entryService', 'audioService', '$rootScope', '$location', Controller]
+angular.module('app').controller 'entryController', ['$scope', '$routeParams', 'entryService', 'audioService', 'downloadService', '$rootScope', '$location', Controller]

@@ -1,0 +1,68 @@
+.download-manager {
+  display: flex;
+  flex-direction: column;
+
+  .status {
+    position: relative;
+    width: 100%;
+    height: 130px;
+    flex: 0 0 130px;
+    .chart-container {
+      position: relative;
+      width: 150px;
+      height: 130px;
+      margin: 0 auto;
+      .stats {
+        @include center-in-parent
+      }
+    }
+    angular-chart text { display: none }
+  }
+  .downloading {
+    height: 130px;
+  }
+  button {
+    padding: 0.5em 1em !important;
+    margin-bottom: 0;
+    @include center-in-parent;
+    white-space: nowrap;
+    border-radius: 3px;
+  }
+  .stop {background-color: red}
+  .entries-scroll {
+    flex: 1 1 auto;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+    border-top: 1px solid white;
+    .entries li { line-height: 0.8 }
+  }
+  .img {
+    height: 100px;
+    width: 100px;
+    background-size: cover;
+    background-position: center;
+    display: inline-block;
+    float: right;
+  }
+  .img.loading { background-size: 80% }
+  .img.loaded { background-size: 100% }
+  .asset-container {
+    display: flex;
+    flex-direction: row;
+    background-color: $grey;
+    width: 100%;
+    // height: 3em;
+    .entry_word {
+      padding: 0 1em;
+      border-right: 1px solid #eee;
+    }
+    .asset {
+      flex: 1 1 20px;
+      border: 0;
+      border-right: 1px solid #fff;
+      height: 0.6em;
+    }
+    .remote { background-color: $grey; }
+    .local  { background-color: $bright-green; }
+  }
+}

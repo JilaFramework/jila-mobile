@@ -9,6 +9,7 @@ class Controller
     $scope.entries = []
     entryService.entriesIndex = []
     entryService.entryBackButtonURL = '/dictionary/' + $routeParams.letterId
+    $scope.isWebView = window.isWebView
 
     addEntries = (entries) ->
       [].push.apply($scope.entries, entries)

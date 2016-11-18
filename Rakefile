@@ -57,6 +57,12 @@ namespace :android do
     sh "cordova run android"
   end
 
+  desc "Run the app on Android Emulator"
+  task :emulate => [:build_site] do
+    puts "Running the app on Android"
+    sh "cordova emulate android"
+  end
+
   desc "Build the app on Android for release"
   task :release => [:build_site] do
     puts "Building the app on Android for release"

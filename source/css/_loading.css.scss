@@ -1,0 +1,57 @@
+// SIZES
+
+.body-splash .loading-container {
+  position: relative;
+  margin:  0 -25px 0 -25px;
+  width: 50px;
+  height: 50px;
+  left: 50%;
+}
+
+.img-container .loading-container,
+.audio-player .loading-container {
+  @include center-in-parent;
+}
+
+.loading-container .loading {
+  width: 50px;
+  height: 50px;
+}
+
+// STYLES
+
+.loading.pulse {
+  border: 5px solid #333;
+  border-radius: 30px;
+  opacity: 0;
+  animation: pulsate 1s ease-out;
+  animation-iteration-count: infinite;
+}
+
+.loading.spin {
+  animation: rotate 0.8s infinite linear;
+  border: 2px solid #fff;
+  border-right-color: transparent;
+  border-radius: 50%;
+}
+
+// KEYFRAMES
+
+@keyframes pulsate {
+  0% {
+    transform: scale(.1);
+    opacity: 0.0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.2);
+    opacity: 0;
+  }
+}
+
+@keyframes rotate {
+  0%    { transform: rotate(0deg); }
+  100%  { transform: rotate(360deg); }
+}

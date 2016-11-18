@@ -29,3 +29,13 @@
 
 //= require ./lib/slip.horizontal
 //= require ./lib/polyfill-blob-constructor
+
+
+//= require 'lazysizes/lazysizes'
+//= require 'lazysizes/plugins/unveilhooks/ls.unveilhooks.min'
+
+//= require 'd3/d3'
+//= require 'c3/c3'
+//= require 'angular-chart/angular-chart'
+
+

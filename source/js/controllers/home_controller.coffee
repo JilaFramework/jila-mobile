@@ -29,4 +29,6 @@ class Controller
 
     showWarningMessage() unless window.localStorage[WARNING_KEY]
 
+    $('body').removeClass 'body-splash'
+
 angular.module('app').controller 'homeController', ['$scope', '$rootScope', 'i18nService', Controller]

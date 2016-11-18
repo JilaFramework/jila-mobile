@@ -29,8 +29,11 @@ class Service
     return deferred.promise
 
   save: (entry) =>
+    deferred = @$q.defer()
     Lawnchair {name: 'entries', adapter: 'dom'}, (store) ->
-      store.save {key: entry.id, value: entry}
+      deferred.resolve store.save {key: entry.id, value: entry}
+    return deferred.promise
+
   search_for: (query) =>
     deferred = @$q.defer()
     Lawnchair {name: 'entries', adapter: 'dom'}, (store) =>
