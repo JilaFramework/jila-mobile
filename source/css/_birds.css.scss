@@ -120,7 +120,7 @@ $button-size: 40px;
 .page-container {
   .entries .list-entry { background-color: rgba(255,255,255,0.9)}
 
-  .entry-page, .word-of-the-day-page {
+  .entry-page, .word-of-the-day-page, .common-page {
 
     .audio-player-container { min-height: 50px }
     .entry-word-row, .sentence-row, .description-row, .sentence-translation { margin-top: 1em }
