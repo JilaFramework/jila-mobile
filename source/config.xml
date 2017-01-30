@@ -1,25 +1,29 @@
 <?xml version='1.0' encoding='utf-8'?>
     <widget
-        id="org.jila.birds.test"
-        version="0.2.0"
+        id="org.jila.birds.appName"
+        version="1.0.0"
         xmlns="http://www.w3.org/ns/widgets"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:cdv="http://cordova.apache.org/ns/1.0">
 
-        <name>Aa Test</name>
+        <name>appName</name>
         <description>
         </description>
         <author email="" href="">
-            Aa Test
+            appName
         </author>
 
         <content src="index.html" />
         <access origin="*" />
         <access origin="cdvfile://*" />
 
+        <allow-intent href="http://*/*"/>
+        <allow-intent href="https://*/*"/>
+
         <preference name="DisallowOverscroll" value="true" />
         <preference name="orientation" value="portrait" />
         <preference name="StatusBarOverlaysWebView" value="false" />
         <preference name="StatusBarBackgroundColor" value="#000000" />
         <preference name="StatusBarStyle" value="blacktranslucent" />
+        <preference name="AndroidPersistentFileLocation" value="Compatibility" />
     </widget>
