@@ -7,10 +7,19 @@
       %ul.small-block-grid-1.entries
         %li{ng: {repeat: 'entry in entries'}}
           .list-entry.row
-            .column.small-4.large-2
-              %a{href: 'javascript:void(0)', ng: {click: 'listen(entry)'}}
-                .play-button.fa
-                  &#xf144;
+            .column.small-4.large-2.audio-player-container
+
+              .audio-player{ng: {if: 'entry.audio'}}
+                %a.play-button{href: 'javascript:void(0)', ng: {click: 'listen(entry)', if: ' ! isWebView || isWebView && entry.audio.indexOf("http") !== 0'}}
+                .loading-container{ng: {if: 'isWebView && entry.audio.indexOf("http") === 0'}}
+                  .loading.spin
+
+
+              / %a{href: 'javascript:void(0)', ng: {click: 'listen(entry)'}}
+              /   .play-button.fa
+              /     &#xf144;
+
+
             .column.small-8.large-10
               .entry-word {{ entry.entry_word }}
               .translation {{ entry.translation }}
