@@ -24,24 +24,26 @@
 # eg
 # rake android:build_icons[icon.png]
 
-ICON=./app-icons/${1:-$1}
+# ICON=./app-icons/${1:-$1}
 
-android_dir_path='platforms/android/res'
+ICON=icon.png
+
+android_dir_path='../platforms/android/res'
 
 printf "making 36 \n"
-convert $ICON -resize  36 $android_dir_path/drawable-ldpi/icon.png
+convert $ICON -resize  36 $android_dir_path/mipmap-ldpi/icon.png
 
 printf "making 48 \n"
-convert $ICON -resize  48 $android_dir_path/drawable-mdpi/icon.png
+convert $ICON -resize  48 $android_dir_path/mipmap-mdpi/icon.png
 
 printf "making 72 \n"
-convert $ICON -resize  72 $android_dir_path/drawable-hdpi/icon.png
+convert $ICON -resize  72 $android_dir_path/mipmap-hdpi/icon.png
 
 printf "making 96 \n"
-convert $ICON -resize  96 $android_dir_path/drawable-xhdpi/icon.png
+convert $ICON -resize  96 $android_dir_path/mipmap-xhdpi/icon.png
 
-printf "making 144 \n"
-convert $ICON -resize 144 $android_dir_path/drawable-xxhdpi/icon.png
+# printf "making 144 \n"
+# printf "making 192 \n"
 
 printf "making 512 \n"
-convert $ICON -resize 512 ./app-icons/512-$1
+convert $ICON -resize 512 512-icon.png
