@@ -8,9 +8,13 @@ class Controller
 
     $scope.appVersion = "getting version"
     Platform.isReady () ->
-      cordova.getAppVersion.getVersionNumber().then (version) ->
-        $scope.$apply () ->
-          $scope.appVersion = version
+
+      if typeof cordova != 'undefined'
+        cordova.getAppVersion.getVersionNumber().then (version) ->
+          $scope.$apply () ->
+            $scope.appVersion = version
+      else
+        $scope.appVersion = ""
 
     $scope.imageCredits = []
     imageCreditService.all().then (credits) ->

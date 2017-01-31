@@ -1,14 +1,38 @@
 .page.about-page
   .row
     .column.small-12.medium-10.small-centered.tab-content
-      %h1 About
-      This app has been produced by the Research Unit for Indigenous Language at Melbourne University and Batchelor Institute of Indigenous Tertiary Education, as part of the #{ link_to 'Getting in Touch project', 'http://gettingintouch.com.au'}
+      %h1 About this app
+
 
       %p
+      This app is designed to help people learn more about Kune, a language of north-central Arnhem Land. It has been developed from an original story about Kune seasons, recorded by Jill Yirrindili and transcribed and translated by Aung Si. Additional support for this project came from Murray Garde and Margaret Carew.
 
+      %p
+      Information about Kune animals and plants was researched by Aung Si in collaboration with Charlie Brian, Jill Yirrindili and Carol Liyawanga, along with other people who speak Kune. Further information was accessed through the Bininj Kunwok Plants and Animals online resource at #{ link_to 'http://mayh-dja-kundulk.bininjgunwok.org.au', 'http://mayh-dja-kundulk.bininjgunwok.org.au'} and the draft Bininj Kunwok dictionary.
+
+      %p
+      The Kune word audio in this app was recorded by Daryl Redford and Murray Garde. Daryl is a Kune speaker from Buluhkaduru. He is a member of the Djelk ranger group in the Maningrida region and has a keen interest in protecting and preserving the animals, plants and landscape of the country owned by the Kune people and their neighbors.
+
+      %p
+      Kune is a dialect of Bininj Kunwok, a widely spoken language of Arnhem Land and the Kakadu area. Kune is a western dialect spoken on the outstations in the Cadell River district south of Maningrida at places such as Korlobidahdah, Buluhkaduru and Bolkdjam.
+
+      %p
+      Read more about Kune and Bininj Kunwok at #{ link_to 'http://bininjgunwok.org.au', 'http://bininjgunwok.org.au'}.
+
+      %p
+      This app has been produced by the #{ link_to 'Research Unit for Indigenous Language at Melbourne University', 'https://indiglang.arts.unimelb.edu.au'} and #{ link_to 'Batchelor Institute of Indigenous Tertiary Education', 'http://call.batchelor.edu.au'}, as part of the #{ link_to 'Getting in Touch project', 'http://gettingintouch.com.au'}.
+
+      %h3 Copyright
+
+      %p
       %span.copyright
       &#169;
       All rights reserved
+
+      %p
+      %span.copyright
+      &#169;
+      Artwork by Jennifer Taylor
 
       / %h3 Audio Credits
       / .span names
@@ -21,11 +45,10 @@
 
 
       %h3 A Jila app
-      Built on the #{ link_to 'Jila', 'https://github.com/JilaFramework'} framework, proudly created by ThoughtWorks and modified by Ben Foley.
+      Built on the #{ link_to 'Jila', 'https://jilaframework.github.io'} framework, proudly created by #{ link_to 'ThoughtWorks', 'https://www.thoughtworks.com/'} and modified by #{ link_to 'Ben Foley', 'https://cbmm.io'}.
 
-      %br
-
-      Version {{ appVersion }}
+      .version{ng: {if: 'appVersion !=="" '}}
+        Version {{ appVersion }}
 
       .logos
         %a{href: 'javascript:void(0)', ng: {click: 'openLink("https://indiglang.arts.unimelb.edu.au/")'}}
