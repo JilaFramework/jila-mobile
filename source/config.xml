@@ -1,17 +1,15 @@
 <?xml version='1.0' encoding='utf-8'?>
     <widget
-        id="org.jila.birds.kune"
+        id="org.jila.birds.APPNAME"
         version="1.0.0"
         xmlns="http://www.w3.org/ns/widgets"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:cdv="http://cordova.apache.org/ns/1.0">
 
-        <name>Kune</name>
+        <name>APPNAME</name>
         <description>
         </description>
-        <author email="" href="">
-            Kune
-        </author>
+        <author email="" href="">APPNAME</author>
 
         <content src="index.html" />
         <access origin="*" />
