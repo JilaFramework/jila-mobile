@@ -45,10 +45,9 @@ namespace :android do
   end
 
   desc "Build icons for Android release - see icons.sh for more info"
-  task :build_icons, [:arg1] do |t, args|
-    puts "Generate icons for release"
-    puts args[:arg1]
-    sh "./app-icons/icons.sh #{args.arg1}"
+  task :build_icons do
+    puts "Generate icons and screens for release"
+    sh "./_icons/icons.sh"
   end
 
   desc "Run the app on Android"
