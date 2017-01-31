@@ -1,16 +1,16 @@
 <?xml version='1.0' encoding='utf-8'?>
     <widget
-        id="org.jila.birds.appName"
+        id="org.jila.birds.kune"
         version="1.0.0"
         xmlns="http://www.w3.org/ns/widgets"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:cdv="http://cordova.apache.org/ns/1.0">
 
-        <name>appName</name>
+        <name>Kune</name>
         <description>
         </description>
         <author email="" href="">
-            appName
+            Kune
         </author>
 
         <content src="index.html" />
@@ -25,5 +25,4 @@
         <preference name="StatusBarOverlaysWebView" value="false" />
         <preference name="StatusBarBackgroundColor" value="#000000" />
         <preference name="StatusBarStyle" value="blacktranslucent" />
-        <preference name="AndroidPersistentFileLocation" value="Compatibility" />
     </widget>
