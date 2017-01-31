@@ -48,6 +48,12 @@
 
         .scientific-name {{ entry.scientific_name }}
 
+
+    .row.word-type-row
+      .columns.small-offset-2.small-10
+        .word-type {{ entry.word_type }}
+
+
     .row.sentence-row
       .columns.small-2.audio-player-container
         .audio-player{ng: {if: 'entry.sentence_audio'}}
