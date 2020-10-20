@@ -10,32 +10,32 @@ The **Jila** app is built using the [Middleman](http://middlemanapp.com) static 
 - Node.js
 - Xcode (for iOS apps)
 - Android SDK (for Android apps)
-- Apache Ant (for Android apps)
 
 ## Installation
 
 Install Ruby gems
 `bundle install`
 
-Bootstrap non-Ruby tools (this may require sudo)
-`bundle exec rake install_tools`
+Bootstrap non-Ruby tools
+`yarn`
+`yarn setup`
 
 Bootstrap Cordova platforms and plugins
-`bundle exec rake bootstrap`
+`yarn prepare`
 
 ## Getting Started
 
 ### Development
-Use `bundle exec middleman` to load your work. This will by default start a server at 'http://localhost:4567'.
+To view the app in the browser, run `bundle exec middleman` to start a server at 'http://localhost:4567'.
+
+To view the app in an IOS/Android simulator:
+1. Run `bundle exec rake build_site` to generate a `www` folder which will be consumed by Cordova.
+
+2. run `yarn run:ios` or `yarn run:android`
+
 
 ### Testing
 The **Jila** framework uses [Jasmine](http://jasmine.github.io/) for unit testing. Once your server is running it can be accessed at 'http://localhost:4567/jasmine'.
-
-### Mobile Web
-As it is based on web technologies, Jila can be used on any platform that supports the modern web. It falls back to HTML5 audio for playback and remote access of images and audio. There is a rake task for building the site which you can use with `bundle exec rake build_site`.
-
-### Mobile App
-There are rake tasks that coordinate the building of the site and deploying to the various platforms. You can see the full list of them using `bundle exec rake -T`.
 
 ## Customisation
 There are a few ways that Jila is configurable out of the box, these are located in the file **configuration.coffee**. The most important of which is probably the **BACKEND_URL** which specifies where the administration console is hosted.
