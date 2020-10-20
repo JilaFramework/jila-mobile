@@ -6,9 +6,11 @@
     "setup": "bower install",
     "prepare": "cordova prepare",
     "build:android": "cordova build android",
-    "run:android": "cordova run android",
     "build:ios": "cordova build ios",
-    "run:ios": "cordova run ios"
+    "run:android": "cordova run android",
+    "run:ios": "cordova run ios",
+    "release:android": "cordova build --release android",
+    "release:ios": "cordova build --release ios"
   },
   "devDependencies": {
     "bower": "^1.8.8",
