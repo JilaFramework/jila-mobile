@@ -21,7 +21,7 @@ Bootstrap non-Ruby tools
 `yarn setup`
 
 Bootstrap Cordova platforms and plugins
-`yarn prepare`
+After running `bundle exec rake build_site`, run `yarn prepare`.
 
 ## Getting Started
 
