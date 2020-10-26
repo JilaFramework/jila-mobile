@@ -1,8 +1,4 @@
-
-# BACKEND_URL = 'http://yawuru.10.1.1.17.xip.io'
-
-BACKEND_URL = 'http://jila.herokuapp.com'
-# BACKEND_URL = 'http://yawuru.dev'
+BACKEND_URL = 'https://gooniyandi-backend.herokuapp.com'
 
 angular.module('configuration', [])
        .constant('SPLASH_SCREEN_DELAY', 2000)
