@@ -3,7 +3,7 @@ class Service
   refresh: () =>
     deferred = @$q.defer()
     @$http.get("#{@BACKEND_URL}/api/sync/all")
-          .then (res) => 
+          .then (res) =>
             @categoryService.clear()
             @entryService.clear()
             res.data.categories.forEach (c) =>
@@ -18,7 +18,7 @@ class Service
             @configurationService.initialSyncCompleted()
             deferred.resolve()
           , (err) =>
-            deferred.reject()  
+            deferred.reject()
 
     return deferred.promise
 

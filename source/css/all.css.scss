@@ -151,7 +151,9 @@ $page_gutter: 20px;
   }
 
   .translation {
-    font-size: 1.9em;
+    font-weight: bold;
+    font-size: 1em;
+    color: #008CBA;
   }
 
   .word-type {
@@ -160,7 +162,17 @@ $page_gutter: 20px;
   }
 
   .translation-row {
-    margin-top: 20px;
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .example-row {
+    padding-top: 10px;
+  }
+
+  .example-english-row {
+    padding-top: 10px;
+    color: #008CBA;
   }
 
   .description-row {
@@ -171,10 +183,16 @@ $page_gutter: 20px;
     font-size: 1.3em;
   }
 
+  .definition {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
   .entry-word {
     width: 95%;
     margin-left: 2%;
-    font-size: 80px;
+    font-size: 3em;
     text-align: center;
     text-transform: lowercase;
 
@@ -184,15 +202,22 @@ $page_gutter: 20px;
     }
   }
 
+  .pronunciation {
+    text-align: center;
+  }
+
   .alternate_spelling-row{
     font-size: 1.3em;
   }
 
   .alternate-spelling {
     font-style: bold;
-    display: inline;
-    margin-left: .5em;
-    }
+    text-align: center;
+  }
+
+  .content {
+    padding: 2em 1em;
+  }
 }
 
 .result-page {

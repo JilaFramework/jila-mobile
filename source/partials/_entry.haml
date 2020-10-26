@@ -3,24 +3,29 @@
     .columns.small-12.large-5.small-centered
       .row
         .image{style: 'background-image: url({{entry.images.normal}})'}
-      .row.entry-row
-        .entry-word{scale: {fit: ''}}
-          %span {{ entry.entry_word }}
-      .row.alternate_spelling-row{'ng-show'=>'entry.alternate_spellings.length > 0'}
-        .columns.small-2
-          %span also:
-        .columns.small-10
+        .row.entry-row
+          .entry-word
+            %span {{ entry.entry_word }}
+        .row.pronunciation
+          {{ entry.pronunciation }}
+        .row.alternate_spelling-row{'ng-show'=>'entry.alternate_spellings.length > 0'}
           .alternate-spelling{'ng-repeat'=>'alternate_spelling in entry.alternate_spellings'}
-            {{ alternate_spelling }}
-
-      .row.translation-row
-        .columns.small-4
-          %a{href: 'javascript:void(0)', ng: {click: 'listen()', if: 'entry.audio !== null'}}
-            .play-word.fa
-              &#xf144;
-        .columns.small-8
-          .translation {{ entry.translation }}
-          .word-type {{ entry.word_type }}
-      .row.description-row
-        .columns.small-12
-          .description{"ng-bind-html" => "formattedDescription"}
+            also: {{ alternate_spelling }}
+        .row.translation-row
+          .definition
+            .translation {{ entry.meaning }}
+            .word-type {{ entry.word_type }}
+          .play-button
+            %a{href: 'javascript:void(0)', ng: {click: 'listen()', if: 'entry.audio !== null'}}
+              .play-word.fa
+                &#xf144;
+      .content
+        .row.example-row
+          .columns.small-12
+            .description {{ entry.example }}
+        .row.example-english-row
+          .columns.small-12
+            .description {{ entry.example_translation }}
+        .row.description-row
+          .columns.small-12
+            .description {{ entry.description }}
