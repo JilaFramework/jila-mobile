@@ -23,7 +23,7 @@ class Service
     Lawnchair {name: 'entries', adapter: 'dom'}, (store) ->
       store.all (entry_data) ->
         entries = entry_data.map (e) -> e.value
-        deferred.resolve entries.filter (e) -> e.entry_word[0] == letter
+        deferred.resolve entries.filter (e) -> e.entry_word[0].toLowerCase() == letter.toLowerCase()
     return deferred.promise
 
   save: (entry) =>
