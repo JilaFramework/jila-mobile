@@ -2,5 +2,5 @@
   %input.search-input{type: 'search', placeholder: '{{labelForSearch}}', ng: {model: 'searchString', change: 'searchStringChanged()'}, focus: {when: 'searchIsVisible'}}
   %ul.small-block-grid-1.entries{ng: {if: 'entries.length > 0'}}
     %li{bindonce: '', ng: {repeat: 'entry in entries'}}
-      %a{bo: {href: "'#/entries/' + entry.id"}, ng: {click: 'hideSearch()'}}
+      %a{ng: {href: "#/entries/{{entry.id}}"}}
         = partial 'partials/list_entry'
