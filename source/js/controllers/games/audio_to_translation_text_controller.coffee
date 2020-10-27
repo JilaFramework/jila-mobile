@@ -10,11 +10,11 @@ class Controller extends BaseGameController
 
   displayOptions: (validOptionsFrom) ->
     validOptionsFrom.map (o) ->
-      label: o.translation,
+      label: o.meaning,
       alternate_answers: o.alternate_translations,
       audio: o.audio
 
-  hasValidAnswer: () =>   
+  hasValidAnswer: () =>
     @answerTextIsValid()
 
   hasAcceptableAnswer: () =>

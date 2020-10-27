@@ -9,7 +9,7 @@ class Controller extends BaseGameController
 
   displayOptions: (validOptionsFrom) ->
     validOptionsFrom.map (o) ->
-      label: o.translation,
+      label: o.meaning,
       audio: o.audio
 
 angular.module('app').controller 'audioToTranslationController', ['$scope', '$routeParams', 'audioService', 'submissionHandlerService', 'optionsGeneratorService', '$rootScope', '$location', 'i18nService', Controller]

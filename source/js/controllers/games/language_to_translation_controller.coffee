@@ -6,7 +6,7 @@ class Controller extends BaseGameController
 
   displayOptions: (validOptionsFrom) ->
     validOptionsFrom.map (o) ->
-      label: o.translation,
+      label: o.meaning,
       answer_label: o.entry_word
 
 angular.module('app').controller 'languageToTranslationController', ['$scope', '$routeParams', 'submissionHandlerService', 'optionsGeneratorService', '$rootScope', '$location', 'i18nService', Controller]
