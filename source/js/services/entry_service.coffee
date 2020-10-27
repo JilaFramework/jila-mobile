@@ -32,7 +32,7 @@ class Service
   search_for: (query) =>
     deferred = @$q.defer()
     Lawnchair {name: 'entries', adapter: 'dom'}, (store) =>
-      store.where "record.value.translation.toLowerCase().indexOf('#{query.toLowerCase()}') !== -1", (entries) =>
+      store.where "record.value.meaning.toLowerCase().indexOf('#{query.toLowerCase()}') !== -1", (entries) =>
         if entries.length == 0
           @$analytics.eventTrack 'SearchNotFound',
               category: 'SearchNotFound'
