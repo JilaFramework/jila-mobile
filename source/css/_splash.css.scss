@@ -1,11 +1,12 @@
 .splash {
   @include full-background-image;
-  background-color: black;
+  background-image: url(../img/splash_bg.jpg);
 
   .name {
     @include center-in-parent;
     color: white;
     font-size: 60px;
+    font-weight: bold;
   }
 
   .retry-section {

@@ -184,9 +184,15 @@ $page_gutter: 20px;
   }
 
   .definition {
+    padding-left: 2em;
+    max-width: 80%;
     display: flex;
     flex-direction: column;
     justify-content: center;
+  }
+
+  .play-button {
+    padding-right: 2em;
   }
 
   .entry-word {
@@ -261,8 +267,6 @@ $page_gutter: 20px;
 }
 
 .home-page {
-  padding-top: 10px;
-
   .menu-item {
     .menu-label {
       @include center-in-parent;
@@ -273,7 +277,7 @@ $page_gutter: 20px;
   }
 }
 
-.categories-page, .games-page, .dictionary-page, .letter-page{
+.home-page, .categories-page, .games-page, .dictionary-page, .letter-page{
   @include full-background-image;
   background-image: url(../img/splash_bg.jpg);
   padding-top: 10px;
@@ -286,6 +290,7 @@ $page_gutter: 20px;
     height: 3.6em;
 
     .name {
+      font-weight: bold;
       position: absolute;
       top: 80%;
       left: 1em;
