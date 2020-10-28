@@ -11,6 +11,7 @@ app = angular.module 'app', [
 
 app.config [
   '$compileProvider', ($compileProvider) ->
+    $compileProvider.aHrefSanitizationWhitelist /^\s*(https?|ionic):/
     $compileProvider.imgSrcSanitizationWhitelist /^\s*(https?|file|blob|cdvfile):|data:image\//
 ]
 
