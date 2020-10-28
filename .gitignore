@@ -32,3 +32,8 @@ platforms/
 bower_components/
 
 node_modules
+
+*.keystore
+build.json
+.idea
+.tool-versions
