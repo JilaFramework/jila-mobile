@@ -1,0 +1,10 @@
+.tab-page
+  %h2 {{ creditsTab.label }}
+  %p Gooniyandi elders and Kimberley Language Resource Centre staff spent many years tirelessly working to create the 1,844 dictionary entries we have on this app. Gooniyandi linguists, teachers, students and speakers are continuing this work to ensure future generations can know Gooniyandi language and culture.
+
+  %h2 {{ creditsTab.label }}
+
+  %h3 Image Credits
+  %ul
+    %li.image-credit{ng: {repeat: 'credit in imageCredits'}}
+      %a.attribution{href: 'javascript:void(0)', title: '{{credit.attribution_text}}', ng: {click: "openLink(credit.link)"}} {{ credit.attribution_text }}

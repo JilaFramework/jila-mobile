@@ -1,8 +1,8 @@
 class Service
   constructor: (@$http, @$q, @categoryService, @entryService, @fileService) ->
 
-  saveAssetsForCategory: (category) => 
-    @imageTypesFor(category).forEach (imageType) => 
+  saveAssetsForCategory: (category) =>
+    @imageTypesFor(category).forEach (imageType) =>
       if category.images[imageType] && category.images[imageType].indexOf('http') == 0
         @saveAsset(category.images[imageType]).then (dataUri) =>
           category.images[imageType] = dataUri
@@ -32,7 +32,7 @@ class Service
       @$http.get(url, {responseType: 'arraybuffer'})
             .then (res) =>
               blob = new Blob([res.data], type: 'text/plain')
-              
+
               @fileService.store(blob, url).then (uri) ->
                 deferred.resolve uri
               , handleError

@@ -1,26 +1,26 @@
 class Controller
   constructor: ($scope, $rootScope, $location, imageCreditService, i18nService) ->
-    $rootScope.$emit 'navigationConfig', 
+    $rootScope.$emit 'navigationConfig',
       labelForTitle: i18nService.get 'aboutTitle'
       backAction: () ->
         $location.path('/home')
         return
 
-    $scope.historyTab = 
-      label: i18nService.get 'aboutHistoryTab'
-    $scope.resourcesTab = 
-      label: i18nService.get 'aboutResourcesTab'
-    $scope.locationTab = 
-      label: i18nService.get 'aboutLocationTab'
-    $scope.partnersTab = 
+    $scope.appTab =
+      label: i18nService.get 'aboutAppTab'
+    $scope.gooniyandiTab =
+      label: i18nService.get 'aboutGooniyandiTab'
+    $scope.contactUsTab =
+      label: i18nService.get 'aboutContactUsTab'
+    $scope.partnersTab =
       label: i18nService.get 'aboutPartnersTab'
-    $scope.creditsTab = 
+    $scope.creditsTab =
       label: i18nService.get 'aboutCreditsTab'
 
     $scope.tabs = [
-      $scope.historyTab,
-      $scope.resourcesTab,
-      $scope.locationTab,
+      $scope.appTab,
+      $scope.gooniyandiTab,
+      $scope.contactUsTab,
       $scope.partnersTab,
       $scope.creditsTab
     ]
@@ -30,7 +30,7 @@ class Controller
       $scope.imageCredits = credits
 
     $scope.openLink = (link) ->
-      window.open(link, '_system')
+      cordova.InAppBrowser.open(link, '_blank')
 
     $scope.indexChanged = (index) ->
       $scope.selectedTab = $scope.tabs[index]
@@ -38,7 +38,7 @@ class Controller
       $scope.indexChanged index
       $scope.content.slickGoTo index
       return
-      
-    $scope.selectedTab = $scope.historyTab
+
+    $scope.selectedTab = $scope.appTab
 
 angular.module('app').controller 'aboutController', ['$scope', '$rootScope', '$location', 'imageCreditService', 'i18nService', Controller]

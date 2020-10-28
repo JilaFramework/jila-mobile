@@ -9,6 +9,8 @@
     </author>
     <content src="index.html" />
     <access origin="*" />
+    <allow-navigation href="*" />
+    <allow-intent href="mailto:*" />
     <preference name="orientation" value="portrait" />
 
     <preference name="StatusBarOverlaysWebView" value="false" />

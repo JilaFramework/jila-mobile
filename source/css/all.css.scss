@@ -503,14 +503,19 @@ $page_gutter: 20px;
 
 $tab_header_height: 60px;
 .about-page {
-  white-space: nowrap;
+  white-space: break-space;
   overflow: hidden;
 
   .tab-header {
     float: left;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
     a {
       text-decoration: none;
       color: white;
+      line-height: normal;
     }
   }
 
