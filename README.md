@@ -12,26 +12,65 @@ The **Jila** app is built using the [Middleman](http://middlemanapp.com) static 
 - Android SDK (for Android apps)
 
 ## Installation
+1. Run `bundle install` to install the required Ruby gems.
 
-Install Ruby gems
-`bundle install`
+2. Run `yarn` to install Cordova dependencies. If you see the following error: `Current working directory is not a Cordova-based project.`, run `bundle exec rake build_site` to generate a `www` folder which will be consumed by Cordova.
 
-Bootstrap non-Ruby tools
-`yarn`
-`yarn setup`
+3. Run `yarn setup` to install Bower dependencies.
 
-Bootstrap Cordova platforms and plugins
-After running `bundle exec rake build_site`, run `yarn prepare`.
+4. Run `bundle exec rake build_site` to update the `www` folder with Bower dependencies installed.
+
+5. Run `yarn prepare` to install Cordova plugins.
 
 ## Getting Started
 
 ### Development
 To view the app in the browser, run `bundle exec middleman` to start a server at 'http://localhost:4567'.
 
-To view the app in an IOS/Android simulator:
-1. Run `bundle exec rake build_site` to generate a `www` folder which will be consumed by Cordova.
+#### Running app in iOS simulator (Xcode required)
+1. If you've made any changes to the static site, run `bundle exec rake build_site` to update the `www` folder.
 
-2. run `yarn run:ios` or `yarn run:android`
+2. run `yarn run:ios`.
+
+#### Running app in Android simulator (Android studio, JDK 8, and Gradle 6 required)
+<sup>For more information, see: https://cordova.apache.org/docs/en/latest/guide/platforms/android/index.html#requirements-and-support</sup>
+1. If you've made any changes to the static site, run `bundle exec rake build_site` to update the `www` folder.
+
+2. Set `JAVA_HOME` environment variable to the location of your JDK installation
+
+3. Export the following variables.
+```
+export ANDROID_SDK=$HOME/Library/Android/sdk
+export PATH=$ANDROID_SDK/emulator:$ANDROID_SDK/tools:$PATH
+export PATH="$ANDROID_SDK/platform-tools:$PATH"
+```
+
+3. Run `yarn run:android`.
+
+### Release
+
+#### Releasing an iOS app
+For detailed instructions, see: https://cordova.apache.org/docs/en/latest/guide/platforms/ios/index.html#project-configuration
+
+#### Releasing a signed Android apk
+1. Run `keytool -genkey -v -keystore [keystore-name].keystore -alias [key-alias] -keyalg RSA -keysize 2048 -validity 10000` to generate a keystore.
+
+2. Create a `build.json` file in the root directory with the following:
+```
+{
+  "android": {
+      "release": {
+          "keystore": "path/to/keystore",
+          "storePassword": "[store-password]",
+          "alias": "[key-alias]",
+          "password" : "[key-password]",
+          "keystoreType": ""
+      }
+  }
+}
+```
+
+3. Run `yarn release:android`.
 
 
 ### Testing
