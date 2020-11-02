@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="org.jila.vanilla" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="org.jila.vanilla" version="0.0.2" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>Gooniyandi</name>
     <description>
 
@@ -16,4 +16,21 @@
     <preference name="StatusBarOverlaysWebView" value="false" />
     <preference name="StatusBarBackgroundColor" value="#000000" />
     <preference name="StatusBarStyle" value="blacktranslucent" />
+
+    <platform name="android">
+        <!--
+            ldpi    : 36x36 px
+            mdpi    : 48x48 px
+            hdpi    : 72x72 px
+            xhdpi   : 96x96 px
+            xxhdpi  : 144x144 px
+            xxxhdpi : 192x192 px
+        -->
+        <icon src="assets/android/ldpi.png" density="ldpi" />
+        <icon src="assets/android/mdpi.png" density="mdpi" />
+        <icon src="assets/android/hdpi.png" density="hdpi" />
+        <icon src="assets/android/xhdpi.png" density="xhdpi" />
+        <icon src="assets/android/xxhdpi.png" density="xxhdpi" />
+        <icon src="assets/android/xxxhdpi.png" density="xxxhdpi" />
+    </platform>
 </widget>
