@@ -1,13 +1,12 @@
+import 'package:jila/backend/api_requests/api_calls.dart';
+
 import '../about_page/about_page_widget.dart';
 import '../common_phrases_page/common_phrases_page_widget.dart';
 import '../dictionary_page/dictionary_page_widget.dart';
 import '../flutter_flow/flutter_flow_animations.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
-import '../flutter_flow/flutter_flow_util.dart';
 import '../search_results_page/search_results_page_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class HomePageWidget extends StatefulWidget {
   HomePageWidget({Key key}) : super(key: key);
@@ -20,6 +19,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
     with TickerProviderStateMixin {
   TextEditingController textController;
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  EntriesModel futureData;
   final animationsMap = {
     'gridViewOnPageLoadAnimation': AnimationInfo(
       trigger: AnimationTrigger.onPageLoad,
@@ -30,13 +30,14 @@ class _HomePageWidgetState extends State<HomePageWidget>
 
   @override
   void initState() {
-    super.initState();
+    // TODO: ideally we cache this in local storage and check again the next day.
+    fetchEntries(false).then((value) => futureData = value);
     startAnimations(
       animationsMap.values
           .where((anim) => anim.trigger == AnimationTrigger.onPageLoad),
       this,
     );
-
+    super.initState();
     textController = TextEditingController();
   }
 
@@ -97,7 +98,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                 child: Padding(
                   padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
                   child: Text(
-                    'mirdimarlu\nRed Kangaroo',
+                    'Word: ${futureData.entriesModels[0].entryWord} \n Translation: ${futureData.entriesModels[0].translation}',
                     style: FlutterFlowTheme.bodyText1.override(
                       fontFamily: 'Source Sans Pro',
                       color: Color(0xFFFFEBEE),
@@ -150,7 +151,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                 controller: textController,
                                 obscureText: false,
                                 decoration: InputDecoration(
-                                  hintText: 'Search word, phrase or category',
+                                  hintText: 'Search word',
                                   hintStyle:
                                       FlutterFlowTheme.bodyText1.override(
                                     fontFamily: 'Source Sans Pro',

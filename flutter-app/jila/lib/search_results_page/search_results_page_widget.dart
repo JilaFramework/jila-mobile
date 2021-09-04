@@ -1,10 +1,8 @@
 import '../backend/api_requests/api_calls.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
-import '../flutter_flow/flutter_flow_util.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class SearchResultsPageWidget extends StatefulWidget {
   SearchResultsPageWidget({
@@ -21,20 +19,20 @@ class SearchResultsPageWidget extends StatefulWidget {
 
 class _SearchResultsPageWidgetState extends State<SearchResultsPageWidget> {
   TextEditingController textController;
+  Future<EntriesModel> futureData;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
+    futureData = fetchEntriesByWord(widget.searchTerm);
     super.initState();
     textController = TextEditingController(text: widget.searchTerm);
   }
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<dynamic>(
-      future: searchArtCall(
-        q: widget.searchTerm,
-      ),
+    return FutureBuilder<EntriesModel>(
+      future: futureData,
       builder: (context, snapshot) {
         // Customize what your widget looks like when it's loading.
         if (!snapshot.hasData) {
@@ -49,7 +47,6 @@ class _SearchResultsPageWidgetState extends State<SearchResultsPageWidget> {
             ),
           );
         }
-        final searchResultsPageSearchArtResponse = snapshot.data;
         return Scaffold(
           key: scaffoldKey,
           backgroundColor: FlutterFlowTheme.secondaryColor,
@@ -137,8 +134,7 @@ class _SearchResultsPageWidgetState extends State<SearchResultsPageWidget> {
                                           controller: textController,
                                           obscureText: false,
                                           decoration: InputDecoration(
-                                            labelText:
-                                                'Search word, phrase or category',
+                                            labelText: 'Search word',
                                             labelStyle: FlutterFlowTheme
                                                 .bodyText1
                                                 .override(
@@ -194,12 +190,9 @@ class _SearchResultsPageWidgetState extends State<SearchResultsPageWidget> {
               Expanded(
                 child: Builder(
                   builder: (context) {
-                    final searchResults = getJsonField(
-                                searchResultsPageSearchArtResponse,
-                                r'''$.objectIDs''')
-                            ?.toList() ??
-                        [];
-                    if (searchResults.isEmpty) {
+                    EntriesModel searchResults;
+                    futureData.then((value) => searchResults = value);
+                    if (searchResults == null) {
                       return Center(
                         child: Image.asset(
                           'assets/images/emptySearchResults.png',
@@ -210,21 +203,17 @@ class _SearchResultsPageWidgetState extends State<SearchResultsPageWidget> {
                     return ListView.builder(
                       padding: EdgeInsets.zero,
                       scrollDirection: Axis.vertical,
-                      itemCount: searchResults.length,
+                      itemCount: searchResults.entriesModels.length,
                       itemBuilder: (context, searchResultsIndex) {
                         final searchResultsItem =
-                            searchResults[searchResultsIndex];
+                            searchResults.entriesModels[searchResultsIndex];
                         return Container(
                           height: 90,
                           decoration: BoxDecoration(
                             color: Colors.transparent,
                           ),
-                          child: FutureBuilder<dynamic>(
-                            future: getArtPieceCall(
-                              objectID:
-                                  getJsonField(searchResultsItem, r'''$''')
-                                      .toString(),
-                            ),
+                          child: FutureBuilder<EntriesModel>(
+                            future: futureData,
                             builder: (context, snapshot) {
                               // Customize what your widget looks like when it's loading.
                               if (!snapshot.hasData) {
@@ -239,8 +228,6 @@ class _SearchResultsPageWidgetState extends State<SearchResultsPageWidget> {
                                   ),
                                 );
                               }
-                              final containerGetArtPieceResponse =
-                                  snapshot.data;
                               return Container(
                                 height: 90,
                                 decoration: BoxDecoration(
@@ -258,9 +245,8 @@ class _SearchResultsPageWidgetState extends State<SearchResultsPageWidget> {
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
                                         Image.network(
-                                          getJsonField(
-                                              containerGetArtPieceResponse,
-                                              r'''$.primaryImageSmall'''),
+                                          searchResultsItem.imageThumbnail ??
+                                              '',
                                           width: 56,
                                           height: double.infinity,
                                           fit: BoxFit.cover,
@@ -276,7 +262,7 @@ class _SearchResultsPageWidgetState extends State<SearchResultsPageWidget> {
                                                     CrossAxisAlignment.start,
                                                 children: [
                                                   Text(
-                                                    'Hello World',
+                                                    searchResultsItem.entryWord,
                                                     style: FlutterFlowTheme
                                                         .bodyText2
                                                         .override(
@@ -297,7 +283,8 @@ class _SearchResultsPageWidgetState extends State<SearchResultsPageWidget> {
                                                       children: [
                                                         Expanded(
                                                           child: AutoSizeText(
-                                                            'Hello World',
+                                                            searchResultsItem
+                                                                .translation,
                                                             style:
                                                                 FlutterFlowTheme
                                                                     .bodyText2
@@ -321,11 +308,6 @@ class _SearchResultsPageWidgetState extends State<SearchResultsPageWidget> {
                                             ),
                                           ),
                                         ),
-                                        Icon(
-                                          Icons.arrow_forward_ios,
-                                          color: FlutterFlowTheme.tertiaryColor,
-                                          size: 24,
-                                        )
                                       ],
                                     ),
                                   ),
