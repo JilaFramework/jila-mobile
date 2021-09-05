@@ -1,8 +1,8 @@
-import '../flutter_flow/flutter_flow_theme.dart';
-import '../flutter_flow/flutter_flow_util.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:jila/backend/api_requests/api_calls.dart';
+
+import '../flutter_flow/flutter_flow_theme.dart';
+import 'package:flutter/material.dart';
 
 class AboutPageWidget extends StatefulWidget {
   AboutPageWidget({Key key}) : super(key: key);
@@ -13,6 +13,13 @@ class AboutPageWidget extends StatefulWidget {
 
 class _AboutPageWidgetState extends State<AboutPageWidget> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
+
+  AboutPage aboutPageData;
+  @override
+  void initState() {
+    super.initState();
+    fetchAboutPage().then((value) => {aboutPageData = value});
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -86,27 +93,35 @@ class _AboutPageWidgetState extends State<AboutPageWidget> {
                   Expanded(
                     child: TabBarView(
                       children: [
-                        Text(
-                          'Tab View 1',
-                          style: FlutterFlowTheme.bodyText1.override(
-                            fontFamily: 'Playfair Display',
-                            fontSize: 32,
-                          ),
-                        ),
-                        Text(
-                          'Tab View 2',
-                          style: FlutterFlowTheme.bodyText1.override(
-                            fontFamily: 'Playfair Display',
-                            fontSize: 32,
-                          ),
-                        ),
-                        Text(
-                          'Tab View 3',
-                          style: FlutterFlowTheme.bodyText1.override(
-                            fontFamily: 'Playfair Display',
-                            fontSize: 32,
-                          ),
-                        )
+                        Padding(
+                            padding: EdgeInsets.all(20),
+                            child: Text(
+                              aboutPageData?.aboutUs ?? 'No data to display...',
+                              style: FlutterFlowTheme.bodyText2.override(
+                                  fontFamily: 'Playfair Display',
+                                  fontSize: 16,
+                                  color: Colors.white),
+                            )),
+                        Padding(
+                            padding: EdgeInsets.all(20),
+                            child: Text(
+                              aboutPageData?.contactUs ??
+                                  'No data to display...',
+                              style: FlutterFlowTheme.bodyText2.override(
+                                  fontFamily: 'Playfair Display',
+                                  fontSize: 16,
+                                  color: Colors.white),
+                            )),
+                        Padding(
+                            padding: EdgeInsets.all(20),
+                            child: Text(
+                              aboutPageData?.partners ??
+                                  'No data to display...',
+                              style: FlutterFlowTheme.bodyText2.override(
+                                  fontFamily: 'Playfair Display',
+                                  fontSize: 16,
+                                  color: Colors.white),
+                            )),
                       ],
                     ),
                   ),

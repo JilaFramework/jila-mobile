@@ -98,6 +98,50 @@ class EntriesModelElement {
       };
 }
 
+AboutPage aboutPageFromJson(String str) => AboutPage.fromJson(json.decode(str));
+
+String aboutPageToJson(AboutPage data) => json.encode(data.toJson());
+
+class AboutPage {
+  AboutPage({
+    this.id,
+    this.aboutUs,
+    this.contactUs,
+    this.partners,
+    this.publishedAt,
+    this.createdAt,
+    this.updatedAt,
+  });
+
+  int id;
+  String aboutUs;
+  String contactUs;
+  String partners;
+  DateTime publishedAt;
+  DateTime createdAt;
+  DateTime updatedAt;
+
+  factory AboutPage.fromJson(Map<String, dynamic> json) => AboutPage(
+        id: json["id"],
+        aboutUs: json["aboutUs"],
+        contactUs: json["contactUs"],
+        partners: json["partners"],
+        publishedAt: DateTime.parse(json["published_at"]),
+        createdAt: DateTime.parse(json["created_at"]),
+        updatedAt: DateTime.parse(json["updated_at"]),
+      );
+
+  Map<String, dynamic> toJson() => {
+        "id": id,
+        "aboutUs": aboutUs,
+        "contactUs": contactUs,
+        "partners": partners,
+        "published_at": publishedAt.toIso8601String(),
+        "created_at": createdAt.toIso8601String(),
+        "updated_at": updatedAt.toIso8601String(),
+      };
+}
+
 Future<EntriesModel> fetchEntries(bool fetchCommonPhrases) async {
   String url = 'http://localhost:5000/api/entries';
 
@@ -129,62 +173,13 @@ Future<EntriesModel> fetchEntriesByWord(String searchWord) async {
   }
 }
 
-Future<dynamic> getArtPieceCall({
-  String objectID = '',
-}) {
-  return ApiManager.instance.makeApiCall(
-    callName: 'Get Art Piece',
-    apiUrl:
-        'https://collectionapi.metmuseum.org/public/collection/v1/objects/$objectID',
-    callType: ApiCallType.GET,
-    headers: {},
-    params: {},
-    returnResponse: true,
-  );
-}
+Future<AboutPage> fetchAboutPage() async {
+  String url = 'http://localhost:5000/api/aboutpage';
 
-Future<dynamic> getDepartmentsCall() {
-  return ApiManager.instance.makeApiCall(
-    callName: 'Get Departments',
-    apiUrl:
-        'https://collectionapi.metmuseum.org/public/collection/v1/departments',
-    callType: ApiCallType.GET,
-    headers: {},
-    params: {},
-    returnResponse: true,
-  );
-}
-
-Future<dynamic> searchArtCall({
-  String q = '',
-}) {
-  return ApiManager.instance.makeApiCall(
-    callName: 'Search Art',
-    apiUrl: 'https://collectionapi.metmuseum.org/public/collection/v1/search',
-    callType: ApiCallType.GET,
-    headers: {},
-    params: {
-      'q': q,
-    },
-    returnResponse: true,
-  );
-}
-
-Future<dynamic> departmentHighlightsCall({
-  int departmentId,
-  bool isHighlight = true,
-  String q = '*',
-}) {
-  return ApiManager.instance.makeApiCall(
-    callName: 'Department Highlights',
-    apiUrl: 'https://collectionapi.metmuseum.org/public/collection/v1/search',
-    callType: ApiCallType.GET,
-    headers: {},
-    params: {
-      'departmentId': departmentId,
-      'isHighlight': isHighlight,
-      'q': q,
-    },
-    returnResponse: true,
-  );
+  final response = await http.get(Uri.parse(url));
+  if (response.statusCode == 200) {
+    return aboutPageFromJson(response.body);
+  } else {
+    throw Exception('Unexpected error occured!');
+  }
 }

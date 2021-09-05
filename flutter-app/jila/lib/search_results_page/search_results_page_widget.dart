@@ -190,9 +190,7 @@ class _SearchResultsPageWidgetState extends State<SearchResultsPageWidget> {
               Expanded(
                 child: Builder(
                   builder: (context) {
-                    EntriesModel searchResults;
-                    futureData.then((value) => searchResults = value);
-                    if (searchResults == null) {
+                    if (!snapshot.hasData || snapshot.hasError) {
                       return Center(
                         child: Image.asset(
                           'assets/images/emptySearchResults.png',
@@ -203,32 +201,16 @@ class _SearchResultsPageWidgetState extends State<SearchResultsPageWidget> {
                     return ListView.builder(
                       padding: EdgeInsets.zero,
                       scrollDirection: Axis.vertical,
-                      itemCount: searchResults.entriesModels.length,
+                      itemCount: snapshot.data?.entriesModels?.length,
                       itemBuilder: (context, searchResultsIndex) {
                         final searchResultsItem =
-                            searchResults.entriesModels[searchResultsIndex];
+                            snapshot.data.entriesModels[searchResultsIndex];
                         return Container(
-                          height: 90,
-                          decoration: BoxDecoration(
-                            color: Colors.transparent,
-                          ),
-                          child: FutureBuilder<EntriesModel>(
-                            future: futureData,
-                            builder: (context, snapshot) {
-                              // Customize what your widget looks like when it's loading.
-                              if (!snapshot.hasData) {
-                                return Center(
-                                  child: SizedBox(
-                                    width: 50,
-                                    height: 50,
-                                    child: SpinKitRipple(
-                                      color: FlutterFlowTheme.primaryColor,
-                                      size: 50,
-                                    ),
-                                  ),
-                                );
-                              }
-                              return Container(
+                            height: 90,
+                            decoration: BoxDecoration(
+                              color: Colors.transparent,
+                            ),
+                            child: Container(
                                 height: 90,
                                 decoration: BoxDecoration(
                                   color: Colors.transparent,
@@ -311,11 +293,7 @@ class _SearchResultsPageWidgetState extends State<SearchResultsPageWidget> {
                                       ],
                                     ),
                                   ),
-                                ),
-                              );
-                            },
-                          ),
-                        );
+                                )));
                       },
                     );
                   },
