@@ -1,3 +1,4 @@
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:jila/backend/api_requests/api_calls.dart';
 
 import '../about_page/about_page_widget.dart';
@@ -19,7 +20,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
     with TickerProviderStateMixin {
   TextEditingController textController;
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  EntriesModel futureData;
+  Future<EntriesModel> futureData;
   final animationsMap = {
     'gridViewOnPageLoadAnimation': AnimationInfo(
       trigger: AnimationTrigger.onPageLoad,
@@ -31,7 +32,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
   @override
   void initState() {
     // TODO: ideally we cache this in local storage and check again the next day.
-    fetchEntries(false).then((value) => futureData = value);
+    futureData = fetchEntries(false);
     startAnimations(
       animationsMap.values
           .where((anim) => anim.trigger == AnimationTrigger.onPageLoad),
@@ -89,26 +90,43 @@ class _HomePageWidgetState extends State<HomePageWidget>
               )
             ],
           ),
-          Row(
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Align(
-                alignment: Alignment(0, 0),
-                child: Padding(
-                  padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
-                  child: Text(
-                    'Word: ${futureData.entriesModels[0].entryWord} \n Translation: ${futureData.entriesModels[0].translation}',
-                    style: FlutterFlowTheme.bodyText1.override(
-                      fontFamily: 'Source Sans Pro',
-                      color: Color(0xFFFFEBEE),
-                      fontSize: 18,
+          FutureBuilder<EntriesModel>(
+              future: futureData,
+              builder: (context, snapshot) {
+                if (snapshot.hasData) {
+                  var firstWord = snapshot.data.entriesModels[0];
+                  return Row(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Align(
+                        alignment: Alignment(0, 0),
+                        child: Padding(
+                          padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
+                          child: Text(
+                            'Word: ${firstWord?.entryWord ?? "Not found."} \n Translation: ${firstWord?.translation ?? "Not found."}',
+                            style: FlutterFlowTheme.bodyText1.override(
+                              fontFamily: 'Source Sans Pro',
+                              color: Color(0xFFFFEBEE),
+                              fontSize: 18,
+                            ),
+                          ),
+                        ),
+                      )
+                    ],
+                  );
+                } else {
+                  return Center(
+                      child: SizedBox(
+                    width: 50,
+                    height: 50,
+                    child: SpinKitRipple(
+                      color: FlutterFlowTheme.primaryColor,
+                      size: 50,
                     ),
-                  ),
-                ),
-              )
-            ],
-          ),
+                  ));
+                }
+              }),
           Row(
             mainAxisSize: MainAxisSize.max,
             children: [

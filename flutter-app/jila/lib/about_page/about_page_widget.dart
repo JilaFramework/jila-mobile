@@ -14,11 +14,11 @@ class AboutPageWidget extends StatefulWidget {
 class _AboutPageWidgetState extends State<AboutPageWidget> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
-  AboutPage aboutPageData;
+  Future<AboutPage> aboutPageData;
   @override
   void initState() {
     super.initState();
-    fetchAboutPage().then((value) => {aboutPageData = value});
+    aboutPageData = fetchAboutPage();
   }
 
   @override
@@ -90,41 +90,57 @@ class _AboutPageWidgetState extends State<AboutPageWidget> {
                       )
                     ],
                   ),
-                  Expanded(
-                    child: TabBarView(
-                      children: [
-                        Padding(
-                            padding: EdgeInsets.all(20),
-                            child: Text(
-                              aboutPageData?.aboutUs ?? 'No data to display...',
-                              style: FlutterFlowTheme.bodyText2.override(
-                                  fontFamily: 'Playfair Display',
-                                  fontSize: 16,
-                                  color: Colors.white),
-                            )),
-                        Padding(
-                            padding: EdgeInsets.all(20),
-                            child: Text(
-                              aboutPageData?.contactUs ??
-                                  'No data to display...',
-                              style: FlutterFlowTheme.bodyText2.override(
-                                  fontFamily: 'Playfair Display',
-                                  fontSize: 16,
-                                  color: Colors.white),
-                            )),
-                        Padding(
-                            padding: EdgeInsets.all(20),
-                            child: Text(
-                              aboutPageData?.partners ??
-                                  'No data to display...',
-                              style: FlutterFlowTheme.bodyText2.override(
-                                  fontFamily: 'Playfair Display',
-                                  fontSize: 16,
-                                  color: Colors.white),
-                            )),
-                      ],
-                    ),
-                  ),
+                  FutureBuilder<AboutPage>(
+                      future: aboutPageData,
+                      builder: (context, snapshot) {
+                        if (!snapshot.hasData) {
+                          return Center(
+                              child: SizedBox(
+                            width: 50,
+                            height: 50,
+                            child: SpinKitRipple(
+                              color: FlutterFlowTheme.primaryColor,
+                              size: 50,
+                            ),
+                          ));
+                        }
+                        return Expanded(
+                          child: TabBarView(
+                            children: [
+                              Padding(
+                                  padding: EdgeInsets.all(20),
+                                  child: Text(
+                                    snapshot?.data?.aboutUs ??
+                                        'No data to display...',
+                                    style: FlutterFlowTheme.bodyText2.override(
+                                        fontFamily: 'Playfair Display',
+                                        fontSize: 16,
+                                        color: Colors.white),
+                                  )),
+                              Padding(
+                                  padding: EdgeInsets.all(20),
+                                  child: Text(
+                                    snapshot?.data?.contactUs ??
+                                        'No data to display...',
+                                    style: FlutterFlowTheme.bodyText2.override(
+                                        fontFamily: 'Playfair Display',
+                                        fontSize: 16,
+                                        color: Colors.white),
+                                  )),
+                              Padding(
+                                  padding: EdgeInsets.all(20),
+                                  child: Text(
+                                    snapshot?.data?.partners ??
+                                        'No data to display...',
+                                    style: FlutterFlowTheme.bodyText2.override(
+                                        fontFamily: 'Playfair Display',
+                                        fontSize: 16,
+                                        color: Colors.white),
+                                  )),
+                            ],
+                          ),
+                        );
+                      })
                 ],
               ),
             ),

@@ -34,19 +34,6 @@ class _SearchResultsPageWidgetState extends State<SearchResultsPageWidget> {
     return FutureBuilder<EntriesModel>(
       future: futureData,
       builder: (context, snapshot) {
-        // Customize what your widget looks like when it's loading.
-        if (!snapshot.hasData) {
-          return Center(
-            child: SizedBox(
-              width: 50,
-              height: 50,
-              child: SpinKitRipple(
-                color: FlutterFlowTheme.primaryColor,
-                size: 50,
-              ),
-            ),
-          );
-        }
         return Scaffold(
           key: scaffoldKey,
           backgroundColor: FlutterFlowTheme.secondaryColor,
@@ -190,11 +177,23 @@ class _SearchResultsPageWidgetState extends State<SearchResultsPageWidget> {
               Expanded(
                 child: Builder(
                   builder: (context) {
-                    if (!snapshot.hasData || snapshot.hasError) {
+                    if (snapshot.hasError) {
                       return Center(
                         child: Image.asset(
                           'assets/images/emptySearchResults.png',
                           width: MediaQuery.of(context).size.width * 0.86,
+                        ),
+                      );
+                    }
+                    if (!snapshot.hasData) {
+                      return Center(
+                        child: SizedBox(
+                          width: 50,
+                          height: 50,
+                          child: SpinKitRipple(
+                            color: FlutterFlowTheme.primaryColor,
+                            size: 50,
+                          ),
                         ),
                       );
                     }
