@@ -1,5 +1,6 @@
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:jila/backend/api_requests/api_calls.dart';
+import 'package:jila/models/EntriesModel.dart';
 
 import '../about_page/about_page_widget.dart';
 import '../common_phrases_page/common_phrases_page_widget.dart';

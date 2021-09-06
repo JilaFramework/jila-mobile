@@ -1,4 +1,5 @@
 import 'package:jila/backend/api_requests/api_calls.dart';
+import 'package:jila/models/EntriesModel.dart';
 
 import '../flutter_flow/flutter_flow_audio_player.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
