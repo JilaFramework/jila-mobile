@@ -13,7 +13,7 @@
             also: {{ alternate_spelling }}
         .row.translation-row
           .definition
-            .translation {{ entry.meaning }}
+            .translation {{ entry.translation }}
             .word-type {{ entry.word_type }}
           .play-button
             %a{href: 'javascript:void(0)', ng: {click: 'listen()', if: 'entry.audio !== null'}}
