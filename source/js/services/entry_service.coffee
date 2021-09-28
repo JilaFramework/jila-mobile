@@ -31,13 +31,21 @@ class Service
       store.save {key: entry.id, value: entry}
   search_for: (query) =>
     deferred = @$q.defer()
+    entries = []
     Lawnchair {name: 'entries', adapter: 'dom'}, (store) =>
-      store.where "record.value.meaning.toLowerCase().indexOf('#{query.toLowerCase()}') !== -1", (entries) =>
-        if entries.length == 0
+      store.where "record.value.translation.toLowerCase().indexOf('#{query.toLowerCase()}') !== -1", (result) =>
+        if result.length == 0
           @$analytics.eventTrack 'SearchNotFound',
               category: 'SearchNotFound'
               label: query
-        deferred.resolve entries.map (e) -> e.value
+        entries = entries.concat result
+      store.where "record.value.entry_word.toLowerCase().indexOf('#{query.toLowerCase()}') !== -1", (result) =>
+        if result.length == 0
+          @$analytics.eventTrack 'SearchNotFound',
+              category: 'SearchNotFound'
+              label: query
+        entries = entries.concat result
+    deferred.resolve entries.map (e) -> e.value
     return deferred.promise
   clear: () =>
     Lawnchair {name: 'entries', adapter: 'dom'}, (store) ->
