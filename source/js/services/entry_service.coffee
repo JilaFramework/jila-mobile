@@ -33,7 +33,7 @@ class Service
     deferred = @$q.defer()
     entries = []
     Lawnchair {name: 'entries', adapter: 'dom'}, (store) =>
-      store.where "record.value.translation.toLowerCase().indexOf('#{query.toLowerCase()}') !== -1", (result) =>
+      store.where "record.value.meaning.toLowerCase().indexOf('#{query.toLowerCase()}') !== -1", (result) =>
         if result.length == 0
           @$analytics.eventTrack 'SearchNotFound',
               category: 'SearchNotFound'
