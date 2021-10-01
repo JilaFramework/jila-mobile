@@ -12,5 +12,5 @@
                 .play-word.fa
                   &#xf144;
             .column.small-8.large-10
-              .entry-word {{ entry.entry_word }}
+              %div{ng: {class: "{'entry-word': true, 'proper-noun': entry.word_type === 'proper noun'}"}} {{ entry.entry_word }}
               .translation {{ entry.meaning }}

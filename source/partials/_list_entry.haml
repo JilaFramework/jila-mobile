@@ -2,5 +2,5 @@
   .column.small-4.large-4.thumbnail-column
     .thumbnail{style: 'background-image: url({{entry.images.thumbnail}})'}
   .column.small-8.large-8
-    .entry-word {{entry.entry_word}}
+    %div{ng: {class: "{'entry-word': true, 'proper-noun': entry.word_type === 'proper noun'}"}} {{ entry.entry_word }}
     .translation {{entry.meaning}}

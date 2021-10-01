@@ -52,7 +52,7 @@ class Controller
 
     $scope.searchStringChanged = () =>
       $timeout.cancel searchAction if searchAction
-      if $scope.searchString
+      if $scope.searchString && $scope.searchString.length >= 2
         searchString = $scope.searchString
         searchAction = $timeout () ->
           searchFor(searchString)

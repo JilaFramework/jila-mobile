@@ -4,7 +4,7 @@
       .row
         .image{style: 'background-image: url({{entry.images.normal}})'}
         .row.entry-row
-          .entry-word
+          %div{ng: {class: "{'entry-word': true, 'proper-noun': entry.word_type === 'proper noun'}"}}
             %span {{ entry.entry_word }}
         .row.pronunciation
           {{ entry.pronunciation }}
