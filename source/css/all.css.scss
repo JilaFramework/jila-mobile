@@ -60,6 +60,10 @@ a {
     line-height: 95%;
   }
 
+  .proper-noun {
+    text-transform: inherit;
+  }
+
   .translation {
     font-size: 1.2em;
   }
@@ -200,6 +204,10 @@ $page_gutter: 20px;
       position: relative;
       top: 5px;
     }
+  }
+
+  .proper-noun {
+    text-transform: inherit;
   }
 
   .pronunciation {
