@@ -14,13 +14,13 @@ The **Jila** app is built using the [Middleman](http://middlemanapp.com) static 
 ## Installation
 1. Run `bundle install` to install the required Ruby gems.
 
-2. Run `yarn` to install Cordova dependencies. If you see the following error: `Current working directory is not a Cordova-based project.`, run `bundle exec rake build_site` to generate a `www` folder which will be consumed by Cordova.
+2. Run `npm install` to install Cordova dependencies. If you see the following error: `Current working directory is not a Cordova-based project.`, run `bundle exec rake build_site` to generate a `www` folder which will be consumed by Cordova.
 
-3. Run `yarn setup` to install Bower dependencies.
+3. Run `npm run setup` to install Bower dependencies.
 
 4. Run `bundle exec rake build_site` to update the `www` folder with Bower dependencies installed.
 
-5. Run `yarn prepare` to install Cordova plugins.
+5. Run `npm run prepare` to install Cordova plugins.
 
 ## Getting Started
 
@@ -30,7 +30,7 @@ To view the app in the browser, run `bundle exec middleman` to start a server at
 #### Running app in iOS simulator (Xcode required)
 1. If you've made any changes to the static site, run `bundle exec rake build_site` to update the `www` folder.
 
-2. run `yarn run:ios`.
+2. run `npm run run:ios`.
 
 #### Running app in Android simulator (Android studio, JDK 8, and Gradle 6 required)
 <sup>For more information, see: https://cordova.apache.org/docs/en/latest/guide/platforms/android/index.html#requirements-and-support</sup>
@@ -45,7 +45,7 @@ export PATH=$ANDROID_SDK/emulator:$ANDROID_SDK/tools:$PATH
 export PATH="$ANDROID_SDK/platform-tools:$PATH"
 ```
 
-3. Run `yarn run:android`.
+3. Run `npm run run:android`.
 
 ### Release
 
@@ -70,7 +70,7 @@ For detailed instructions, see: https://cordova.apache.org/docs/en/latest/guide/
 }
 ```
 
-3. Run `yarn release:android`.
+3. Run `npm run release:android`.
 
 
 ### Testing
