@@ -264,7 +264,7 @@ $page_gutter: 20px;
 .menu-items {
   li {
     padding: 0px;
-    padding-bottom: 10px;
+    padding-bottom: 30px;
   }
 }
 
@@ -275,7 +275,7 @@ $page_gutter: 20px;
 }
 
 .menu-item {
-  @include responsive-square(90%);
+  @include responsive-square(70%);
   @include as-card;
 }
 
