@@ -6,6 +6,7 @@ class Controller
     $scope.searchIsVisible = false
     $scope.navigationAvailable = false
     $scope.searchString = ''
+    $scope.searchType = 'Gooniandi to English'
     $scope.entries = []
 
     $rootScope.$on '$locationChangeStart', () ->
@@ -47,7 +48,7 @@ class Controller
 
     searchAction = null
     searchFor = (query) =>
-      entryService.search_for($scope.searchString).then (entries) =>
+      entryService.search_for($scope.searchString, $scope.searchType == 'Gooniandi to English').then (entries) =>
         $scope.entries = entries
 
     $scope.searchStringChanged = () =>

@@ -29,22 +29,31 @@ class Service
   save: (entry) =>
     Lawnchair {name: 'entries', adapter: 'dom'}, (store) ->
       store.save {key: entry.id, value: entry}
-  search_for: (query) =>
+  search_for: (query, gooniandiToEnglish) =>
     deferred = @$q.defer()
     entries = []
     Lawnchair {name: 'entries', adapter: 'dom'}, (store) =>
-      store.where "record.value.meaning.toLowerCase().indexOf('#{query.toLowerCase()}') !== -1", (result) =>
-        if result.length == 0
-          @$analytics.eventTrack 'SearchNotFound',
-              category: 'SearchNotFound'
-              label: query
-        entries = entries.concat result
-      store.where "record.value.entry_word.toLowerCase().indexOf('#{query.toLowerCase()}') !== -1", (result) =>
-        if result.length == 0
-          @$analytics.eventTrack 'SearchNotFound',
-              category: 'SearchNotFound'
-              label: query
-        entries = entries.concat result
+      if gooniandiToEnglish
+        store.where "record.value.entry_word.toLowerCase().indexOf('#{query.toLowerCase()}') === 0", (result) =>
+          if result.length == 0
+            @$analytics.eventTrack 'SearchNotFound',
+                category: 'SearchNotFound'
+                label: query
+          entries = entries.concat result
+
+        store.where "record.value.entry_word.toLowerCase().indexOf('#{query.toLowerCase()}') > 0", (result) =>
+          if result.length == 0
+            @$analytics.eventTrack 'SearchNotFound',
+                category: 'SearchNotFound'
+                label: query
+          entries = entries.concat result
+      else
+        store.where "record.value.meaning.toLowerCase().indexOf('#{query.toLowerCase()}') !== -1", (result) =>
+          if result.length == 0
+            @$analytics.eventTrack 'SearchNotFound',
+                category: 'SearchNotFound'
+                label: query
+          entries = entries.concat result
     deferred.resolve entries.map (e) -> e.value
     return deferred.promise
   clear: () =>
