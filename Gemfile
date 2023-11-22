@@ -1,6 +1,6 @@
 # If you have OpenSSL installed, we recommend updating
 # the following line to use "https"
-ruby '2.1.0'
+ruby '2.6.10'
 
 source 'https://rubygems.org'
 
