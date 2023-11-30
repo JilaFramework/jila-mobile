@@ -29,7 +29,7 @@ class Service
     @fileService.existingFor(url).then (existingUri) ->
       deferred.resolve existingUri
     , () =>
-      @$http.get(url, {responseType: 'arraybuffer'})
+      @$https.get(url, {responseType: 'arraybuffer'})
             .then (res) =>
               blob = new Blob([res.data], type: 'text/plain')
 
