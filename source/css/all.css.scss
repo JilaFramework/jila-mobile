@@ -1,16 +1,17 @@
-@import 'colors';
-@import 'fonts';
-@import 'transitions';
-@import 'foundation/scss/normalize';
-@import 'foundation/scss/foundation';
-@import 'slick-carousel/slick/slick';
-@import 'variables';
-@import 'mixins';
-@import 'type';
-@import 'animations';
-@import 'layout';
-@import 'navigation';
-@import 'splash';
+@import "switch";
+@import "colors";
+@import "fonts";
+@import "transitions";
+@import "foundation/scss/normalize";
+@import "foundation/scss/foundation";
+@import "slick-carousel/slick/slick";
+@import "variables";
+@import "mixins";
+@import "type";
+@import "animations";
+@import "layout";
+@import "navigation";
+@import "splash";
 
 body {
   -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
@@ -31,12 +32,14 @@ a {
 .button {
   font-size: 20px;
 
-  &.disabled, &[disabled] {
+  &.disabled,
+  &[disabled] {
     background-color: $button_disabled;
   }
 }
 
-.letters, .entries {
+.letters,
+.entries {
   li {
     padding-bottom: 0;
   }
@@ -80,7 +83,8 @@ a {
   background: white;
   border-bottom: 1px solid black;
 
-  .word-type, .translation {
+  .word-type,
+  .translation {
     vertical-align: middle;
     margin-bottom: 0px;
   }
@@ -106,7 +110,7 @@ a {
 
   .title {
     font-size: 2.75em;
-    font-family: 'Roboto', 'Helvetica Neue', 'Segoe UI', 'sans-serif';
+    font-family: "Roboto", "Helvetica Neue", "Segoe UI", "sans-serif";
     padding-bottom: 20px;
   }
 
@@ -123,7 +127,8 @@ a {
     margin-top: 10px;
   }
 
-  &.success, &.success-page {
+  &.success,
+  &.success-page {
     color: white;
 
     &.loaded {
@@ -131,7 +136,8 @@ a {
     }
   }
 
-  &.failure, &.failure-page {
+  &.failure,
+  &.failure-page {
     color: white;
 
     &.loaded {
@@ -142,7 +148,7 @@ a {
 
 $page_gutter: 20px;
 .page {
-  background-color: #DDD;
+  background-color: #ddd;
 }
 
 .entry-page {
@@ -157,7 +163,7 @@ $page_gutter: 20px;
   .translation {
     font-weight: bold;
     font-size: 1em;
-    color: #008CBA;
+    color: #008cba;
   }
 
   .word-type {
@@ -176,7 +182,7 @@ $page_gutter: 20px;
 
   .example-english-row {
     padding-top: 10px;
-    color: #008CBA;
+    color: #008cba;
   }
 
   .description-row {
@@ -188,9 +194,15 @@ $page_gutter: 20px;
   }
 
   .definition {
+    margin: 0 1em;
+    max-width: 80%;
     display: flex;
     flex-direction: column;
     justify-content: center;
+  }
+
+  .play-button {
+    margin-right: 1em;
   }
 
   .entry-word {
@@ -214,7 +226,7 @@ $page_gutter: 20px;
     text-align: center;
   }
 
-  .alternate_spelling-row{
+  .alternate_spelling-row {
     font-size: 1.3em;
   }
 
@@ -253,7 +265,7 @@ $page_gutter: 20px;
 .menu-items {
   li {
     padding: 0px;
-    padding-bottom: 10px;
+    padding-bottom: 30px;
   }
 }
 
@@ -264,13 +276,11 @@ $page_gutter: 20px;
 }
 
 .menu-item {
-  @include responsive-square(90%);
+  @include responsive-square(70%);
   @include as-card;
 }
 
 .home-page {
-  padding-top: 10px;
-
   .menu-item {
     .menu-label {
       @include center-in-parent;
@@ -281,19 +291,26 @@ $page_gutter: 20px;
   }
 }
 
-.categories-page, .games-page, .dictionary-page, .letter-page{
+.categories-page,
+.category-page,
+.common-page,
+.dictionary-page,
+.games-page,
+.home-page,
+.letter-page {
   @include full-background-image;
   background-image: url(../img/splash_bg.jpg);
   padding-top: 10px;
 }
 
-.dictionary-page{
+.dictionary-page {
   .letter {
     position: relative;
     @include full-background-image;
     height: 3.6em;
 
     .name {
+      font-weight: bold;
       position: absolute;
       top: 80%;
       left: 1em;
@@ -307,7 +324,8 @@ $page_gutter: 20px;
   }
 }
 
-.categories-page, .games-page {
+.categories-page,
+.games-page {
   padding-top: 10px;
   .category {
     .inner {
@@ -336,7 +354,6 @@ $page_gutter: 20px;
   @include full-background-image;
 }
 
-
 .entries {
   margin-left: 2px;
   margin-right: 2px;
@@ -351,8 +368,10 @@ $page_gutter: 20px;
   }
 }
 
-.entry-page, .word-of-the-day-page {
-  .entry-word, .play-word {
+.entry-page,
+.word-of-the-day-page {
+  .entry-word,
+  .play-word {
     display: inline-block;
   }
 
@@ -387,9 +406,7 @@ $page_gutter: 20px;
     width: 95%;
   }
 
-  @media only screen
-    and (orientation : portrait)
-    and (max-height : $max_height_for_small) {
+  @media only screen and (orientation: portrait) and (max-height: $max_height_for_small) {
     .instruction {
       font-size: 1.45em;
     }
@@ -403,7 +420,8 @@ $page_gutter: 20px;
     }
   }
 
-  .word-row, .word-row-small {
+  .word-row,
+  .word-row-small {
     text-transform: lowercase;
     text-align: center;
   }
@@ -443,9 +461,8 @@ $page_gutter: 20px;
       background-color: green;
       padding: $option_padding;
       margin: $option_margin;
-      box-shadow: 1px 1px 5px rgba(0,0,0,0);
-      transition: transform 250ms linear,
-                          box-shadow 250ms linear;
+      box-shadow: 1px 1px 5px rgba(0, 0, 0, 0);
+      transition: transform 250ms linear, box-shadow 250ms linear;
 
       border: 3px solid transparent;
       &.selected {
@@ -456,7 +473,7 @@ $page_gutter: 20px;
     .slip-reordering {
       .option {
         transform: rotate(3deg);
-        box-shadow: 1px 1px 5px rgba(0,0,0,0.25);
+        box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.25);
       }
     }
   }
@@ -495,14 +512,19 @@ $page_gutter: 20px;
 
 $tab_header_height: 60px;
 .about-page {
-  white-space: nowrap;
+  white-space: break-space;
   overflow: hidden;
 
   .tab-header {
     float: left;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
     a {
       text-decoration: none;
       color: white;
+      line-height: normal;
     }
   }
 

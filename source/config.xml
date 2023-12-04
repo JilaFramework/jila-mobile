@@ -1,17 +1,77 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="org.jila.vanilla" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>Jila</name>
+<widget version="1.0.2" android-packageName="org.jila.vanilla"
+    ios-CFBundleIdentifier="org.jila.gooniyandi"
+    ios-CFBundleShortVersionString="1.0.2"
+    ios-CFBundleVersion="1"
+    xmlns="http://www.w3.org/ns/widgets"
+    xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>Gooniyandi</name>
     <description>
-        
+
     </description>
     <author email="" href="">
-        Jila
+        Gooniyandi
     </author>
     <content src="index.html" />
     <access origin="*" />
+    <allow-navigation href="*" />
+    <allow-intent href="mailto:*" />
     <preference name="orientation" value="portrait" />
-    
+
     <preference name="StatusBarOverlaysWebView" value="false" />
     <preference name="StatusBarBackgroundColor" value="#000000" />
     <preference name="StatusBarStyle" value="blacktranslucent" />
+
+    <platform name="android">
+        <!--
+            ldpi    : 36x36 px
+            mdpi    : 48x48 px
+            hdpi    : 72x72 px
+            xhdpi   : 96x96 px
+            xxhdpi  : 144x144 px
+            xxxhdpi : 192x192 px
+        -->
+        <icon src="assets/android/ldpi.png" density="ldpi" />
+        <icon src="assets/android/mdpi.png" density="mdpi" />
+        <icon src="assets/android/hdpi.png" density="hdpi" />
+        <icon src="assets/android/xhdpi.png" density="xhdpi" />
+        <icon src="assets/android/xxhdpi.png" density="xxhdpi" />
+        <icon src="assets/android/xxxhdpi.png" density="xxxhdpi" />
+    </platform>
+
+    <platform name="ios">
+        <!-- Apple Store -->
+        <icon src="assets/ios/icon-1024.png" width="1024" height="1024" />
+        <!-- iOS 8.0+ -->
+        <!-- iPhone 6 Plus  -->
+        <icon src="assets/ios/icon-60@3x.png" width="180" height="180" />
+        <!-- iOS 7.0+ -->
+        <!-- iPhone / iPod Touch  -->
+        <icon src="assets/ios/icon-60.png" width="60" height="60" />
+        <icon src="assets/ios/icon-60@2x.png" width="120" height="120" />
+        <!-- iPad -->
+        <icon src="assets/ios/icon-76.png" width="76" height="76" />
+        <icon src="assets/ios/icon-76@2x.png" width="152" height="152" />
+        <!-- Spotlight Icon -->
+        <icon src="assets/ios/icon-40.png" width="40" height="40" />
+        <icon src="assets/ios/icon-40@2x.png" width="80" height="80" />
+        <!-- iOS 6.1 -->
+        <!-- iPhone / iPod Touch -->
+        <icon src="assets/ios/icon.png" width="57" height="57" />
+        <icon src="assets/ios/icon@2x.png" width="114" height="114" />
+        <!-- iPad -->
+        <icon src="assets/ios/icon-72.png" width="72" height="72" />
+        <icon src="assets/ios/icon-72@2x.png" width="144" height="144" />
+        <!-- iPad Pro -->
+        <icon src="assets/ios/icon-167.png" width="167" height="167" />
+        <!-- iPhone Spotlight and Settings Icon -->
+        <icon src="assets/ios/icon-small.png" width="29" height="29" />
+        <icon src="assets/ios/icon-small@2x.png" width="58" height="58" />
+        <icon src="assets/ios/icon-small@3x.png" width="87" height="87" />
+        <!-- iPad Spotlight and Settings Icon -->
+        <icon src="assets/ios/icon-50.png" width="50" height="50" />
+        <icon src="assets/ios/icon-50@2x.png" width="100" height="100" />
+        <!-- iPad Pro -->
+        <icon src="assets/ios/icon-83.5@2x.png" width="167" height="167" />
+    </platform>
 </widget>

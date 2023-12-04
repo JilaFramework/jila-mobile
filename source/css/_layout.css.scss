@@ -63,7 +63,7 @@ $tab_header_height: rem-calc(60);
 
 .tab-header {
   height: $tab_header_height;
-  line-height: $tab_header_height;  
+  line-height: $tab_header_height;
 }
 
 .tab-content {
@@ -106,12 +106,12 @@ $bottom_offset: rem-calc(15);
 .game {
   position: relative;
 
-  .word-row, 
-  .word-row-small, 
-  .audio-row, 
+  .word-row,
+  .word-row-small,
+  .audio-row,
   .pictures-row,
-  .sort-row, 
-  .options-row, 
+  .sort-row,
+  .options-row,
   .submit-row,
   .answer-text-row {
     position: absolute;
@@ -151,9 +151,9 @@ $bottom_offset: rem-calc(15);
     height: $main_row_height;
   }
 
-  @media only screen 
+  @media only screen
     and (orientation : portrait)
-    and (max-height : $max_height_for_small) { 
+    and (max-height : $max_height_for_small) {
     .word-row, .audio-row {
       height: $main_row_height_small;
     }
@@ -178,9 +178,9 @@ $bottom_offset: rem-calc(15);
     @include responsive-square;
   }
 
-  @media only screen 
+  @media only screen
     and (orientation : portrait)
-    and (max-height : $max_height_for_small) { 
+    and (max-height : $max_height_for_small) {
     .picture-main {
       @include responsive-square(70%);
     }

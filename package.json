@@ -14,21 +14,22 @@
   },
   "devDependencies": {
     "bower": "^1.8.8",
-    "cordova": "^10.0.0",
+    "cordova": "^12.0.0",
+    "cordova-android": "^12.0.1",
+    "cordova-ios": "^7.0.1",
     "cordova-plugin-device": "^2.0.3",
     "cordova-plugin-dialogs": "^2.0.2",
     "cordova-plugin-file": "^6.0.2",
     "cordova-plugin-inappbrowser": "^4.0.0",
     "cordova-plugin-media": "^5.0.3",
     "cordova-plugin-statusbar": "^2.4.3",
-    "ios-deploy": "^1.11.2",
     "ios-sim": "^9.0.0",
     "plugman": "^3.0.1"
   },
   "cordova": {
     "platforms": [
-      "android",
-      "ios"
+      "ios",
+      "android"
     ],
     "plugins": {
       "cordova-plugin-inappbrowser": {},
@@ -40,9 +41,5 @@
       },
       "cordova-plugin-statusbar": {}
     }
-  },
-  "dependencies": {
-    "cordova-android": "^10.1.1",
-    "cordova-ios": "^6.2.0"
   }
 }

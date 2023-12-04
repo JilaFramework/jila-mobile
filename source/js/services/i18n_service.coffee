@@ -1,5 +1,5 @@
 EN =
-  homeTitle: 'Jila'
+  homeTitle: 'Gooniyandi'
   homeDictionary: 'Dictionary'
   homeCategories: 'Explore'
   homeLearn: 'Learn'
@@ -7,7 +7,7 @@ EN =
   homeWordOfTheDay: 'Word Of The Day'
   homeAbout: 'About'
   homeWarningTitle: 'Warning'
-  homeWarningMessage: 'This app may contain images and voices of Aboriginal and 
+  homeWarningMessage: 'This app may contain images and voices of Aboriginal and
     Torres Strait Islander people who have passed away'
   categoriesTitle: 'Pick A Category'
   dictionaryTitle: 'Dictionary'
@@ -15,9 +15,9 @@ EN =
   commonTitle: 'Common Phrases'
   wordOfTheDayTitle: 'Word Of The Day'
   aboutTitle: 'About'
-  aboutHistoryTab: 'History'
-  aboutResourcesTab: 'Resources'
-  aboutLocationTab: 'Location'
+  aboutAppTab: 'About this app'
+  aboutGooniyandiTab: 'About Gooniyandi'
+  aboutContactUsTab: 'Contact us'
   aboutPartnersTab: 'Partners'
   aboutCreditsTab: 'Credits'
   placeholderSearch: 'Search'
