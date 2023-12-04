@@ -2,7 +2,7 @@
 <widget version="1.0.2" android-packageName="org.jila.vanilla"
     ios-CFBundleIdentifier="org.jila.gooniyandi"
     ios-CFBundleShortVersionString="1.0.2"
-    ios-CFBundleVersion="1"
+    ios-CFBundleVersion="2"
     xmlns="http://www.w3.org/ns/widgets"
     xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>Gooniyandi</name>
