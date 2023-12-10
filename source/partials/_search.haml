@@ -1,9 +1,9 @@
 .search-panel{ng: {show: 'searchIsVisible'}}
   .switch-field
     %input{type: 'radio', id:'gooniandi', value: 'Gooniandi to English', name:'search-type', ng: {model: 'searchType', change: 'searchStringChanged()' }}
-    %label{for: 'gooniandi'} Gooniandi to English
+    %label{for: 'gooniandi'} Gooniyandi to English
     %input{type: 'radio', id:'english', value: 'English to Gooniandi', name:'search-type', checked: true, ng: {model: 'searchType', change: 'searchStringChanged()' } }
-    %label{for: 'english'} English to Gooniandi 
+    %label{for: 'english'} English to Gooniyandi 
   %input.search-input{type: 'search', placeholder: '{{labelForSearch}}', ng: {model: 'searchString', change: 'searchStringChanged()'}, focus: {when: 'searchIsVisible'}}
   %ul.small-block-grid-1.entries{ng: {if: 'entries.length > 0'}}
     %li{bindonce: '', ng: {repeat: 'entry in entries'}}
